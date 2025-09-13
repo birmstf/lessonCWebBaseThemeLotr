@@ -1,0 +1,15 @@
+{
+  "week": 11,
+  "title": "Hafta 11: Dosya İşlemleri",
+  "description": "C dilinde metin dosyalarıyla çalışmak.",
+  "duration": "120 dakika",
+  "difficulty": "Orta",
+  "objectives": [
+    "Metin dosyaları",
+    "Dosya açma ve kapama",
+    "Dosya okuma ve yazma",
+    "Rastgele erişim",
+    "Standart girdi/çıktı",
+    "Hata kontrolü"
+  ]
+}

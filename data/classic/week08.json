@@ -1,0 +1,63 @@
+{
+  "week": 8,
+  "title": "Hafta 8: Diziler ve Çok Boyutlu Diziler",
+  "description": "Dizi tanımı, dizi elemanlarına değer atama, diziler ve göstergeler arasındaki ilişki, 2-boyutlu dizilerin kullanımı.",
+  "duration": "120 dakika",
+  "difficulty": "Orta",
+  "objectives": [
+    "Dizi kavramını ve tanımını öğrenmek",
+    "Dizi elemanlarına değer atamayı uygulamak",
+    "Dizi-gösterge ilişkisini kavramak",
+    "2-boyutlu diziler ile tablo/matris işlemlerini yapmak"
+  ],
+  "codeExamples": [
+    {
+      "title": "Temel Dizi Tanımı ve Atama",
+      "code": "#include <stdio.h>\nint main() {\n    int sayilar[5];\n    for(int i=0; i<5; i++) {\n        sayilar[i] = i * 10;\n    }\n    for(int i=0; i<5; i++) {\n        printf(\"sayilar[%d] = %d\\n\", i, sayilar[i]);\n    }\n    return 0;\n}",
+      "explanation": "Dizinin elemanlarına değer atama ve ekrana yazdırma.",
+      "expectedOutput": [
+        "sayilar[0] = 0",
+        "sayilar[1] = 10",
+        "sayilar[2] = 20",
+        "sayilar[3] = 30",
+        "sayilar[4] = 40"
+      ]
+    },
+    {
+      "title": "Diziler ve Göstergeler",
+      "code": "#include <stdio.h>\nint main() {\n    int dizi[3] = {10, 20, 30};\n    int *ptr = dizi;\n    for(int i=0; i<3; i++) {\n        printf(\"dizi[%d] = %d, *(ptr+%d) = %d\\n\", i, dizi[i], i, *(ptr+i));\n    }\n    return 0;\n}",
+      "explanation": "Dizi adı aslında ilk elemanın adresidir.",
+      "expectedOutput": [
+        "dizi[0] = 10, *(ptr+0) = 10",
+        "dizi[1] = 20, *(ptr+1) = 20",
+        "dizi[2] = 30, *(ptr+2) = 30"
+      ]
+    },
+    {
+      "title": "2-Boyutlu Dizi (Matris) Kullanımı",
+      "code": "#include <stdio.h>\nint main() {\n    int matris[2][3] = {{1,2,3}, {4,5,6}};\n    for(int i=0; i<2; i++) {\n        for(int j=0; j<3; j++) {\n            printf(\"matris[%d][%d] = %d \", i, j, matris[i][j]);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+      "explanation": "2-boyutlu diziler tablo gibi satır-sütun yapısında çalışır.",
+      "expectedOutput": [
+        "matris[0][0] = 1 matris[0][1] = 2 matris[0][2] = 3",
+        "matris[1][0] = 4 matris[1][1] = 5 matris[1][2] = 6"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "title": "Alıştırma 1: Dizi Oluşturma",
+      "description": "10 elemanlı bir dizi tanımlayın ve 1’den 10’a kadar değer atayın.",
+      "difficulty": "Kolay"
+    },
+    {
+      "title": "Alıştırma 2: Ortalama Hesaplama",
+      "description": "Bir dizinin elemanlarının ortalamasını hesaplayan fonksiyon yazın.",
+      "difficulty": "Orta"
+    },
+    {
+      "title": "Alıştırma 3: Matris Toplamı",
+      "description": "2x2 boyutlu iki matrisin toplamını hesaplayın.",
+      "difficulty": "Orta-İleri"
+    }
+  ]
+}

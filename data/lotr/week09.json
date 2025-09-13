@@ -1,0 +1,64 @@
+{
+  "week": 9,
+  "title": "Hafta 9: Elf Yazıtları ve Gondor Parşömenleri (Dizgiler)",
+  "description": "Elflerin büyülü yazıtları ve Gondor’un kayıt parşömenleri üzerinden dizgi işlemleri.",
+  "duration": "120 dakika",
+  "difficulty": "Orta",
+  "objectives": [
+    "Elf yazıtları (dizgi) kavramını öğrenmek",
+    "Parşömenlere (dizgi elemanlarına) değer girmek",
+    "Palantir ile yazıtları okumak (dizgi çıktısı)",
+    "Yazıt büyüleri (strlen, strcat, strcmp) uygulamak",
+    "Karakter büyüleri (isalpha, isdigit) kullanmak",
+    "Gösterge ile yazıtları yönetmek"
+  ],
+  "codeExamples": [
+    {
+      "title": "Gandalf'ın Yazıtı",
+      "code": "#include <stdio.h>\nint main() {\n    char yazit[30] = \"You Shall Not Pass\";\n    printf(\"Gandalf: %s\\n\", yazit);\n    return 0;\n}",
+      "explanation": "Elf yazıtı dizgi olarak tanımlanıyor.",
+      "expectedOutput": ["Gandalf: You Shall Not Pass"]
+    },
+    {
+      "title": "Frodo'nun İsim Girişi",
+      "code": "#include <stdio.h>\nint main() {\n    char isim[20];\n    printf(\"Frodo, ismini yaz: \");\n    scanf(\"%19s\", isim);\n    printf(\"Hoş geldin, %s!\\n\", isim);\n    return 0;\n}",
+      "explanation": "Frodo’nun ismini parşömene kaydetmek.",
+      "expectedOutput": ["Frodo, ismini yaz: Frodo", "Hoş geldin, Frodo!"]
+    },
+    {
+      "title": "Yüzük Yazıtı Fonksiyonları",
+      "code": "#include <stdio.h>\n#include <string.h>\nint main() {\n    char yuzuk[40] = \"One Ring\", ek[20] = \" to Rule Them All\";\n    strcat(yuzuk, ek);\n    printf(\"%s\\n\", yuzuk);\n    printf(\"Yazıt uzunluğu: %lu\\n\", strlen(yuzuk));\n    return 0;\n}",
+      "explanation": "strcat ve strlen ile Yüzük Yazıtı.",
+      "expectedOutput": ["One Ring to Rule Them All", "Yazıt uzunluğu: 26"]
+    },
+    {
+      "title": "Saruman'ın Harf Kontrolü",
+      "code": "#include <stdio.h>\n#include <ctype.h>\nint main() {\n    char c = '9';\n    if(isalpha(c)) printf(\"%c harf büyüsü.\\n\", c);\n    if(isdigit(c)) printf(\"%c rakam büyüsü.\\n\", c);\n    return 0;\n}",
+      "explanation": "Karakter büyüleri ile harf/rakam ayrımı.",
+      "expectedOutput": ["9 rakam büyüsü."]
+    },
+    {
+      "title": "Gösterge ile Yazıt",
+      "code": "#include <stdio.h>\nint main() {\n    char *mesaj = \"Rohan Will Rise\";\n    printf(\"%s\\n\", mesaj);\n    return 0;\n}",
+      "explanation": "Gösterge ile yazıtı okumak.",
+      "expectedOutput": ["Rohan Will Rise"]
+    }
+  ],
+  "exercises": [
+    {
+      "title": "Alıştırma 1: Sam’in Günlüğü",
+      "description": "Sam’in günlük notlarını dizgi ile kaydedin ve ekrana yazdırın.",
+      "difficulty": "Kolay"
+    },
+    {
+      "title": "Alıştırma 2: Elf Yazıtı Uzunluğu",
+      "description": "Elf yazıtının uzunluğunu bulun (strlen kullanmadan).",
+      "difficulty": "Orta"
+    },
+    {
+      "title": "Alıştırma 3: Gondor Parşömen Karşılaştırması",
+      "description": "İki parşömen yazısını strcmp ile karşılaştırın.",
+      "difficulty": "Orta"
+    }
+  ]
+}

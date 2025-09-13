@@ -1,0 +1,518 @@
+{
+  "week": 7,
+  "title": "Hafta 7: Palantir'lar ve Güç Bağlantıları (Göstergeler)",
+  "description": "Orta Dünya'daki güçlü eşyaların birbirine bağlantıları gibi, göstergelerin nasıl çalıştığını öğrenin. Palantir'ların uzak yerlere bağlanması gibi, göstergeler de bellek adreslerine bağlanır.",
+  "duration": "120 dakika",
+  "difficulty": "İleri",
+  "objectives": [
+    "Palantir'lar gibi uzak bağlantıları (göstergeler) anlamak",
+    "Güç bağlantısı kurma (gösterge tanımlama) işlemlerini öğrenmek",
+    "Güç aktarımı (&) ve güç kullanımı (*) büyülerini kullanmak",
+    "Uzaktan güç kontrolü (gösterge ile veri değiştirme) yapmak",
+    "Kardeşlik üyeleri arasında güç paylaşımı (fonksiyon parametreleri) kurmak",
+    "Çoklu güç bağlantıları (call by reference) ile güçlü büyüler yapmak"
+  ],
+  "codeExamples": [
+    {
+      "title": "Gandalf'ın Palantir Bağlantısı",
+      "code": "#include <stdio.h>\n\nint main() {\n    int gandalf_guc = 85;\n    int *palantir;  // Palantir göstergesi\n    \n    palantir = &gandalf_guc;  // Palantir Gandalf'a bağlandı\n    \n    printf(\"=== GANDALFın PALANTİR SİSTEMİ ===\\n\");\n    printf(\"Gandalf'ın mevcut gücü: %d\\n\", gandalf_guc);\n    printf(\"Gandalf'ın güç kaynağının yeri: %p\\n\", &gandalf_guc);\n    printf(\"Palantir'ın bağlı olduğu yer: %p\\n\", palantir);\n    printf(\"Palantir'dan görülen güç: %d\\n\", *palantir);\n    \n    // Palantir ile güç aktarımı\n    printf(\"\\nGandalf Palantir ile gücünü artırıyor...\\n\");\n    *palantir = 100;  // Uzaktan güç değiştirme\n    \n    printf(\"Gandalf'ın yeni gücü: %d\\n\", gandalf_guc);\n    printf(\"Palantir: 'Güç başarıyla aktarıldı, Mithrandir!'\\n\");\n    \n    return 0;\n}",
+      "explanation": "Temel gösterge tanımı ve Palantir metaforu ile adres-değer işlemleri",
+      "expectedOutput": [
+        "=== GANDALFın PALANTİR SİSTEMİ ===",
+        "Gandalf'ın mevcut gücü: 85",
+        "Gandalf'ın güç kaynağının yeri: 0x7fff5fbff6ac",
+        "Palantir'ın bağlı olduğu yer: 0x7fff5fbff6ac",
+        "Palantir'dan görülen güç: 85",
+        "",
+        "Gandalf Palantir ile gücünü artırıyor...",
+        "Gandalf'ın yeni gücü: 100",
+        "Palantir: 'Güç başarıyla aktarıldı, Mithrandir!'"
+      ]
+    },
+    {
+      "title": "Kardeşlik Güç Ağı",
+      "code": "#include <stdio.h>\n\nint main() {\n    int frodo_guc = 65, aragorn_guc = 95, legolas_guc = 90;\n    int *palantir1, *palantir2, *palantir3;\n    \n    // Palantir'ları kardeşlik üyelerine bağla\n    palantir1 = &frodo_guc;\n    palantir2 = &aragorn_guc;\n    palantir3 = &legolas_guc;\n    \n    printf(\"=== KARDEŞLİK GÜÇ AĞI ===\\n\");\n    printf(\"Başlangıç güçleri:\\n\");\n    printf(\"Frodo: %d, Aragorn: %d, Legolas: %d\\n\", \n           frodo_guc, aragorn_guc, legolas_guc);\n    printf(\"Palantir bağlantıları: %d, %d, %d\\n\", \n           *palantir1, *palantir2, *palantir3);\n    \n    // Güç transferi büyüsü\n    printf(\"\\nElrond: 'Güçlerinizi birleştirin!'\\n\");\n    *palantir1 += 20;  // Frodo'ya güç ver\n    *palantir2 -= 10;  // Aragorn'dan güç al\n    *palantir3 += 5;   // Legolas'a güç ver\n    \n    printf(\"Güç transferi sonrası:\\n\");\n    printf(\"Frodo: %d, Aragorn: %d, Legolas: %d\\n\", \n           frodo_guc, aragorn_guc, legolas_guc);\n    \n    // Palantir yönlendirme değiştirme\n    printf(\"\\nGandalf: 'Palantir bağlantısı değişiyor...'\\n\");\n    palantir1 = palantir2;  // Palantir1 artık Aragorn'u gösteriyor\n    *palantir1 = 100;\n    \n    printf(\"Yönlendirme sonrası güçler:\\n\");\n    printf(\"Frodo: %d, Aragorn: %d, Legolas: %d\\n\", \n           frodo_guc, aragorn_guc, legolas_guc);\n    \n    return 0;\n}",
+      "explanation": "Çoklu gösterge kullanımı ve Orta Dünya güç ağı metaforu",
+      "expectedOutput": [
+        "=== KARDEŞLİK GÜÇ AĞI ===",
+        "Başlangıç güçleri:",
+        "Frodo: 65, Aragorn: 95, Legolas: 90",
+        "Palantir bağlantıları: 65, 95, 90",
+        "",
+        "Elrond: 'Güçlerinizi birleştirin!'",
+        "Güç transferi sonrası:",
+        "Frodo: 85, Aragorn: 85, Legolas: 95",
+        "",
+        "Gandalf: 'Palantir bağlantısı değişiyor...'",
+        "Yönlendirme sonrası güçler:",
+        "Frodo: 85, Aragorn: 100, Legolas: 95"
+      ]
+    },
+    {
+      "title": "Saruman'ın Güç Aktarım Büyüleri",
+      "code": "#include <stdio.h>\n\nvoid guc_artir(int *hedef_guc) {\n    printf(\"Saruman: 'Gelen güç seviyesi: %d'\\n\", *hedef_guc);\n    *hedef_guc += 25;  // Güçü artır\n    printf(\"Saruman: 'Güç artırıldı, yeni seviye: %d'\\n\", *hedef_guc);\n}\n\nvoid iki_guc_degistir(int *birinci_guc, int *ikinci_guc) {\n    printf(\"Saruman: 'İki güç arasında enerji transferi başlıyor...'\\n\");\n    int gecici_guc = *birinci_guc;\n    *birinci_guc = *ikinci_guc;\n    *ikinci_guc = gecici_guc;\n    printf(\"Saruman: 'Transfer tamamlandı!'\\n\");\n}\n\nint main() {\n    int uruk_guc = 60, ork_guc = 40;\n    \n    printf(\"=== SARUMAN'IN GÜÇ LABORATUVARI ===\\n\");\n    printf(\"Başlangıç güçleri - Uruk: %d, Ork: %d\\n\", uruk_guc, ork_guc);\n    \n    // Uruk'un gücünü artır\n    printf(\"\\nSaruman Uruk'un gücünü artırıyor:\\n\");\n    guc_artir(&uruk_guc);\n    printf(\"Laboratuvar sonucu - Uruk'un yeni gücü: %d\\n\", uruk_guc);\n    \n    // İki yaratığın gücünü yer değiştir\n    printf(\"\\nSaruman güç transfer büyüsü yapıyor:\\n\");\n    iki_guc_degistir(&uruk_guc, &ork_guc);\n    printf(\"Final güçleri - Uruk: %d, Ork: %d\\n\", uruk_guc, ork_guc);\n    \n    printf(\"\\nSaruman: 'Mükemmel! Ordum güçlendi!'\\n\");\n    \n    return 0;\n}",
+      "explanation": "Gösterge parametreli fonksiyonlar ve İsengard büyü sistemi",
+      "expectedOutput": [
+        "=== SARUMAN'IN GÜÇ LABORATUVARI ===",
+        "Başlangıç güçleri - Uruk: 60, Ork: 40",
+        "",
+        "Saruman Uruk'un gücünü artırıyor:",
+        "Saruman: 'Gelen güç seviyesi: 60'",
+        "Saruman: 'Güç artırıldı, yeni seviye: 85'",
+        "Laboratuvar sonucu - Uruk'un yeni gücü: 85",
+        "",
+        "Saruman güç transfer büyüsü yapıyor:",
+        "Saruman: 'İki güç arasında enerji transferi başlıyor...'",
+        "Saruman: 'Transfer tamamlandı!'",
+        "Final güçleri - Uruk: 85, Ork: 85",
+        "",
+        "Saruman: 'Mükemmel! Ordum güçlendi!'"
+      ]
+    },
+    {
+      "title": "Rivendell Güç Kristalleri Dizisi",
+      "code": "#include <stdio.h>\n\nvoid kristal_goster(int *kristal_ptr, int kristal_sayisi) {\n    printf(\"Elrond'un kristalleri: \");\n    for(int i = 0; i < kristal_sayisi; i++) {\n        printf(\"%d \", *(kristal_ptr + i));\n    }\n    printf(\"\\n\");\n}\n\nvoid kristal_guclendir(int *kristal_ptr, int kristal_sayisi) {\n    printf(\"Elrond büyüsüyle kristalleri güçlendiriyor...\\n\");\n    for(int i = 0; i < kristal_sayisi; i++) {\n        *(kristal_ptr + i) *= 2;  // Her kristali iki katına çıkar\n    }\n}\n\nvoid kristal_konum_goster(int *kristal_ptr, int kristal_sayisi) {\n    printf(\"\\nKristal konumları ve güçleri:\\n\");\n    for(int i = 0; i < kristal_sayisi; i++) {\n        printf(\"Kristal %d: güç=%d, konum=%p\\n\", \n               i+1, *(kristal_ptr + i), (kristal_ptr + i));\n    }\n}\n\nint main() {\n    int guc_kristalleri[5] = {10, 15, 20, 25, 30};\n    int *kristal_rehberi = guc_kristalleri;  // Dizinin başına işaret et\n    \n    printf(\"=== RİVENDELL GÜÇ KRİSTALLERİ ===\\n\");\n    printf(\"Orijinal kristal güçleri:\\n\");\n    kristal_goster(kristal_rehberi, 5);\n    \n    kristal_konum_goster(kristal_rehberi, 5);\n    \n    printf(\"\\nElrond: 'Kristallerin gücünü artıracağım...'\\n\");\n    kristal_guclendir(kristal_rehberi, 5);\n    \n    printf(\"Güçlendirilmiş kristaller:\\n\");\n    kristal_goster(kristal_rehberi, 5);\n    \n    // Pointer aritmetiği ile kristal seçimi\n    printf(\"\\nGandalf 3. kristalin gücünü kontrol ediyor:\\n\");\n    int *ucuncu_kristal = kristal_rehberi + 2;  // 3. kristal (index 2)\n    printf(\"Gandalf: '3. kristal gücü: %d, konumu: %p'\\n\", \n           *ucuncu_kristal, ucuncu_kristal);\n    \n    return 0;\n}",
+      "explanation": "Dizi göstergeleri ve Rivendell kristal yönetim sistemi",
+      "expectedOutput": [
+        "=== RİVENDELL GÜÇ KRİSTALLERİ ===",
+        "Orijinal kristal güçleri:",
+        "Elrond'un kristalleri: 10 15 20 25 30",
+        "",
+        "Kristal konumları ve güçleri:",
+        "Kristal 1: güç=10, konum=0x7fff5fbff6a0",
+        "Kristal 2: güç=15, konum=0x7fff5fbff6a4",
+        "Kristal 3: güç=20, konum=0x7fff5fbff6a8",
+        "Kristal 4: güç=25, konum=0x7fff5fbff6ac",
+        "Kristal 5: güç=30, konum=0x7fff5fbff6b0",
+        "",
+        "Elrond: 'Kristallerin gücünü artıracağım...'",
+        "Elrond büyüsüyle kristalleri güçlendiriyor...",
+        "Güçlendirilmiş kristaller:",
+        "Elrond'un kristalleri: 20 30 40 50 60",
+        "",
+        "Gandalf 3. kristalin gücünü kontrol ediyor:",
+        "Gandalf: '3. kristal gücü: 40, konumu: 0x7fff5fbff6a8'"
+      ]
+    },
+    {
+      "title": "Rohan Savaş Hesaplayıcısı",
+      "code": "#include <stdio.h>\n\nvoid savas_toplam(float *birlik1, float *birlik2, float *sonuc) {\n    *sonuc = *birlik1 + *birlik2;\n    printf(\"Éomer: 'Birlikleri birleştirdik: %.0f + %.0f = %.0f'\\n\", \n           *birlik1, *birlik2, *sonuc);\n}\n\nvoid savas_kayip(float *toplam_guc, float *kayip_orani, float *kalan_guc) {\n    *kalan_guc = *toplam_guc * (1.0 - *kayip_orani);\n    printf(\"Théoden: 'Savaş sonrası kalan güç: %.0f'\\n\", *kalan_guc);\n}\n\nvoid zafer_degerlendirme(char savas_turu[], float *bizim_guc, float *dusman_guc, float *sonuc) {\n    printf(\"\\n=== %s SAVAŞ DEĞERLENDİRMESİ ===\\n\", savas_turu);\n    if(*bizim_guc > *dusman_guc) {\n        *sonuc = *bizim_guc - *dusman_guc;\n        printf(\"Aragorn: 'Zafer bizim! Üstünlük: %.0f'\\n\", *sonuc);\n    } else {\n        *sonuc = *dusman_guc - *bizim_guc;\n        printf(\"Gandalf: 'Dikkatli olun! Düşman üstünlüğü: %.0f'\\n\", *sonuc);\n    }\n}\n\nint main() {\n    float suvariler = 1000, piyade = 800, toplam_rohan, savas_sonrasi;\n    float kayip_orani = 0.15;  // %15 kayıp\n    float ork_ordusu = 1500, sonuc;\n    \n    printf(\"=== ROHAN SAVAŞ PLANLAMA SİSTEMİ ===\\n\");\n    printf(\"Théoden: 'Güçlerimizi değerlendirelim...'\\n\");\n    printf(\"Süvariler: %.0f, Piyade: %.0f\\n\", suvariler, piyade);\n    \n    // Toplam güç hesaplama\n    savas_toplam(&suvariler, &piyade, &toplam_rohan);\n    \n    // Savaş sonrası durum\n    printf(\"\\nLegolas: 'Savaş başlıyor!'\\n\");\n    savas_kayip(&toplam_rohan, &kayip_orani, &savas_sonrasi);\n    \n    // Zafer değerlendirmesi\n    zafer_degerlendirme(\"HELM'S DEEP\", &savas_sonrasi, &ork_ordusu, &sonuc);\n    \n    printf(\"\\nBellek konumları:\\n\");\n    printf(\"Süvariler konumu: %p\\n\", &suvariler);\n    printf(\"Toplam güç konumu: %p\\n\", &toplam_rohan);\n    printf(\"Sonuç konumu: %p\\n\", &sonuc);\n    \n    return 0;\n}",
+      "explanation": "Kapsamlı gösterge kullanımı ile Rohan savaş yönetim sistemi",
+      "expectedOutput": [
+        "=== ROHAN SAVAŞ PLANLAMA SİSTEMİ ===",
+        "Théoden: 'Güçlerimizi değerlendirelim...'",
+        "Süvariler: 1000, Piyade: 800",
+        "Éomer: 'Birlikleri birleştirdik: 1000 + 800 = 1800'",
+        "",
+        "Legolas: 'Savaş başlıyor!'",
+        "Théoden: 'Savaş sonrası kalan güç: 1530'",
+        "",
+        "=== HELM'S DEEP SAVAŞ DEĞERLENDİRMESİ ===",
+        "Aragorn: 'Zafer bizim! Üstünlük: 30'",
+        "",
+        "Bellek konumları:",
+        "Süvariler konumu: 0x7fff5fbff6ac",
+        "Toplam güç konumu: 0x7fff5fbff6a8",
+        "Sonuç konumu: 0x7fff5fbff6a4"
+      ]
+    },
+    {
+      "title": "Moria'nın Kayıp Hafıza Sistemi",
+      "code": "#include <stdio.h>\n\n// Moria'daki kristal dizilerini yöneten fonksiyonlar\nvoid hafiza_yerlestir(int *kristal_ptr, int konum, int deger) {\n    *(kristal_ptr + konum) = deger;\n    printf(\"Balin: 'Kristal %d konumuna %d değeri yerleştirildi'\\n\", konum, deger);\n}\n\nint hafiza_oku(int *kristal_ptr, int konum) {\n    int deger = *(kristal_ptr + konum);\n    printf(\"Gimli: 'Konum %d'den okunan değer: %d'\\n\", konum, deger);\n    return deger;\n}\n\nvoid hafiza_temizle(int *kristal_ptr, int boyut) {\n    printf(\"Gandalf: 'Moria'nın hafızasını temizliyorum...'\\n\");\n    for(int i = 0; i < boyut; i++) {\n        *(kristal_ptr + i) = 0;\n    }\n    printf(\"Gandalf: 'Hafıza temizlendi'\\n\");\n}\n\nvoid hafiza_raporu(int *kristal_ptr, int boyut) {\n    printf(\"\\n=== MORİA HAFIZA RAPORU ===\\n\");\n    for(int i = 0; i < boyut; i++) {\n        printf(\"Kristal [%d]: değer=%d, adres=%p\\n\", \n               i, *(kristal_ptr + i), (kristal_ptr + i));\n    }\n    printf(\"===========================\\n\");\n}\n\nint main() {\n    int moria_kristalleri[6] = {0};  // 6 boş kristal\n    int *hafiza_rehberi = moria_kristalleri;\n    \n    printf(\"=== MORİA KAYIP HAFIZA SİSTEMİ ===\\n\");\n    printf(\"Gimli: 'Babamın kristallerini buldum!'\\n\");\n    \n    hafiza_raporu(hafiza_rehberi, 6);\n    \n    // Kristallere eski bilgileri yerleştir\n    printf(\"\\nBalin'in eski kayıtlarını yüklüyoruz:\\n\");\n    hafiza_yerlestir(hafiza_rehberi, 0, 142);  // Mithril miktarı\n    hafiza_yerlestir(hafiza_rehberi, 1, 67);   // Cüce sayısı\n    hafiza_yerlestir(hafiza_rehberi, 2, 89);   // Hazine değeri\n    hafiza_yerlestir(hafiza_rehberi, 3, 234);  // Tünel sayısı\n    \n    hafiza_raporu(hafiza_rehberi, 6);\n    \n    // Bilgileri geri oku\n    printf(\"\\nGimli eski kayıtları okuyor:\\n\");\n    int mithril = hafiza_oku(hafiza_rehberi, 0);\n    int cucelar = hafiza_oku(hafiza_rehberi, 1);\n    int hazine = hafiza_oku(hafiza_rehberi, 2);\n    \n    printf(\"\\nDurin'in çocuğu: 'Toplam zenginlik: %d'\\n\", \n           mithril + hazine);\n    \n    // Balrog saldırısı - hafıza bozuluyor\n    printf(\"\\nBalrog: 'ROOOOAAARRR!' (Hafıza bozuluyor...)\\n\");\n    hafiza_temizle(hafiza_rehberi, 6);\n    \n    hafiza_raporu(hafiza_rehberi, 6);\n    printf(\"Legolas: 'Moria'nın hafızası kayboldu...'\\n\");\n    \n    return 0;\n}",
+      "explanation": "Gelişmiş gösterge aritmetiği ve bellek yönetimi simülasyonu",
+      "expectedOutput": [
+        "=== MORİA KAYIP HAFIZA SİSTEMİ ===",
+        "Gimli: 'Babamın kristallerini buldum!'",
+        "",
+        "=== MORİA HAFIZA RAPORU ===",
+        "Kristal [0]: değer=0, adres=0x7fff5fbff6a0",
+        "Kristal [1]: değer=0, adres=0x7fff5fbff6a4",
+        "Kristal [2]: değer=0, adres=0x7fff5fbff6a8",
+        "Kristal [3]: değer=0, adres=0x7fff5fbff6ac",
+        "Kristal [4]: değer=0, adres=0x7fff5fbff6b0",
+        "Kristal [5]: değer=0, adres=0x7fff5fbff6b4",
+        "===========================",
+        "",
+        "Balin'in eski kayıtlarını yüklüyoruz:",
+        "Balin: 'Kristal 0 konumuna 142 değeri yerleştirildi'",
+        "Balin: 'Kristal 1 konumuna 67 değeri yerleştirildi'",
+        "Balin: 'Kristal 2 konumuna 89 değeri yerleştirildi'",
+        "Balin: 'Kristal 3 konumuna 234 değeri yerleştirildi'",
+        "",
+        "=== MORİA HAFIZA RAPORU ===",
+        "Kristal [0]: değer=142, adres=0x7fff5fbff6a0",
+        "Kristal [1]: değer=67, adres=0x7fff5fbff6a4",
+        "Kristal [2]: değer=89, adres=0x7fff5fbff6a8",
+        "Kristal [3]: değer=234, adres=0x7fff5fbff6ac",
+        "Kristal [4]: değer=0, adres=0x7fff5fbff6b0",
+        "Kristal [5]: değer=0, adres=0x7fff5fbff6b4",
+        "===========================",
+        "",
+        "Gimli eski kayıtları okuyor:",
+        "Gimli: 'Konum 0'den okunan değer: 142'",
+        "Gimli: 'Konum 1'den okunan değer: 67'",
+        "Gimli: 'Konum 2'den okunan değer: 89'",
+        "",
+        "Durin'in çocuğu: 'Toplam zenginlik: 231'",
+        "",
+        "Balrog: 'ROOOOAAARRR!' (Hafıza bozuluyor...)",
+        "Gandalf: 'Moria'nın hafızasını temizliyorum...'",
+        "Gandalf: 'Hafıza temizlendi'",
+        "",
+        "=== MORİA HAFIZA RAPORU ===",
+        "Kristal [0]: değer=0, adres=0x7fff5fbff6a0",
+        "Kristal [1]: değer=0, adres=0x7fff5fbff6a4",
+        "Kristal [2]: değer=0, adres=0x7fff5fbff6a8",
+        "Kristal [3]: değer=0, adres=0x7fff5fbff6ac",
+        "Kristal [4]: değer=0, adres=0x7fff5fbff6b0",
+        "Kristal [5]: değer=0, adres=0x7fff5fbff6b4",
+        "===========================",
+        "Legolas: 'Moria'nın hafızası kayboldu...'"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "title": "Alıştırma 1: Frodo'nun Yüzük Bağlantısı",
+      "description": "Frodo ve Yüzük arasında gösterge bağlantısı kurarak güç transferi yapın.",
+      "difficulty": "Kolay",
+      "hints": [
+        "int frodo_guc = 50; int *yuzuk_ptr; şeklinde tanımlayın",
+        "Yüzük göstergesini Frodo'ya bağlayın",
+        "Gösterge ile Frodo'nun gücünü artırın"
+      ],
+      "starterCode": "#include <stdio.h>\n\nint main() {\n    int frodo_guc = 50;\n    // Yüzük göstergesini buraya tanımlayın\n    \n    printf(\"Frodo'nun başlangıç gücü: %d\\n\", frodo_guc);\n    \n    // Yüzük bağlantısı kurun\n    \n    // Yüzük ile güç artırın\n    \n    printf(\"Yüzük sonrası Frodo'nun gücü: %d\\n\", frodo_guc);\n    \n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 2: Gandalf'ın Güç Değiştirme Büyüsü",
+      "description": "İki karakter arasında güç değiştiren fonksiyon yazın (Gandalf'ın büyüsü).",
+      "difficulty": "Orta",
+      "hints": [
+        "void guc_degistir(int *guc1, int *guc2) şeklinde fonksiyon yazın",
+        "Geçici değişken kullanarak değerleri değiştirin",
+        "Fonksiyonu &değişken şeklinde çağırın"
+      ],
+      "starterCode": "#include <stdio.h>\n\nvoid guc_degistir(int *guc1, int *guc2) {\n    printf(\"Gandalf: 'Güç değişimi başlıyor...'\\n\");\n    // Güç değiştirme kodunu yazın\n    printf(\"Gandalf: 'Büyü tamamlandı!'\\n\");\n}\n\nint main() {\n    int aragorn_guc = 85, boromir_guc = 75;\n    \n    printf(\"Önce - Aragorn: %d, Boromir: %d\\n\", aragorn_guc, boromir_guc);\n    // Güç değiştirme fonksiyonunu çağırın\n    printf(\"Sonra - Aragorn: %d, Boromir: %d\\n\", aragorn_guc, boromir_guc);\n    \n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 3: Legolas'ın Ok Deposu",
+      "description": "Gösterge kullanarak ok deposundaki okların ortalama hasarını hesaplayan fonksiyon yazın.",
+      "difficulty": "Orta-İleri",
+      "hints": [
+        "float ortalama_hasar(int *ok_hasarlari, int ok_sayisi) fonksiyonu yazın",
+        "Gösterge aritmetiği ile ok dizisini gezin",
+        "*(ok_hasarlari + i) ile elemanlara erişin"
+      ],
+      "starterCode": "#include <stdio.h>\n\nfloat ortalama_hasar(int *ok_hasarlari, int ok_sayisi) {\n    printf(\"Legolas: 'Oklarımın hasarını hesaplıyorum...'\\n\");\n    // Ortalama hesaplama kodunu yazın\n}\n\nint main() {\n    int legolas_oklari[5] = {25, 30, 28, 35, 32};\n    \n    float ortalama = ortalama_hasar(legolas_oklari, 5);\n    printf(\"Legolas: 'Ortalama ok hasarım: %.1f'\\n\", ortalama);\n    \n    return 0;\n}"
+    }
+  ],
+  "practiceProblems": [
+    {
+      "title": "Problem 1: Rivendell Şifa Sistemi",
+      "description": "Göstergeler kullanarak kardeşlik üyelerinin sağlık durumlarını yöneten sistem yazın.",
+      "difficulty": "Orta-İleri",
+      "requirements": [
+        "Karakter sağlık değerlerini gösterge ile okuyan fonksiyon",
+        "Şifa uygulayan göstergeli fonksiyon",
+        "Toplu sağlık kontrolü yapan fonksiyon",
+        "En düşük/en yüksek sağlık bulan fonksiyonlar"
+      ],
+      "expectedBehavior": "Elrond'un şifa sistemi kardeşlik üyelerini göstergeler ile tedavi etmeli."
+    },
+    {
+      "title": "Problem 2: Gondor Kale Savunma Ağı",
+      "description": "Çok boyutlu göstergeler ile kale kulelerinin savunma gücünü yöneten sistem yazın.",
+      "difficulty": "İleri",
+      "requirements": [
+        "Kule konumlarını gösterge ile yönetme",
+        "Savunma gücü transferi fonksiyonları",
+        "Kritik nokta belirleme algoritması",
+        "Bellek adreslerini gösteren harita sistemi"
+      ],
+      "expectedBehavior": "Denethor'un savunma sistemi göstergeler ile kule koordinasyonu yapmalı."
+    }
+  ],
+  "homework": {
+    "title": "Ödev: Sauron'un Yüzük Ağı Yönetim Sistemi",
+    "description": "Göstergeler kullanarak güç yüzüklerinin ağ bağlantılarını yöneten kapsamlı sistem gelişirin.",
+    "requirements": [
+      "9 güç yüzüğü için gösterge ağı kurun",
+      "Yüzük güçleri arası transfer fonksiyonları yazın",
+      "Tek Yüzük'ün diğerlerini kontrol etme sistemini simüle edin",
+      "Yüzük bağlantılarını takip eden monitoring sistemi",
+      "Gösterge aritmetiği ile yüzük lokasyonları belirleme"
+    ],
+    "deliverables": [
+      "sauron_yuzuk_agi.c dosyası",
+      "Program çıktısının ekran görüntüsü",
+      "Her gösterge işleminin açıklamasını içeren yorum satırları",
+      "Yüzük ağı bellek haritası (adres tablosu)",
+      "Palantir bağlantı şeması (gösterge ilişkileri)"
+    ],
+    "dueDate": "2 hafta sonra",
+    "gradingCriteria": [
+      "Gösterge tanımı ve bağlantı kurma (25%)",
+      "Fonksiyon parametrelerinde gösterge kullanımı (25%)",
+      "Bellek yönetimi ve adres işlemleri (20%)",
+      "Orta Dünya teması ve yaratıcılık (15%)",
+      "Program çalışması ve çıktı (10%)",
+      "Kod organizasyonu ve güvenlik (5%)"
+    ]
+  },
+  "keyTerms": [
+    {
+      "term": "Palantir (Gösterge)",
+      "definition": "Uzak bir güç kaynağına bağlanan ve o kaynağı kontrol edebilen büyülü küre (bellek adresi tutan değişken)"
+    },
+    {
+      "term": "Güç Bağlantısı (&)",
+      "definition": "Bir karakterin güç kaynağının yerini bulma büyüsü (adres alma operatörü)"
+    },
+    {
+      "term": "Güç Çekme (*)",
+      "definition": "Palantir'dan gücü çekip kullanma büyüsü (değer alma operatörü)"
+    },
+    {
+      "term": "Uzaktan Kontrol",
+      "definition": "Palantir ile uzaktaki güç kaynaklarını değiştirme (call by reference)"
+    },
+    {
+      "term": "Kristal Ağı",
+      "definition": "Güç kristallerinin sıralı dizilişi ve aralarında gezinme (gösterge aritmetiği)"
+    },
+    {
+      "term": "Boş Palantir (NULL)",
+      "definition": "Hiçbir güç kaynağına bağlı olmayan palantir (NULL gösterge)"
+    },
+    {
+      "term": "Güç Konumu",
+      "definition": "Orta Dünya'da bir gücün bulunduğu yer (bellek adresi)"
+    },
+    {
+      "term": "Güç Çağırma",
+      "definition": "Palantir'dan güce erişme ve kullanma işlemi (dereference)"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Palantir'ı bir güç kaynağına bağlamadan kullanmak",
+      "solution": "Gandalf: 'Palantir'ı kullanmadan önce mutlaka bir güç kaynağına bağlayın!'"
+    },
+    {
+      "mistake": "Güç Bağlantısı (&) ile Güç Çekme (*) büyülerini karıştırmak",
+      "solution": "Elrond: '& konum bulur, * gücü çeker - bu farkı unutmayın!'"
+    },
+    {
+      "mistake": "Palantir tanımında * ile güç kullanımında * 'ı karıştırmak",
+      "solution": "Saruman: 'int *palantir; tanımlama, *palantir = 5; güç verme işlemidir!'"
+    },
+    {
+      "mistake": "Kırık Palantir'ı (NULL) kullanmaya çalışmak",
+      "solution": "Aragorn: 'Palantir'ı kullanmadan önce kırık olup olmadığını kontrol edin!'"
+    },
+    {
+      "mistake": "Geçici güç kaynağının konumunu kalıcı olarak kullanmak",
+      "solution": "Gandalf: 'Geçici güçlerin konumları büyü bitince kaybolur!'"
+    }
+  ],
+  "tips": [
+    "Sauron: 'Palantir tanımlarken int *palantir veya int* palantir her ikisi de doğrudur'",
+    "Galadriel: 'Güç konumlarını %p büyüsü ile görüntüleyin'",
+    "Elrond: 'Karmaşık palantir işlemlerini adım adım parçalayın'",
+    "Gandalf: 'Debug için palantir konumlarını ve güçlerini yazdırın'",
+    "Aragorn: 'Palantir güvenliği için NULL kontrolü yapmayı unutmayın'",
+    "Legolas: 'Kristal dizisinin adı aslında ilk kristalin konumudur'",
+    "Gimli: 'Kristal ağında +1 bir sonraki kristali gösterir'",
+    "Boromir: 'Fonksiyonlarda palantir kullanırken & ile konum gönderin'"
+  ],
+  "resources": [
+    {
+      "type": "video",
+      "title": "Palantir'lar ve Güç Bağlantıları (C Göstergeler)",
+      "url": "https://example.com/palantir-pointers-intro",
+      "duration": "25 dakika"
+    },
+    {
+      "type": "article",
+      "title": "Orta Dünya Bellek Haritası Rehberi",
+      "url": "https://example.com/middle-earth-memory",
+      "readingTime": "15 dakika"
+    },
+    {
+      "type": "interactive",
+      "title": "Palantir Simülatörü",
+      "url": "https://example.com/palantir-simulator",
+      "description": "Görsel palantir bağlantıları ve güç transferi simülasyonu"
+    },
+    {
+      "type": "reference",
+      "title": "Sauron'un Gösterge Büyüleri Kitabı",
+      "url": "https://example.com/sauron-pointer-reference",
+      "description": "Tüm palantir operasyonları ve karanlık büyüler"
+    }
+  ],
+  "assessment": {
+    "quiz": {
+      "questions": [
+        {
+          "id": 1,
+          "question": "int aragorn_guc = 85; int *palantir = &aragorn_guc; ifadelerinden sonra *palantir'ın değeri nedir?",
+          "type": "multiple_choice",
+          "options": [
+            "Aragorn'un güç kaynağının konumu",
+            "85",
+            "Palantir'ın konumu",
+            "Tanımsız"
+          ],
+          "correct": 1,
+          "explanation": "*palantir, Palantir'ın işaret ettiği güç kaynağındaki değeri verir, yani Aragorn'un gücü olan 85'i döndürür."
+        },
+        {
+          "id": 2,
+          "question": "void guc_artir(int *karakter_guc) { *karakter_guc = 100; } çağrısı ana programdaki gücü değiştirir mi?",
+          "type": "multiple_choice",
+          "options": [
+            "Hayır, sadece kopyasını değiştirir",
+            "Evet, orijinal gücü değiştirir",
+            "Saruman'a bağlıdır",
+            "Hata verir"
+          ],
+          "correct": 1,
+          "explanation": "Palantir parametresi ile uzaktan kontrol yapıldığı için orijinal güç kaynağı değişir."
+        },
+        {
+          "id": 3,
+          "question": "int kristaller[5]; ifadesinde kristaller ile &kristaller[0] arasındaki ilişki nedir?",
+          "type": "multiple_choice",
+          "options": [
+            "Tamamen farklı güç kaynaklarıdır",
+            "kristaller, &kristaller[0] ile aynı konumu gösterir",
+            "kristaller daha güçlü bir konumdur",
+            "Hiçbir güç bağlantısı yoktur"
+          ],
+          "correct": 1,
+          "explanation": "Kristal dizisinin adı, ilk kristalin konumu olan &kristaller[0] ile aynıdır."
+        },
+        {
+          "id": 4,
+          "question": "Gandalf şu kodu yazıyor: int *palantir; *palantir = 50; Bu kodun sorunu nedir?",
+          "type": "short_answer",
+          "correct": "Palantir hiçbir güç kaynağına bağlanmamış",
+          "explanation": "Palantir başlatılmadan kullanılmış. Önce bir güç kaynağına bağlanmalı: palantir = &bir_guc;"
+        }
+      ]
+    },
+    "practicalTest": {
+      "title": "Uygulamalı Test: Rivendell Güç Yönetim Sistemi",
+      "description": "Palantir'lar kullanarak Rivendell'deki güç kristallerini yöneten sistem yazın",
+      "timeLimit": "60 dakika",
+      "requirements": [
+        "Kristal güclerini palantir ile alan fonksiyon",
+        "Kristal güçlerini artıran palantirli fonksiyon",
+        "En güçlü kristali bulan fonksiyon",
+        "Kristal konumlarını gösteren harita fonksiyonu",
+        "Ana programda Elrond'un tüm sistemi test etmesini sağlayın"
+      ],
+      "gradingRubric": [
+        "Palantir tanımı ve bağlantı kurma (30%)",
+        "Fonksiyon parametrelerinde palantir kullanımı (25%)",
+        "Güç konumu işlemleri (20%)",
+        "Program çalışması ve LOTR teması (15%)",
+        "Kod kalitesi ve yorum satırları (10%)"
+      ]
+    }
+  },
+  "nextWeekPreview": {
+    "week": 8,
+    "title": "Sauron'un Dinamik Güç Yaratımı (Dinamik Bellek Yönetimi)",
+    "topics": [
+      "malloc() büyüsü ile güç kristali yaratma",
+      "free() büyüsü ile güç kristalini yok etme",
+      "Dinamik güç dizileri oluşturma",
+      "Çok boyutlu güç ağları kurma"
+    ],
+    "connection": "Bu hafta öğrendiğiniz Palantir'lar, gelecek hafta Sauron'un dinamik güç yaratımı için gerekli olan temel bağlantı sistemini oluşturuyor."
+  },
+  "studyGuide": {
+    "beforeClass": [
+      "Orta Dünya haritasını gözden geçirin (bellek kavramları)",
+      "Güç kaynakları ve konumları arasındaki farkı düşünün",
+      "Palantir videoları izleyin"
+    ],
+    "duringClass": [
+      "Palantir bağlantılarını not alın",
+      "& (konum bulma) ve * (güç çekme) büyülerinin farkını anlayın",
+      "Örnekleri Orta Dünya karakterleriyle takip edin",
+      "Güç konumlarını gözlemleyin"
+    ],
+    "afterClass": [
+      "Tüm palantir örneklerini tekrar yazın",
+      "Güç konumlarının değiştiğini gözlemleyin",
+      "Kardeşlik alıştırmalarını sırayla çözün",
+      "Palantir hataları ile karşılaştığınızda Gandalf gibi debug yapın"
+    ],
+    "examPrep": [
+      "& ve * büyülerini karıştırmayın",
+      "Uzaktan kontrol vs güç kopyalama farkını öğrenin",
+      "Kırık Palantir (NULL) kontrollerini unutmayın",
+      "Kristal dizisi-palantir ilişkisini kavrayın"
+    ]
+  },
+  "additionalChallenges": [
+    {
+      "title": "Meydan Okuma 1: Sauron'un Çift Palantir Sistemi",
+      "description": "Palantir'ın Palantir'ını (int **ptr) kullanarak Nazgûl kontrolü yapın",
+      "difficulty": "İleri",
+      "hint": "İki seviye güç çekme (**ptr) kullanarak Nazgûl zinciri kurun"
+    },
+    {
+      "title": "Meydan Okuma 2: Elrond'un Fonksiyon Palantir'ı",
+      "description": "Şifa fonksiyonlarını palantir dizisinde toplayarak dinamik tedavi sistemi yapın",
+      "difficulty": "İleri",
+      "hint": "Function pointer: void (*sifa_buyusu)(int*)"
+    }
+  ],
+  "troubleshooting": [
+    {
+      "problem": "Balrog saldırısı hatası alıyorum (Segmentation fault)",
+      "solutions": [
+        "Sauron: 'Palantir'ınızı bir güç kaynağına bağladınız mı?'",
+        "Gandalf: 'Kırık palantir kullanmıyor musunuz kontrol edin'",
+        "Aragorn: 'Kristal dizisi sınırlarını aşmadığınızdan emin olun'",
+        "Elrond: 'Geçici güç konumunu kalıcı kullanmaya çalışmıyor musunuz?'"
+      ]
+    },
+    {
+      "problem": "Güç konumları garip görünüyor",
+      "solutions": [
+        "Galadriel: '%p büyüsünü kullanarak konumları görüntüleyin'",
+        "Saruman: 'Konumların büyülü sayılar (hexadecimal) olduğunu unutmayın'",
+        "Gandalf: 'Her büyü çalıştırmada konumlar değişebilir'",
+        "Elrond: 'Rivendell ve Mordor konumlarının farklı olduğunu bilin'"
+      ]
+    },
+    {
+      "problem": "Fonksiyonda karakter gücü değişmiyor",
+      "solutions": [
+        "Théoden: 'Fonksiyona & ile güç konumu gönderdiğinizden emin olun'",
+        "Éomer: 'Fonksiyon parametresinin palantir olduğunu kontrol edin'",
+        "Legolas: 'Fonksiyon içinde * ile güce eriştiğinizden emin olun'"
+      ]
+    },
+    {
+      "problem": "Kristal dizisi palantir işlemleri çalışmıyor",
+      "solutions": [
+        "Gimli: 'Kristal dizisinin adının zaten konum olduğunu unutmayın'",
+        "Legolas: 'ptr + i ile *(ptr + i) farkını bilin'",
+        "Boromir: 'Kristal sayısını aşmadığınızdan emin olun'"
+      ]
+    }
+  ],
+  "authorInfo": {
+    "instructor": "Gandalf the Grey, Mithrandir",
+    "courseCode": "MIDDLEEARTH102",
+    "semester": "Üçüncü Çağ 3019",
+    "lastUpdated": "2024-09-08",
+    "version": "Ring Bearer Edition 1.0"
+  }
+}

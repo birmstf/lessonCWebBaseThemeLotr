@@ -1,0 +1,15 @@
+{
+  "week": 11,
+  "title": "Hafta 11: Minas Tirith Arşivleri (Dosya İşlemleri)",
+  "description": "Orta Dünya’da Gondor arşivleri üzerinden dosya işlemleri.",
+  "duration": "120 dakika",
+  "difficulty": "Orta",
+  "objectives": [
+    "Parşömen (metin dosyası) ile çalışmak",
+    "Arşivi açma/kapama",
+    "Parşömene yazma/okuma",
+    "Rastgele erişim (palantir ile sayfa atlamak)",
+    "Standart giriş/çıkış",
+    "Hata kontrolü"
+  ]
+}

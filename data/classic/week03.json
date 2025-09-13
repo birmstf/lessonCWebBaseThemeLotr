@@ -1,0 +1,188 @@
+{
+  "week": 3,
+  "title": "Hafta 3: Operatörler ve Giriş/Çıkış İşlemleri",
+  "description": "Atama komutları, operatörler, veri tipi dönüşümü, printf() ve scanf() fonksiyonları ile matematik kütüphanesi kullanımını öğrenin.",
+  "duration": "90 dakika",
+  "difficulty": "Orta",
+  "objectives": [
+    "Atama operatörlerini kullanmak",
+    "Aritmetik ve karşılaştırma operatörlerini öğrenmek",
+    "İsim sabitleri tanımlamak",
+    "Veri tipi dönüşümlerini anlamak",
+    "printf() ile çıktı alma",
+    "scanf() ile girdi alma",
+    "Matematik kütüphanesi fonksiyonlarını kullanmak"
+  ],
+  "codeExamples": [
+    {
+      "title": "Atama Operatörleri",
+      "code": "#include <stdio.h>\n\nint main() {\n    int x = 10;  // Basit atama\n    x += 5;      // x = x + 5\n    printf(\"x += 5 sonucu: %d\\n\", x);\n    \n    x *= 2;      // x = x * 2\n    printf(\"x *= 2 sonucu: %d\\n\", x);\n    \n    x /= 3;      // x = x / 3\n    printf(\"x /= 3 sonucu: %d\\n\", x);\n    \n    return 0;\n}",
+      "explanation": "Atama operatörleri ile değişken değerlerini değiştirme",
+      "expectedOutput": [
+        "x += 5 sonucu: 15",
+        "x *= 2 sonucu: 30",
+        "x /= 3 sonucu: 10"
+      ]
+    },
+    {
+      "title": "Aritmetik Operatörler",
+      "code": "#include <stdio.h>\n\nint main() {\n    int a = 20, b = 3;\n    \n    printf(\"a = %d, b = %d\\n\", a, b);\n    printf(\"Toplama: %d + %d = %d\\n\", a, b, a + b);\n    printf(\"Çıkarma: %d - %d = %d\\n\", a, b, a - b);\n    printf(\"Çarpma: %d * %d = %d\\n\", a, b, a * b);\n    printf(\"Bölme: %d / %d = %d\\n\", a, b, a / b);\n    printf(\"Mod: %d %% %d = %d\\n\", a, b, a % b);\n    \n    return 0;\n}",
+      "explanation": "Temel aritmetik operatörler ve kullanımları",
+      "expectedOutput": [
+        "a = 20, b = 3",
+        "Toplama: 20 + 3 = 23",
+        "Çıkarma: 20 - 3 = 17",
+        "Çarpma: 20 * 3 = 60",
+        "Bölme: 20 / 3 = 6",
+        "Mod: 20 % 3 = 2"
+      ]
+    },
+    {
+      "title": "Veri Tipi Dönüşümü",
+      "code": "#include <stdio.h>\n\nint main() {\n    int tam_sayi = 15;\n    float ondalik = 4.7;\n    \n    printf(\"Orijinal değerler:\\n\");\n    printf(\"tam_sayi = %d, ondalik = %.1f\\n\", tam_sayi, ondalik);\n    \n    // Explicit casting\n    float sonuc1 = (float)tam_sayi / 4;\n    int sonuc2 = (int)ondalik;\n    \n    printf(\"\\nDönüşümler:\\n\");\n    printf(\"(float)%d / 4 = %.2f\\n\", tam_sayi, sonuc1);\n    printf(\"(int)%.1f = %d\\n\", ondalik, sonuc2);\n    \n    return 0;\n}",
+      "explanation": "Explicit type casting ile veri tipi dönüşümleri",
+      "expectedOutput": [
+        "Orijinal değerler:",
+        "tam_sayi = 15, ondalik = 4.7",
+        "",
+        "Dönüşümler:",
+        "(float)15 / 4 = 3.75",
+        "(int)4.7 = 4"
+      ]
+    },
+    {
+      "title": "scanf() ile Kullanıcı Girişi",
+      "code": "#include <stdio.h>\n\nint main() {\n    char isim[50];\n    int yas;\n    float boy;\n    \n    printf(\"Adınızı girin: \");\n    scanf(\"%s\", isim);\n    \n    printf(\"Yaşınızı girin: \");\n    scanf(\"%d\", &yas);\n    \n    printf(\"Boyunuzu girin (m): \");\n    scanf(\"%f\", &boy);\n    \n    printf(\"\\n--- Bilgileriniz ---\\n\");\n    printf(\"İsim: %s\\n\", isim);\n    printf(\"Yaş: %d\\n\", yas);\n    printf(\"Boy: %.2f m\\n\", boy);\n    \n    return 0;\n}",
+      "explanation": "scanf() fonksiyonu ile kullanıcıdan veri alma",
+      "expectedOutput": [
+        "Adınızı girin: Ahmet",
+        "Yaşınızı girin: 25",
+        "Boyunuzu girin (m): 1.75",
+        "",
+        "--- Bilgileriniz ---",
+        "İsim: Ahmet",
+        "Yaş: 25",
+        "Boy: 1.75 m"
+      ]
+    },
+    {
+      "title": "Matematik Kütüphanesi",
+      "code": "#include <stdio.h>\n#include <math.h>\n\nint main() {\n    double sayi = 16.0;\n    double aci = 3.14159 / 4;  // 45 derece radyan\n    \n    printf(\"Sayı: %.1f\\n\", sayi);\n    printf(\"Karekök: %.2f\\n\", sqrt(sayi));\n    printf(\"Karesi: %.1f\\n\", pow(sayi, 2));\n    printf(\"Küpü: %.1f\\n\", pow(sayi, 3));\n    \n    printf(\"\\nAçı: %.4f radyan\\n\", aci);\n    printf(\"sin(%.4f) = %.4f\\n\", aci, sin(aci));\n    printf(\"cos(%.4f) = %.4f\\n\", aci, cos(aci));\n    printf(\"tan(%.4f) = %.4f\\n\", aci, tan(aci));\n    \n    return 0;\n}",
+      "explanation": "math.h kütüphanesindeki fonksiyonların kullanımı",
+      "expectedOutput": [
+        "Sayı: 16.0",
+        "Karekök: 4.00",
+        "Karesi: 256.0",
+        "Küpü: 4096.0",
+        "",
+        "Açı: 0.7854 radyan",
+        "sin(0.7854) = 0.7071",
+        "cos(0.7854) = 0.7071",
+        "tan(0.7854) = 1.0000"
+      ]
+    },
+    {
+      "title": "İsim Sabitleri",
+      "code": "#include <stdio.h>\n#define PI 3.14159\n#define MAX_OGRENCI 30\n#define MESAJ \"Program başlatıldı!\"\n\nint main() {\n    printf(\"%s\\n\", MESAJ);\n    \n    double yaricap = 5.0;\n    double alan = PI * yaricap * yaricap;\n    \n    printf(\"\\nDaire hesaplaması:\\n\");\n    printf(\"Yarıçap: %.1f\\n\", yaricap);\n    printf(\"Pi: %.5f\\n\", PI);\n    printf(\"Alan: %.2f\\n\", alan);\n    \n    printf(\"\\nSınıf kapasitesi: %d öğrenci\\n\", MAX_OGRENCI);\n    \n    return 0;\n}",
+      "explanation": "#define ile isim sabitleri tanımlama ve kullanma",
+      "expectedOutput": [
+        "Program başlatıldı!",
+        "",
+        "Daire hesaplaması:",
+        "Yarıçap: 5.0",
+        "Pi: 3.14159",
+        "Alan: 78.54",
+        "",
+        "Sınıf kapasitesi: 30 öğrenci"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "title": "Alıştırma 1: Hesap Makinesi",
+      "prompt": "Kullanıcıdan iki sayı alın ve dört işlem (+, -, *, /) sonuçlarını yazdırın.",
+      "hint": "scanf ile iki float değişken alın, printf ile sonuçları yazdırın",
+      "solution": "#include <stdio.h>\n\nint main() {\n    float sayi1, sayi2;\n    \n    printf(\"İlk sayıyı girin: \");\n    scanf(\"%f\", &sayi1);\n    \n    printf(\"İkinci sayıyı girin: \");\n    scanf(\"%f\", &sayi2);\n    \n    printf(\"\\nSonuçlar:\\n\");\n    printf(\"%.2f + %.2f = %.2f\\n\", sayi1, sayi2, sayi1 + sayi2);\n    printf(\"%.2f - %.2f = %.2f\\n\", sayi1, sayi2, sayi1 - sayi2);\n    printf(\"%.2f * %.2f = %.2f\\n\", sayi1, sayi2, sayi1 * sayi2);\n    \n    if(sayi2 != 0)\n        printf(\"%.2f / %.2f = %.2f\\n\", sayi1, sayi2, sayi1 / sayi2);\n    else\n        printf(\"Sıfıra bölme hatası!\\n\");\n    \n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 2: Daire Hesaplamaları",
+      "prompt": "Kullanıcıdan yarıçap alın, dairenin alanını ve çevresini hesaplayın. PI sabitini #define ile tanımlayın.",
+      "hint": "Alan = PI * r * r, Çevre = 2 * PI * r",
+      "solution": "#include <stdio.h>\n#define PI 3.14159\n\nint main() {\n    float yaricap, alan, cevre;\n    \n    printf(\"Dairenin yarıçapını girin: \");\n    scanf(\"%f\", &yaricap);\n    \n    alan = PI * yaricap * yaricap;\n    cevre = 2 * PI * yaricap;\n    \n    printf(\"\\nDaire bilgileri:\\n\");\n    printf(\"Yarıçap: %.2f\\n\", yaricap);\n    printf(\"Alan: %.2f\\n\", alan);\n    printf(\"Çevre: %.2f\\n\", cevre);\n    \n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 3: Matematik Fonksiyonları",
+      "prompt": "Kullanıcıdan bir sayı alın, karekökünü, karesini ve küpünü math.h kütüphanesi ile hesaplayın.",
+      "hint": "sqrt(), pow() fonksiyonlarını kullanın",
+      "solution": "#include <stdio.h>\n#include <math.h>\n\nint main() {\n    double sayi;\n    \n    printf(\"Bir sayı girin: \");\n    scanf(\"%lf\", &sayi);\n    \n    printf(\"\\nHesaplama sonuçları:\\n\");\n    printf(\"Sayı: %.2f\\n\", sayi);\n    \n    if(sayi >= 0)\n        printf(\"Karekök: %.2f\\n\", sqrt(sayi));\n    else\n        printf(\"Negatif sayının karekökü alınamaz\\n\");\n    \n    printf(\"Karesi: %.2f\\n\", pow(sayi, 2));\n    printf(\"Küpü: %.2f\\n\", pow(sayi, 3));\n    \n    return 0;\n}"
+    }
+  ],
+  "files": [
+    {
+      "name": "operatorler.c",
+      "content": "#include <stdio.h>\n\nint main() {\n    int x = 10, y = 3;\n    \n    printf(\"=== ARİTMETİK OPERATÖRLER ===\\n\");\n    printf(\"%d + %d = %d\\n\", x, y, x + y);\n    printf(\"%d - %d = %d\\n\", x, y, x - y);\n    printf(\"%d * %d = %d\\n\", x, y, x * y);\n    printf(\"%d / %d = %d\\n\", x, y, x / y);\n    printf(\"%d %% %d = %d\\n\", x, y, x % y);\n    \n    printf(\"\\n=== ATAMA OPERATÖRLERİ ===\\n\");\n    x += 5; printf(\"x += 5: %d\\n\", x);\n    x -= 3; printf(\"x -= 3: %d\\n\", x);\n    x *= 2; printf(\"x *= 2: %d\\n\", x);\n    \n    return 0;\n}",
+      "description": "Operatör türleri ve kullanımları"
+    },
+    {
+      "name": "giris_cikis.c",
+      "content": "#include <stdio.h>\n\nint main() {\n    char isim[50];\n    int yas;\n    float notum;\n    \n    printf(\"=== KULLANICI BİLGİLERİ ===\\n\");\n    \n    printf(\"Adınız: \");\n    scanf(\"%s\", isim);\n    \n    printf(\"Yaşınız: \");\n    scanf(\"%d\", &yas);\n    \n    printf(\"Notunuz: \");\n    scanf(\"%f\", &notum);\n    \n    printf(\"\\n=== ÖZETİNİZ ===\\n\");\n    printf(\"İsim: %s\\n\", isim);\n    printf(\"Yaş: %d\\n\", yas);\n    printf(\"Not: %.1f\\n\", notum);\n    \n    return 0;\n}",
+      "description": "printf ve scanf kullanım örneği"
+    },
+    {
+      "name": "matematik_kutuphanesi.c",
+      "content": "#include <stdio.h>\n#include <math.h>\n\nint main() {\n    double sayi = 25.0;\n    double aci = 3.14159 / 6;  // 30 derece\n    \n    printf(\"=== MATEMATİK FONKSİYONLARI ===\\n\");\n    printf(\"Sayı: %.1f\\n\", sayi);\n    printf(\"Karekök: %.2f\\n\", sqrt(sayi));\n    printf(\"2. kuvvet: %.1f\\n\", pow(sayi, 2));\n    printf(\"e tabanında log: %.4f\\n\", log(sayi));\n    printf(\"10 tabanında log: %.4f\\n\", log10(sayi));\n    \n    printf(\"\\n=== TRİGONOMETRİ ===\\n\");\n    printf(\"Açı: %.4f radyan\\n\", aci);\n    printf(\"sin: %.4f\\n\", sin(aci));\n    printf(\"cos: %.4f\\n\", cos(aci));\n    printf(\"tan: %.4f\\n\", tan(aci));\n    \n    return 0;\n}",
+      "description": "math.h kütüphane fonksiyonları"
+    }
+  ],
+  "links": [
+    {
+      "title": "C Operatörler - cppreference",
+      "url": "https://en.cppreference.com/w/c/language/operators",
+      "description": "C dilindeki tüm operatörler"
+    },
+    {
+      "title": "printf Format Belirteçleri",
+      "url": "https://en.cppreference.com/w/c/io/fprintf",
+      "description": "printf fonksiyonu format belirteçleri"
+    },
+    {
+      "title": "scanf Güvenli Kullanım",
+      "url": "https://stackoverflow.com/questions/tagged/scanf",
+      "description": "scanf fonksiyonunun doğru kullanımı"
+    },
+    {
+      "title": "C Math Kütüphanesi",
+      "url": "https://en.cppreference.com/w/c/numeric/math",
+      "description": "Matematik fonksiyonları referansı"
+    }
+  ],
+  "animations": [
+    {
+      "type": "variables",
+      "title": "Operatör İşlemleri",
+      "description": "Aritmetik ve atama operatörlerinin değişkenler üzerindeki etkisini gösterir",
+      "config": {
+        "showOperations": true,
+        "trackChanges": true
+      }
+    },
+    {
+      "type": "function-call",
+      "title": "printf ve scanf",
+      "description": "Giriş/çıkış fonksiyonlarının çalışma mekanizması",
+      "config": {
+        "showBuffers": true,
+        "showFormatting": true
+      }
+    },
+    {
+      "type": "type-conversion",
+      "title": "Veri Tipi Dönüşümü",
+      "description": "Implicit ve explicit type casting süreçleri",
+      "config": {
+        "showMemoryLayout": true,
+        "showDataLoss": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "week": 8,
+  "title": "Hafta 8: Elf Okları ve Gondor Tabloları (Diziler)",
+  "description": "Elf oklarının dizilişi gibi diziler, Gondor’un savaş tabloları gibi 2-boyutlu diziler.",
+  "duration": "120 dakika",
+  "difficulty": "Orta",
+  "objectives": [
+    "Elf okları (dizi) kavramını anlamak",
+    "Ok depolarına (dizi elemanlarına) değer yerleştirmek",
+    "Okların yolunu Palantir ile izlemek (dizi-gösterge ilişkisi)",
+    "Gondor savunma tablolarını (2-boyutlu dizi) yönetmek"
+  ],
+  "codeExamples": [
+    {
+      "title": "Legolas'ın Ok Deposu",
+      "code": "#include <stdio.h>\nint main() {\n    int oklar[5];\n    for(int i=0; i<5; i++) {\n        oklar[i] = (i+1)*10;\n    }\n    for(int i=0; i<5; i++) {\n        printf(\"Ok %d hasar: %d\\n\", i+1, oklar[i]);\n    }\n    return 0;\n}",
+      "explanation": "Legolas oklarını depoya yerleştiriyor.",
+      "expectedOutput": [
+        "Ok 1 hasar: 10",
+        "Ok 2 hasar: 20",
+        "Ok 3 hasar: 30",
+        "Ok 4 hasar: 40",
+        "Ok 5 hasar: 50"
+      ]
+    },
+    {
+      "title": "Palantir ile Okları İzleme",
+      "code": "#include <stdio.h>\nint main() {\n    int oklar[3] = {15, 25, 35};\n    int *palantir = oklar;\n    for(int i=0; i<3; i++) {\n        printf(\"Palantir Ok %d: %d\\n\", i+1, *(palantir+i));\n    }\n    return 0;\n}",
+      "explanation": "Palantir, okların gücünü göstergeler ile izliyor.",
+      "expectedOutput": [
+        "Palantir Ok 1: 15",
+        "Palantir Ok 2: 25",
+        "Palantir Ok 3: 35"
+      ]
+    },
+    {
+      "title": "Gondor Savunma Tablosu",
+      "code": "#include <stdio.h>\nint main() {\n    int kale[2][2] = {{100,200},{150,250}};\n    for(int i=0; i<2; i++) {\n        for(int j=0; j<2; j++) {\n            printf(\"Kule[%d][%d] Güç: %d \", i, j, kale[i][j]);\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+      "explanation": "Gondor’un kale savunma güçlerini tablo şeklinde saklamak.",
+      "expectedOutput": [
+        "Kule[0][0] Güç: 100 Kule[0][1] Güç: 200",
+        "Kule[1][0] Güç: 150 Kule[1][1] Güç: 250"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "title": "Alıştırma 1: Frodo’nun Erzak Listesi",
+      "description": "Frodo için 7 günlük erzak listesini dizi ile saklayın.",
+      "difficulty": "Kolay"
+    },
+    {
+      "title": "Alıştırma 2: Rohan Atları",
+      "description": "Rohan atlarının hızlarını diziye kaydedin ve ortalamasını bulun.",
+      "difficulty": "Orta"
+    },
+    {
+      "title": "Alıştırma 3: Minas Tirith Tablosu",
+      "description": "Minas Tirith savunma kulelerinin güç tablosunu 2-boyutlu dizi ile modelleyin.",
+      "difficulty": "Orta-İleri"
+    }
+  ]
+}

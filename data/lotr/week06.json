@@ -1,0 +1,406 @@
+{
+  "week": 6,
+  "title": "Hafta 6: Fonksiyonlar ve Değişken Kapsamları",
+  "description": "Fonksiyon tanımlama, çağırma, parametreler, return değerleri, değişken kapsamları (scope) ve çok fonksiyonlu program yapıları konularını Orta Dünya karakterleri ile öğrenin.",
+  "duration": "90 dakika",
+  "difficulty": "Orta-İleri",
+  "objectives": [
+    "Değer döndüren fonksiyonları tanımlamak ve kullanmak",
+    "Void (değer döndürmeyen) fonksiyonları oluşturmak",
+    "Çok parametreli fonksiyonlar yazmak",
+    "Lokal ve global değişken kapsamlarını anlamak",
+    "Fonksiyon prototipi kavramını öğrenmek",
+    "Çok fonksiyonlu program yapıları kurgulamak"
+  ],
+  "codeExamples": [
+    {
+      "title": "Gimli'nin Güç Hesabı",
+      "code": "#include <stdio.h>\n\nint guc_topla(int balta_gucu, int zirh_gucu) {\n    int toplam_guc = balta_gucu + zirh_gucu;\n    return toplam_guc;\n}\n\nint main() {\n    int gimli_balta = 85, gimli_zirh = 70;\n    int gimli_toplam = guc_topla(gimli_balta, gimli_zirh);\n    \n    printf(\"Gimli'nin güç hesabı yapıldı\\n\");\n    printf(\"Balta: %d + Zırh: %d = Toplam: %d\\n\", gimli_balta, gimli_zirh, gimli_toplam);\n    \n    return 0;\n}",
+      "explanation": "Return değeri olan fonksiyon tanımlama ve çağırma",
+      "expectedOutput": [
+        "Gimli'nin güç hesabı yapıldı",
+        "Balta: 85 + Zırh: 70 = Toplam: 155"
+      ]
+    },
+    {
+      "title": "Gandalf'ın Karşılama Büyüleri",
+      "code": "#include <stdio.h>\n\nvoid kardeslik_selamla(char isim[]) {\n    printf(\"Gandalf: 'Hoş geldin %s!'\\n\", isim);\n    printf(\"Gandalf: 'Yolculuğa hazır mısın?'\\n\");\n}\n\nvoid yolculuk_baslat() {\n    printf(\"Gandalf: 'O halde yola çıkalım!'\\n\");\n    printf(\"*Asayla yere vurur*\\n\");\n}\n\nint main() {\n    kardeslik_selamla(\"Frodo\");\n    printf(\"Frodo: 'Evet Gandalf, hazırım.'\\n\");\n    yolculuk_baslat();\n    \n    return 0;\n}",
+      "explanation": "Void fonksiyonlar - sadece işlem yapar, değer döndürmez",
+      "expectedOutput": [
+        "Gandalf: 'Hoş geldin Frodo!'",
+        "Gandalf: 'Yolculuğa hazır mısın?'",
+        "Frodo: 'Evet Gandalf, hazırım.'",
+        "Gandalf: 'O halde yola çıkalım!'",
+        "*Asayla yere vurur*"
+      ]
+    },
+    {
+      "title": "Elrond'un Kardeşlik Değerlendirmesi",
+      "code": "#include <stdio.h>\n\nfloat kardeslik_gucu(float frodo, float sam, float aragorn, float legolas, float gimli, float gandalf) {\n    float ortalama = (frodo + sam + aragorn + legolas + gimli + gandalf) / 6.0;\n    return ortalama;\n}\n\nvoid kardeslik_durumu(float ortalama_guc) {\n    printf(\"Kardeşlik ortalama gücü: %.1f\\n\", ortalama_guc);\n    if (ortalama_guc >= 80) {\n        printf(\"Elrond: 'Güçlü bir kardeşlik. Başarabilirsiniz.'\\n\");\n    } else {\n        printf(\"Elrond: 'Daha dikkatli olmalısınız.'\\n\");\n    }\n}\n\nint main() {\n    float frodo_guc = 65, sam_guc = 70, aragorn_guc = 95;\n    float legolas_guc = 90, gimli_guc = 85, gandalf_guc = 100;\n    \n    printf(\"=== RİVENDELL KONSEYİ DEĞERLENDİRMESİ ===\\n\");\n    printf(\"Üye güçleri: F:%.0f S:%.0f A:%.0f L:%.0f G:%.0f Ga:%.0f\\n\", \n           frodo_guc, sam_guc, aragorn_guc, legolas_guc, gimli_guc, gandalf_guc);\n    \n    float ortalama = kardeslik_gucu(frodo_guc, sam_guc, aragorn_guc, legolas_guc, gimli_guc, gandalf_guc);\n    kardeslik_durumu(ortalama);\n    \n    return 0;\n}",
+      "explanation": "6 parametreli fonksiyon ve çoklu fonksiyon kullanımı",
+      "expectedOutput": [
+        "=== RİVENDELL KONSEYİ DEĞERLENDİRMESİ ===",
+        "Üye güçleri: F:65 S:70 A:95 L:90 G:85 Ga:100",
+        "Kardeşlik ortalama gücü: 84.2",
+        "Elrond: 'Güçlü bir kardeşlik. Başarabilirsiniz.'"
+      ]
+    },
+    {
+      "title": "Rivendell Bellek Yönetimi",
+      "code": "#include <stdio.h>\n\nint rivendell_hazine = 1000;  // Global hazine\n\nvoid hazine_artir(int miktar) {\n    int eski_hazine = rivendell_hazine;  // Lokal kopya\n    rivendell_hazine += miktar;\n    printf(\"Elrond: Hazine %d'den %d'ye çıktı\\n\", eski_hazine, rivendell_hazine);\n}\n\nvoid hazine_durumu() {\n    printf(\"Rivendell hazinesi: %d altın\\n\", rivendell_hazine);\n}\n\nint main() {\n    printf(\"=== RİVENDELL HAZİNE YÖNETİMİ ===\\n\");\n    hazine_durumu();\n    \n    printf(\"\\nYeni misafirler geldi...\\n\");\n    hazine_artir(200);  // Hediyeler\n    hazine_artir(150);  // Ticaret\n    \n    hazine_durumu();\n    \n    return 0;\n}",
+      "explanation": "Global ve lokal değişkenlerin farklı kapsamlarda kullanımı",
+      "expectedOutput": [
+        "=== RİVENDELL HAZİNE YÖNETİMİ ===",
+        "Rivendell hazinesi: 1000 altın",
+        "",
+        "Yeni misafirler geldi...",
+        "Elrond: Hazine 1000'den 1200'ye çıktı",
+        "Elrond: Hazine 1200'den 1350'ye çıktı",
+        "Rivendell hazinesi: 1350 altın"
+      ]
+    },
+    {
+      "title": "İsengard'ın Güç Hesaplama Sistemi",
+      "code": "#include <stdio.h>\n\n// Fonksiyon prototipleri\nint ork_gucu(int seviye);\nint troll_gucu(int boyut, int silah);\nvoid savas_raporu(int toplam_guc);\n\nint main() {\n    printf(\"=== İSENGARD ORDU DEĞERLENDİRMESİ ===\\n\");\n    \n    // Saruman'ın ordu hesabı\n    int ork_sayisi = 10, ork_seviye = 45;\n    int troll_sayisi = 3, troll_boyut = 150, troll_silah = 80;\n    \n    int toplam_ork_guc = ork_sayisi * ork_gucu(ork_seviye);\n    int toplam_troll_guc = troll_sayisi * troll_gucu(troll_boyut, troll_silah);\n    int genel_toplam = toplam_ork_guc + toplam_troll_guc;\n    \n    printf(\"Ork gücü: %d x %d = %d\\n\", ork_sayisi, ork_gucu(ork_seviye), toplam_ork_guc);\n    printf(\"Troll gücü: %d x %d = %d\\n\", troll_sayisi, troll_gucu(troll_boyut, troll_silah), toplam_troll_guc);\n    \n    savas_raporu(genel_toplam);\n    \n    return 0;\n}\n\nint ork_gucu(int seviye) {\n    return seviye * 2;\n}\n\nint troll_gucu(int boyut, int silah) {\n    return (boyut + silah) * 3;\n}\n\nvoid savas_raporu(int toplam_guc) {\n    printf(\"\\nSaruman'ın değerlendirmesi:\\n\");\n    printf(\"Toplam güç: %d\\n\", toplam_guc);\n    if (toplam_guc > 2000) {\n        printf(\"Saruman: 'Mükemmel! Rohan'a saldıralım!'\\n\");\n    } else {\n        printf(\"Saruman: 'Daha fazla ork üretmeliyiz.'\\n\");\n    }\n}",
+      "explanation": "Fonksiyon prototipleri ve çoklu fonksiyon organizasyonu",
+      "expectedOutput": [
+        "=== İSENGARD ORDU DEĞERLENDİRMESİ ===",
+        "Ork gücü: 10 x 90 = 900",
+        "Troll gücü: 3 x 690 = 2070",
+        "",
+        "Saruman'ın değerlendirmesi:",
+        "Toplam güç: 2970",
+        "Saruman: 'Mükemmel! Rohan'a saldıralım!'"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "title": "Alıştırma 1: Legolas'ın Ok Hesabı",
+      "description": "Legolas için ok sayısı ve isabet oranı parametreli bir fonksiyon yazın. Fonksiyon toplam hasar döndürsün.",
+      "difficulty": "Kolay",
+      "hints": [
+        "int ok_hasari(int ok_sayisi, float isabet_orani) şeklinde fonksiyon tanımlayın",
+        "Her ok 25 hasar veriyor",
+        "İsabet oranı 0.0-1.0 arası float değer"
+      ],
+      "starterCode": "#include <stdio.h>\n\n// Fonksiyonunuzu buraya yazın\n\nint main() {\n    int legolas_ok = 50;\n    float legolas_isabet = 0.9;\n    \n    // Fonksiyonu çağırın ve sonucu yazdırın\n    \n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 2: Boromir'in Koruma Büyüleri",
+      "description": "Void fonksiyon kullanarak Boromir'in farklı durumlarda söylediği koruma sözlerini yazdıran fonksiyonlar yazın.",
+      "difficulty": "Kolay-Orta",
+      "hints": [
+        "void koruma_sozu(char durum[]) şeklinde fonksiyon yazın",
+        "Farklı durumlar için farklı mesajlar gösterin",
+        "if-else kullanarak duruma göre farklı sözler söyletin"
+      ],
+      "starterCode": "#include <stdio.h>\n\nvoid koruma_sozu(char durum[]) {\n    // Fonksiyonu tamamlayın\n}\n\nint main() {\n    koruma_sozu(\"savas\");\n    koruma_sozu(\"kaçis\");\n    koruma_sozu(\"dinlenme\");\n    \n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 3: Rohan Krallığı Nüfus Sayımı",
+      "description": "5 farklı şehrin nüfusunu parametre alan ve toplam nüfusu döndüren fonksiyon yazın. Ayrıca ortalama nüfusu hesaplayan ayrı bir fonksiyon ekleyin.",
+      "difficulty": "Orta",
+      "hints": [
+        "long toplam_nufus(int s1, int s2, int s3, int s4, int s5)",
+        "float ortalama_nufus(long toplam)",
+        "Büyük sayılarla çalışırken long kullanın"
+      ],
+      "starterCode": "#include <stdio.h>\n\n// Fonksiyonlarınızı buraya yazın\n\nint main() {\n    int edoras = 25000, helmins = 18000, aldburg = 12000;\n    int eastfold = 30000, westfold = 22000;\n    \n    // Fonksiyonları çağırın ve sonuçları gösterin\n    \n    return 0;\n}"
+    }
+  ],
+  "practiceProblems": [
+    {
+      "title": "Problem 1: Moria Maden Hesabı",
+      "description": "Moria'daki maden üretimi için çok fonksiyonlu bir sistem yazın. Farklı maden türleri (altın, gümüş, mithril) için ayrı hesaplama fonksiyonları olsun.",
+      "difficulty": "Orta-İleri",
+      "requirements": [
+        "Global değişken olarak toplam hazine tutun",
+        "Her maden türü için ayrı hesaplama fonksiyonu yazın",
+        "Void fonksiyon ile günlük rapor yazdırın",
+        "Main'de tüm işlemleri organize edin"
+      ],
+      "expectedBehavior": "Program günlük maden üretimini hesaplamalı ve haftalık rapor vermelidir."
+    },
+    {
+      "title": "Problem 2: Fangorn Ağaç Sayımı",
+      "description": "Fangorn ormanındaki farklı ağaç türlerini sayan ve istatistik veren program yazın.",
+      "difficulty": "İleri",
+      "requirements": [
+        "En az 4 farklı fonksiyon kullanın",
+        "Parametreli ve parametresiz fonksiyonlar karıştırın",
+        "Global ve lokal değişken kullanımını gösterin",
+        "Fonksiyon prototipleri tanımlayın"
+      ],
+      "expectedBehavior": "Ağaç türlerini kategorize etmeli ve detaylı istatistik raporu vermelidir."
+    }
+  ],
+  "homework": {
+    "title": "Ödev: Gondor Savunma Sistemi",
+    "description": "Gondor'un savunma hesaplamaları için kapsamlı bir fonksiyon sistemi gelişirin.",
+    "requirements": [
+      "En az 6 farklı fonksiyon yazın (3'ü return'lü, 3'ü void)",
+      "Global değişkenler kullanarak şehir savunma gücünü takip edin",
+      "Çok parametreli fonksiyonlarla farklı birliklerin gücünü hesaplayın",
+      "Fonksiyon prototiplerini doğru şekilde tanımlayın",
+      "Ana programda tüm fonksiyonları organize bir şekilde çağırın"
+    ],
+    "deliverables": [
+      "gondor_savunma.c dosyası",
+      "Program çıktısının ekran görüntüsü",
+      "Her fonksiyonun açıklamasını içeren yorum satırları"
+    ],
+    "dueDate": "1 hafta sonra",
+    "gradingCriteria": [
+      "Fonksiyon tanımlarının doğruluğu (25%)",
+      "Parametre kullanımı ve return değerleri (25%)",
+      "Global/lokal değişken kullanımı (20%)",
+      "Kod organizasyonu ve okunabilirlik (20%)",
+      "Program çalışması ve çıktı (10%)"
+    ]
+  },
+  "keyTerms": [
+    {
+      "term": "Fonksiyon",
+      "definition": "Belirli bir görevi yerine getiren, yeniden kullanılabilir kod bloğu"
+    },
+    {
+      "term": "Return değeri",
+      "definition": "Fonksiyonun çağrıldığı yere geri döndürdüğü değer"
+    },
+    {
+      "term": "Void fonksiyon",
+      "definition": "Değer döndürmeyen, sadece işlem yapan fonksiyon türü"
+    },
+    {
+      "term": "Parametre",
+      "definition": "Fonksiyona girdi olarak verilen değer"
+    },
+    {
+      "term": "Global değişken",
+      "definition": "Program boyunca tüm fonksiyonlardan erişilebilen değişken"
+    },
+    {
+      "term": "Lokal değişken",
+      "definition": "Sadece tanımlandığı fonksiyon içinde geçerli olan değişken"
+    },
+    {
+      "term": "Fonksiyon prototipi",
+      "definition": "Fonksiyonun tanımından önce yapılan bildirim"
+    },
+    {
+      "term": "Scope (Kapsam)",
+      "definition": "Değişkenlerin erişilebilir olduğu kod alanı"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Return değeri olan fonksiyondan değer döndürmemek",
+      "solution": "Her return'lü fonksiyonun sonunda return statement kullanın"
+    },
+    {
+      "mistake": "Void fonksiyonu return değeri bekleyerek çağırmak",
+      "solution": "Void fonksiyonları değişkene atamadan direkt çağırın"
+    },
+    {
+      "mistake": "Lokal değişkenleri farklı fonksiyonlarda kullanmaya çalışmak",
+      "solution": "Değişkenlerin kapsamını (scope) doğru anlayın"
+    },
+    {
+      "mistake": "Fonksiyon prototipini unutmak",
+      "solution": "Fonksiyon main()'den önce kullanılıyorsa prototip tanımlayın"
+    },
+    {
+      "mistake": "Parametre sayısı veya türünde uyumsuzluk",
+      "solution": "Fonksiyon çağrısında parametre sayısı ve türlerini kontrol edin"
+    }
+  ],
+  "tips": [
+    "Fonksiyon isimlerini açıklayıcı seçin (hesapla, yazdir, kontrol_et gibi)",
+    "Tek bir fonksiyonda çok fazla iş yapmayın, görevleri bölin",
+    "Global değişkenleri mümkün olduğunca az kullanın",
+    "Her fonksiyonun başına ne yaptığını açıklayan yorum ekleyin",
+    "Fonksiyonları test etmek için basit test çağrıları yapın",
+    "Parametre isimlerini anlamlı seçin (sayi yerine ogrenci_sayisi gibi)",
+    "Return türünü fonksiyon başında doğru belirtin (int, float, void)",
+    "Fonksiyonları main()'den önce veya sonra organize bir şekilde yazın"
+  ],
+  "resources": [
+    {
+      "type": "video",
+      "title": "C Fonksiyonlarına Giriş",
+      "url": "https://example.com/c-functions-intro",
+      "duration": "15 dakika"
+    },
+    {
+      "type": "article",
+      "title": "Değişken Kapsamları (Scope) Rehberi",
+      "url": "https://example.com/variable-scope-guide",
+      "readingTime": "10 dakika"
+    },
+    {
+      "type": "interactive",
+      "title": "Fonksiyon Yazma Simülatörü",
+      "url": "https://example.com/function-simulator",
+      "description": "Interaktif ortamda fonksiyon yazma pratiği"
+    },
+    {
+      "type": "reference",
+      "title": "C Fonksiyon Referans Dökümanı",
+      "url": "https://example.com/c-function-reference",
+      "description": "Tüm fonksiyon yapıları ve örnekleri"
+    }
+  ],
+  "assessment": {
+    "quiz": {
+      "questions": [
+        {
+          "id": 1,
+          "question": "Aşağıdaki fonksiyon tanımında hata nedir?\n```c\nvoid hesapla(int a, int b) {\n    int sonuc = a + b;\n    return sonuc;\n}\n```",
+          "type": "multiple_choice",
+          "options": [
+            "Parametre tanımında hata var",
+            "Void fonksiyon değer döndüremez",
+            "Değişken tanımında hata var",
+            "Hiçbir hata yok"
+          ],
+          "correct": 1,
+          "explanation": "Void fonksiyonlar değer döndüremez. Bu fonksiyon int tipinde olmalı veya return statement kaldırılmalı."
+        },
+        {
+          "id": 2,
+          "question": "Global değişkenler hakkında doğru olan ifade hangisidir?",
+          "type": "multiple_choice",
+          "options": [
+            "Sadece main() fonksiyonunda kullanılabilir",
+            "Tüm fonksiyonlardan erişilebilir",
+            "Fonksiyon içinde tanımlanır",
+            "Return değeri olarak kullanılamaz"
+          ],
+          "correct": 1,
+          "explanation": "Global değişkenler program boyunca tüm fonksiyonlardan erişilebilir."
+        },
+        {
+          "id": 3,
+          "question": "Fonksiyon prototipinin amacı nedir?",
+          "type": "multiple_choice",
+          "options": [
+            "Fonksiyonu tanımlamak",
+            "Fonksiyonu çağırmak",
+            "Derleyiciye fonksiyon hakkında bilgi vermek",
+            "Fonksiyonu silmek"
+          ],
+          "correct": 2,
+          "explanation": "Fonksiyon prototipi, derleyiciye fonksiyonun adı, parametreleri ve return türü hakkında önceden bilgi verir."
+        },
+        {
+          "id": 4,
+          "question": "Bu kod çalıştırıldığında çıktı ne olur?\n```c\nint x = 10;\nvoid fonksiyon() {\n    int x = 20;\n    printf(\"%d\", x);\n}\n```",
+          "type": "short_answer",
+          "correct": "20",
+          "explanation": "Lokal değişken x (20), global değişken x'i (10) gölgeler."
+        }
+      ]
+    },
+    "practicalTest": {
+      "title": "Uygulamalı Test: Hobbiton Market Sistemi",
+      "description": "Hobbiton'daki market için fiyat hesaplama sistemi yazın",
+      "timeLimit": "45 dakika",
+      "requirements": [
+        "Ürün fiyatı hesaplayan fonksiyon (float hesapla_fiyat(int miktar, float birim_fiyat))",
+        "KDV ekleyen fonksiyon (float kdv_ekle(float fiyat))",
+        "İndirim hesaplayan fonksiyon (float indirim_uygula(float fiyat, float indirim_orani))",
+        "Fiş yazdıran void fonksiyon (void fis_yazdir(char urun[], float toplam))",
+        "Ana programda 3 farklı ürün için hesaplama yapın"
+      ],
+      "gradingRubric": [
+        "Fonksiyonlar doğru çalışıyor (40%)",
+        "Parametreler doğru kullanılmış (20%)",
+        "Return değerleri uygun (20%)",
+        "Kod organizasyonu (10%)",
+        "Çıktı formatı (10%)"
+      ]
+    }
+  },
+  "nextWeekPreview": {
+    "week": 7,
+    "title": "Diziler ve Çok Boyutlu Yapılar",
+    "topics": [
+      "Tek boyutlu diziler",
+      "Çok boyutlu diziler",
+      "Dizi fonksiyonları",
+      "String işlemleri"
+    ],
+    "connection": "Bu hafta öğrendiğiniz fonksiyonları, gelecek hafta dizilerle birlikte kullanarak daha güçlü programlar yazacaksınız."
+  },
+  "studyGuide": {
+    "beforeClass": [
+      "Önceki haftalardaki değişken konularını tekrar edin",
+      "Basit fonksiyon örneklerini okuyun",
+      "Video materyallerini izleyin"
+    ],
+    "duringClass": [
+      "Kod örneklerini aktif olarak takip edin",
+      "Anlamadığınız kısımları not alın",
+      "Örnekleri kendi bilgisayarınızda deneyin"
+    ],
+    "afterClass": [
+      "Tüm kod örneklerini tekrar yazın",
+      "Alıştırmaları sırayla çözün",
+      "Problem çözümlerini arkadaşlarınızla tartışın",
+      "Ödev için zaman planlayın"
+    ],
+    "examPrep": [
+      "Fonksiyon türlerini (void, return'lü) karıştırmayın",
+      "Global/lokal değişken farkını net öğrenin",
+      "Parametre geçirme mantığını pratikte uygulayın",
+      "Fonksiyon prototiplerini unutmayın"
+    ]
+  },
+  "additionalChallenges": [
+    {
+      "title": "Meydan Okuma 1: Özyinelemeli Fibonacci",
+      "description": "Özyineleme (recursion) kullanarak Fibonacci sayısı hesaplayan fonksiyon yazın",
+      "difficulty": "İleri",
+      "hint": "Fonksiyonun kendini çağırması gerekiyor"
+    },
+    {
+      "title": "Meydan Okuma 2: Çok Fonksiyonlu Hesap Makinesi",
+      "description": "4 işlem için ayrı fonksiyonlar, menü için void fonksiyon ve sonuç gösteren fonksiyonlarla hesap makinesi yapın",
+      "difficulty": "İleri",
+      "hint": "Ana döngüde menü fonksiyonunu çağırın"
+    }
+  ],
+  "troubleshooting": [
+    {
+      "problem": "Fonksiyon tanımladım ama çağıramıyorum",
+      "solutions": [
+        "Fonksiyon main()'den önce tanımlandı mı kontrol edin",
+        "Fonksiyon prototipi var mı bakın",
+        "Fonksiyon adını doğru yazdığınızdan emin olun"
+      ]
+    },
+    {
+      "problem": "Return değeri beklenmedik çıkıyor",
+      "solutions": [
+        "Fonksiyon türünü kontrol edin (int, float, void)",
+        "Return statement'ın doğru yerde olduğunu kontrol edin",
+        "Parametre türlerinin uyumlu olduğunu kontrol edin"
+      ]
+    },
+    {
+      "problem": "Global değişken değişmiyor",
+      "solutions": [
+        "Aynı isimde lokal değişken tanımladınız mı kontrol edin",
+        "Değişkeni değiştiren fonksiyonu çağırdığınızdan emin olun",
+        "Değişken tanımının doğru olduğunu kontrol edin"
+      ]
+    }
+  ],
+  "authorInfo": {
+    "instructor": "MST",
+    "courseCode": "C",
+    "semester": "2025 Güz",
+    "lastUpdated": "2025-09-08",
+    "version": "1.0"
+  }

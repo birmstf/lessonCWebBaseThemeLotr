@@ -1,0 +1,181 @@
+{
+  "week": 4,
+  "title": "Hafta 4: Döngüler - For",
+  "description": "For döngüsü ile tekrarlı işlemler yapmayı öğrenin. Döngü mantığını kavrayın ve farklı kullanım senaryolarını keşfedin.",
+  "duration": "90 dakika",
+  "difficulty": "Orta",
+  "objectives": [
+    "For döngüsünün yapısını öğrenmek",
+    "Döngü değişkenlerini anlamak",
+    "Tekrarlı işlemleri optimize etmek",
+    "Döngü koşullarını doğru kurmak"
+  ],
+  "codeExamples": [
+    {
+      "title": "Temel For Döngüsü",
+      "code": "#include <stdio.h>\nint main() {\n    for (int i = 0; i < 5; i++) {\n        printf(\"i değeri: %d\\n\", i);\n    }\n    return 0;\n}",
+      "explanation": "En basit for döngüsü örneği. 0'dan 4'e kadar sayıları yazdırır.",
+      "expectedOutput": [
+        "i değeri: 0",
+        "i değeri: 1",
+        "i değeri: 2",
+        "i değeri: 3",
+        "i değeri: 4"
+      ]
+    },
+    {
+      "title": "Geriye Doğru Sayma",
+      "code": "#include <stdio.h>\nint main() {\n    for (int i = 10; i > 0; i--) {\n        printf(\"Geri sayım: %d\\n\", i);\n    }\n    printf(\"Başla!\\n\");\n    return 0;\n}",
+      "explanation": "10'dan 1'e kadar geriye doğru saymak için for döngüsü kullanımı.",
+      "expectedOutput": [
+        "Geri sayım: 10",
+        "Geri sayım: 9",
+        "Geri sayım: 8",
+        "Geri sayım: 7",
+        "Geri sayım: 6",
+        "Geri sayım: 5",
+        "Geri sayım: 4",
+        "Geri sayım: 3",
+        "Geri sayım: 2",
+        "Geri sayım: 1",
+        "Başla!"
+      ]
+    },
+    {
+      "title": "Çift Sayıları Yazdırma",
+      "code": "#include <stdio.h>\nint main() {\n    for (int i = 0; i <= 20; i += 2) {\n        printf(\"Çift sayı: %d\\n\", i);\n    }\n    return 0;\n}",
+      "explanation": "2'şer 2'şer artırarak çift sayıları yazdırma.",
+      "expectedOutput": [
+        "Çift sayı: 0",
+        "Çift sayı: 2",
+        "Çift sayı: 4",
+        "Çift sayı: 6",
+        "Çift sayı: 8",
+        "Çift sayı: 10",
+        "Çift sayı: 12",
+        "Çift sayı: 14",
+        "Çift sayı: 16",
+        "Çift sayı: 18",
+        "Çift sayı: 20"
+      ]
+    },
+    {
+      "title": "Faktöriyel Hesaplama",
+      "code": "#include <stdio.h>\nint main() {\n    int n = 5;\n    int faktoriyel = 1;\n    for (int i = 1; i <= n; i++) {\n        faktoriyel *= i;\n        printf(\"%d! = %d\\n\", i, faktoriyel);\n    }\n    return 0;\n}",
+      "explanation": "For döngüsü ile faktöriyel hesaplama örneği.",
+      "expectedOutput": [
+        "1! = 1",
+        "2! = 2",
+        "3! = 6",
+        "4! = 24",
+        "5! = 120"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "title": "Alıştırma 1: Toplam Hesaplama",
+      "prompt": "1'den 100'e kadar olan sayıların toplamını for döngüsü ile hesaplayın.",
+      "hint": "Bir toplam değişkeni oluşturun ve her döngüde ekleyin.",
+      "solution": "#include <stdio.h>\nint main() {\n    int toplam = 0;\n    for (int i = 1; i <= 100; i++) {\n        toplam += i;\n    }\n    printf(\"Toplam: %d\\n\", toplam);\n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 2: Çarpım Tablosu",
+      "prompt": "Kullanıcıdan bir sayı alın ve o sayının çarpım tablosunu yazdırın (1x5=5, 2x5=10, ...).",
+      "hint": "scanf ile sayı alın, for döngüsünde i ile çarpın.",
+      "solution": "#include <stdio.h>\nint main() {\n    int sayi;\n    printf(\"Çarpım tablosu için sayı girin: \");\n    scanf(\"%d\", &sayi);\n    for (int i = 1; i <= 10; i++) {\n        printf(\"%d x %d = %d\\n\", i, sayi, i * sayi);\n    }\n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 3: Yıldız Deseni",
+      "prompt": "For döngüsü kullanarak şu deseni oluşturun:\\n*\\n**\\n***\\n****\\n*****",
+      "hint": "İç içe döngü kullanın. Dış döngü satır sayısı, iç döngü yıldız sayısı.",
+      "solution": "#include <stdio.h>\nint main() {\n    for (int i = 1; i <= 5; i++) {\n        for (int j = 1; j <= i; j++) {\n            printf(\"*\");\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}"
+    }
+  ],
+  "files": [
+    {
+      "name": "for_ornek.c",
+      "content": "#include <stdio.h>\nint main() {\n    for (int i = 0; i < 5; i++) {\n        printf(\"i değeri: %d\\n\", i);\n    }\n    return 0;\n}",
+      "description": "Temel for döngüsü örneği"
+    },
+    {
+      "name": "faktoriyel.c",
+      "content": "#include <stdio.h>\nint main() {\n    int n = 5;\n    int faktoriyel = 1;\n    for (int i = 1; i <= n; i++) {\n        faktoriyel *= i;\n    }\n    printf(\"%d! = %d\\n\", n, faktoriyel);\n    return 0;\n}",
+      "description": "Faktöriyel hesaplama örneği"
+    },
+    {
+      "name": "carpim_tablosu.c",
+      "content": "#include <stdio.h>\nint main() {\n    int sayi = 7;\n    for (int i = 1; i <= 10; i++) {\n        printf(\"%d x %d = %d\\n\", i, sayi, i * sayi);\n    }\n    return 0;\n}",
+      "description": "Çarpım tablosu örneği"
+    }
+  ],
+  "links": [
+    {
+      "title": "C For Döngüsü - cppreference",
+      "url": "https://en.cppreference.com/w/c/language/for",
+      "description": "Resmi C dili for döngüsü dokümantasyonu"
+    },
+    {
+      "title": "For Döngüsü Örnekleri",
+      "url": "https://www.programiz.com/c-programming/c-for-loop",
+      "description": "Programiz'de for döngüsü örnekleri"
+    },
+    {
+      "title": "Döngü Optimizasyonu",
+      "url": "https://stackoverflow.com/questions/tagged/c+loops",
+      "description": "StackOverflow'da döngü optimizasyon teknikleri"
+    },
+    {
+      "title": "C Programlama Alıştırmaları",
+      "url": "https://www.w3resource.com/c-programming-exercises/",
+      "description": "Döngüler için pratik alıştırmalar"
+    }
+  ],
+  "animations": [
+    {
+      "type": "for-loop",
+      "title": "For Döngüsü Akış Diyagramı",
+      "description": "For döngüsünün init, condition, body ve increment adımlarını görsel olarak gösterir",
+      "config": {
+        "maxIterations": 5,
+        "showNodes": [
+          "init",
+          "cond",
+          "body",
+          "inc"
+        ],
+        "highlightFlow": true
+      }
+    },
+    {
+      "type": "memory-view",
+      "title": "Döngü Değişkeni Bellek İzleme",
+      "description": "i değişkeninin bellekteki değişimini adım adım takip eder",
+      "config": {
+        "trackVariable": "i",
+        "showAddresses": true,
+        "maxValue": 5
+      }
+    },
+    {
+      "type": "execution-trace",
+      "title": "Kod Satır İzleme",
+      "description": "Kodun hangi satırının çalıştığını gerçek zamanlı gösterir",
+      "config": {
+        "codeLines": [
+          "for (int i = 0; i < 5; i++) {",
+          "    printf(\"i değeri: %d\\n\", i);",
+          "}"
+        ],
+        "explanation": "En basit for döngüsü örneği. 0'dan 5'e kadar sayıları yazdırır.",
+        "expectedOutput": [
+          "i değeri: 0",
+          "i değeri: 1",
+          "i değeri: 2",
+          "i değeri: 3",
+          "i değeri: 4"
+        ]
+      }
+    }
+  ]
+}

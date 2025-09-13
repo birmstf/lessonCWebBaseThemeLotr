@@ -1,0 +1,231 @@
+{
+  "week": 5,
+  "title": "Hafta 5: Döngüler ve Kontrol Yapıları",
+  "description": "While döngüsü, diğer operatörler, bileşik komutlar, for döngüsü, do-while döngüsü, iç içe döngüler, break ve continue komutları konularını Orta Dünya örnekleri ile öğrenin.",
+  "duration": "90 dakika",
+  "difficulty": "Orta",
+  "objectives": [
+    "While döngüsünü öğrenmek ve kullanmak",
+    "Diğer operatörleri (++, --, +=, -=) kavramak",
+    "Bileşik komut yapılarını anlamak",
+    "For ve do-while döngülerini karşılaştırmak",
+    "İç içe döngü mantığını öğrenmek",
+    "Break ve continue komutlarını kullanmak"
+  ],
+  "codeExamples": [
+    {
+      "title": "Sam'ın Yolculuk Günleri",
+      "code": "#include <stdio.h>\n\nint main() {\n    int gun_sayisi = 1;\n    \n    printf(\"Sam'ın yolculuk günlüğü başlatılıyor...\\n\");\n    while (gun_sayisi <= 5) {\n        printf(\"Gün %d: Frodo ile yola devam ediyoruz\\n\", gun_sayisi);\n        gun_sayisi++; // Bir gün daha geçti\n    }\n    printf(\"Sam: 'Bu hafta bitti Frodo efendim!'\\n\");\n    \n    return 0;\n}",
+      "explanation": "While döngüsü ve increment operatörü kullanımı",
+      "expectedOutput": [
+        "Sam'ın yolculuk günlüğü başlatılıyor...",
+        "Gün 1: Frodo ile yola devam ediyoruz",
+        "Gün 2: Frodo ile yola devam ediyoruz",
+        "Gün 3: Frodo ile yola devam ediyoruz", 
+        "Gün 4: Frodo ile yola devam ediyoruz",
+        "Gün 5: Frodo ile yola devam ediyoruz",
+        "Sam: 'Bu hafta bitti Frodo efendim!'"
+      ]
+    },
+    {
+      "title": "Gimli'nin Güç Operatörleri",
+      "code": "#include <stdio.h>\n\nint main() {\n    int gimli_guc = 80, balta_bonus = 10;\n    \n    printf(\"Gimli'nin başlangıç gücü: %d, Balta bonusu: %d\\n\", gimli_guc, balta_bonus);\n    \n    // Increment ve Decrement\n    printf(\"\\nSavaş sırasında güç değişimleri:\\n\");\n    printf(\"Öfke artışı: %d (sonra güç=%d)\\n\", gimli_guc++, gimli_guc);\n    printf(\"Ani güç patlaması: %d (güç=%d)\\n\", ++balta_bonus, balta_bonus);\n    printf(\"Yorgunluk: %d (sonra güç=%d)\\n\", gimli_guc--, gimli_guc);\n    printf(\"Balta eskimesi: %d (bonus=%d)\\n\", --balta_bonus, balta_bonus);\n    \n    // Bileşik atama operatörleri\n    printf(\"\\nÖzel yetenekler:\\n\");\n    gimli_guc += 15; printf(\"Cüce hiddet +15: %d\\n\", gimli_guc);\n    gimli_guc -= 5;  printf(\"Nefes almak -5: %d\\n\", gimli_guc);\n    gimli_guc *= 2;  printf(\"Berserker modu x2: %d\\n\", gimli_guc);\n    gimli_guc /= 3;  printf(\"Savaş sonrası /3: %d\\n\", gimli_guc);\n    \n    return 0;\n}",
+      "explanation": "Increment, decrement ve bileşik atama operatörleri",
+      "expectedOutput": [
+        "Gimli'nin başlangıç gücü: 80, Balta bonusu: 10",
+        "",
+        "Savaş sırasında güç değişimleri:",
+        "Öfke artışı: 80 (sonra güç=81)",
+        "Ani güç patlaması: 11 (güç=11)",
+        "Yorgunluk: 81 (sonra güç=80)",
+        "Balta eskimesi: 10 (bonus=10)",
+        "",
+        "Özel yetenekler:",
+        "Cüce hiddet +15: 95",
+        "Nefes almak -5: 90",
+        "Berserker modu x2: 180",
+        "Savaş sonrası /3: 60"
+      ]
+    },
+    {
+      "title": "Nazgûl'ların Gece Nöbeti",
+      "code": "#include <stdio.h>\n\nint main() {\n    int nobetci_sayisi = 0;\n    \n    printf(\"Nazgûl gece nöbeti (en az 1 kez kontrol):\\n\");\n    do {\n        printf(\"Nazgûl %d: 'Yüzük kokusunu arıyorum...'\\n\", nobetci_sayisi + 1);\n        nobetci_sayisi++;\n    } while (nobetci_sayisi < 3);\n    \n    printf(\"\\nKarşılaştırma - Elf nöbetçileri:\\n\");\n    int elf_nobetci = 5; // Elveler gündüz uyur\n    while (elf_nobetci < 3) {\n        printf(\"Elf nöbetçi çalışmıyor\\n\");\n        elf_nobetci++;\n    }\n    printf(\"Legolas: 'Gece nöbeti gerekmiyor' (elf_nobetci=%d)\\n\", elf_nobetci);\n    \n    return 0;\n}",
+      "explanation": "Do-while ile while döngüsü arasındaki fark",
+      "expectedOutput": [
+        "Nazgûl gece nöbeti (en az 1 kez kontrol):",
+        "Nazgûl 1: 'Yüzük kokusunu arıyorum...'",
+        "Nazgûl 2: 'Yüzük kokusunu arıyorum...'",
+        "Nazgûl 3: 'Yüzük kokusunu arıyorum...'",
+        "",
+        "Karşılaştırma - Elf nöbetçileri:",
+        "Legolas: 'Gece nöbeti gerekmiyor' (elf_nobetci=5)"
+      ]
+    },
+    {
+      "title": "Moria Maden Haritası",
+      "code": "#include <stdio.h>\n\nint main() {\n    printf(\"Moria maden haritası - Katlar ve odalar:\\n\");\n    \n    for (int kat = 1; kat <= 3; kat++) {\n        printf(\"\\n%d. Kat - Mithril yatakları: \", kat);\n        for (int oda = 1; oda <= 4; oda++) {\n            printf(\"%d \", kat * 10 + oda);\n        }\n    }\n    \n    printf(\"\\n\\nBalrog'un evi (yıldız haritası):\\n\");\n    for (int derinlik = 1; derinlik <= 4; derinlik++) {\n        for (int alev = 1; alev <= derinlik; alev++) {\n            printf(\"🔥 \");\n        }\n        printf(\"\\n\");\n    }\n    \n    return 0;\n}",
+      "explanation": "İç içe for döngüleri ile desen oluşturma",
+      "expectedOutput": [
+        "Moria maden haritası - Katlar ve odalar:",
+        "",
+        "1. Kat - Mithril yatakları: 11 12 13 14 ",
+        "2. Kat - Mithril yatakları: 21 22 23 24 ",
+        "3. Kat - Mithril yatakları: 31 32 33 34 ",
+        "",
+        "Balrog'un evi (yıldız haritası):",
+        "🔥 ",
+        "🔥 🔥 ",
+        "🔥 🔥 🔥 ",
+        "🔥 🔥 🔥 🔥 "
+      ]
+    },
+    {
+      "title": "Aragorn'un Takip Stratejisi",
+      "code": "#include <stdio.h>\n\nint main() {\n    printf(\"Aragorn'un iz takibi (Uruk-hai'ları bul):\\n\");\n    for (int iz = 1; iz <= 10; iz++) {\n        if (iz == 5) {\n            printf(\"İz %d: Uruk-hai kampı bulundu! Takibi durdur.\\n\", iz);\n            break;\n        }\n        printf(\"İz %d: Hobbit ayak izi\\n\", iz);\n    }\n    \n    printf(\"\\nLegolas'ın ok atışı (ork'ları atla, troll'u vur):\\n\");\n    for (int hedef = 1; hedef <= 8; hedef++) {\n        if (hedef % 2 == 0) {\n            printf(\"Hedef %d: Ork - atla\\n\", hedef);\n            continue; // Ork'ları atla\n        }\n        printf(\"Hedef %d: Ok atıldı!\\n\", hedef);\n    }\n    \n    printf(\"\\nGandalf'ın sihir çubuğu (güç birikimi):\\n\");\n    int guc_seviyesi = 0;\n    while (1) { // Sonsuz döngü\n        guc_seviyesi++;\n        printf(\"Güç seviyesi %d \", guc_seviyesi);\n        if (guc_seviyesi >= 3) {\n            printf(\"- 'You shall not pass!' Büyü hazır!\\n\");\n            break;\n        }\n        printf(\"\\n\");\n    }\n    \n    return 0;\n}",
+      "explanation": "Break ve continue komutları ile döngü kontrolü",
+      "expectedOutput": [
+        "Aragorn'un iz takibi (Uruk-hai'ları bul):",
+        "İz 1: Hobbit ayak izi",
+        "İz 2: Hobbit ayak izi",
+        "İz 3: Hobbit ayak izi",
+        "İz 4: Hobbit ayak izi",
+        "İz 5: Uruk-hai kampı bulundu! Takibi durdur.",
+        "",
+        "Legolas'ın ok atışı (ork'ları atla, troll'u vur):",
+        "Hedef 1: Ok atıldı!",
+        "Hedef 2: Ork - atla",
+        "Hedef 3: Ok atıldı!",
+        "Hedef 4: Ork - atla",
+        "Hedef 5: Ok atıldı!",
+        "Hedef 6: Ork - atla",
+        "Hedef 7: Ok atıldı!",
+        "Hedef 8: Ork - atla",
+        "",
+        "Gandalf'ın sihir çubuğu (güç birikimi):",
+        "Güç seviyesi 1 ",
+        "Güç seviyesi 2 ",
+        "Güç seviyesi 3 - 'You shall not pass!' Büyü hazır!"
+      ]
+    },
+    {
+      "title": "Rivendell Konsey Toplantısı",
+      "code": "#include <stdio.h>\n\nint main() {\n    int kardeslik_uye = 0, toplam_guc = 0;\n    \n    printf(\"Rivendell Konseyi - Kardeşlik üye seçimi:\\n\");\n    \n    for (int aday = 1; aday <= 5; aday++) {\n        // Bileşik komut bloğu\n        {\n            int aday_guc = aday * 15 + 10;\n            toplam_guc += aday_guc;\n            kardeslik_uye++;\n            printf(\"Aday %d seçildi, Güç: %d, Toplam güç: %d\\n\", aday, aday_guc, toplam_guc);\n        }\n    }\n    \n    // Tek komut (bileşik değil)\n    if (kardeslik_uye > 0)\n        printf(\"\\nOrtalama güç: %.1f\\n\", (float)toplam_guc / kardeslik_uye);\n    \n    // Bileşik komut\n    if (toplam_guc > 300) {\n        printf(\"Elrond: 'Güçlü bir kardeşlik oluşturduk: %d'\\n\", toplam_guc);\n        printf(\"Elrond: 'Mordor'a karşı şansımız var!'\\n\");\n    }\n    \n    return 0;\n}",
+      "explanation": "Bileşik komut blokları ve tek komut arasındaki fark",
+      "expectedOutput": [
+        "Rivendell Konseyi - Kardeşlik üye seçimi:",
+        "Aday 1 seçildi, Güç: 25, Toplam güç: 25",
+        "Aday 2 seçildi, Güç: 40, Toplam güç: 65",
+        "Aday 3 seçildi, Güç: 55, Toplam güç: 120",
+        "Aday 4 seçildi, Güç: 70, Toplam güç: 190",
+        "Aday 5 seçildi, Güç: 85, Toplam güç: 275",
+        "",
+        "Ortalama güç: 55.0",
+        "Elrond: 'Güçlü bir kardeşlik oluşturduk: 275'",
+        "Elrond: 'Mordor'a karşı şansımız var!'"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "title": "Alıştırma 1: Hobbit Yürüyüşü",
+      "prompt": "Frodo'nun 10 günlük yolculuğunu while ve for döngüsü ile simüle edin. Her gün 1 adım ilerlesin.",
+      "hint": "İki farklı döngü türü ile aynı yolculuğu gösterin",
+      "solution": "#include <stdio.h>\n\nint main() {\n    // While ile\n    printf(\"=== FRODO'NUN YOLCULUĞU (While) ===\\n\");\n    int gun = 1, yol1 = 0;\n    while (gun <= 10) {\n        yol1++;\n        printf(\"Gün %d: %d adım yürüdük\\n\", gun, yol1);\n        gun++;\n    }\n    \n    // For ile\n    printf(\"\\n=== SAM'IN HESABI (For) ===\\n\");\n    int yol2 = 0;\n    for (int g = 1; g <= 10; g++) {\n        yol2++;\n        printf(\"Gün %d: %d adım ilerledik\\n\", g, yol2);\n    }\n    \n    printf(\"\\nSam: 'İkisi de aynı mesafe efendim: %d=%d'\\n\", yol1, yol2);\n    \n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 2: Elf Ok Atışı",
+      "prompt": "Legolas 1'den 20'ye kadar hedef atıyor. Ork'ları (3'ün katları) atla, 15. hedefe gelince dur.",
+      "hint": "% operatörü ile 3'ün katlarını bul, break ile dur",
+      "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"=== LEGOLAS'IN OK ANTREMANI ===\\n\");\n    printf(\"Hedefler (Ork'lar atlanır, 15'te dur):\\n\");\n    \n    for (int hedef = 1; hedef <= 20; hedef++) {\n        if (hedef == 15) {\n            printf(\"Hedef 15: Troll geldi! Antrenman bitti.\\n\");\n            break;\n        }\n        \n        if (hedef % 3 == 0) {\n            printf(\"Hedef %d: Ork - atladım\\n\", hedef);\n            continue;\n        }\n        \n        printf(\"Hedef %d: Vurdum!\\n\", hedef);\n    }\n    \n    printf(\"Legolas: 'Yeterince antrenman yaptım.'\\n\");\n    \n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 3: Moria Katları",
+      "prompt": "Moria'nın 4 katını gösteren ters piramit çizin. Her katta bir öncekinden 1 eksik oda bulunsun.",
+      "hint": "Dış döngü katları, iç döngü odaları kontrol eder",
+      "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"=== MORIA KATLARI (Yukarıdan aşağıya) ===\\n\");\n    \n    for (int kat = 4; kat >= 1; kat--) {\n        printf(\"Kat %d: \", 5 - kat);\n        for (int oda = 1; oda <= kat; oda++) {\n            printf(\"[Oda] \");\n        }\n        printf(\"\\n\");\n    }\n    \n    printf(\"Gimli: 'En altta Balrog var, kaçalım!'\\n\");\n    \n    return 0;\n}"
+    }
+  ],
+  "files": [
+    {
+      "name": "kardeslik_dongu_turleri.c",
+      "content": "#include <stdio.h>\n\nint main() {\n    printf(\"=== KARDEŞLİK DÖNGÜ TÜRLERİ ===\\n\\n\");\n    \n    // While döngüsü - Sam'ın günlük rutin\n    printf(\"1. Sam'ın while döngüsü:\\n\");\n    int gun = 1;\n    while (gun <= 3) {\n        printf(\"  Gün %d: 'Frodo efendime kahvaltı hazırlıyorum'\\n\", gun);\n        gun++;\n    }\n    \n    // For döngüsü - Legolas'ın ok antrenmanı\n    printf(\"\\n2. Legolas'ın for döngüsü:\\n\");\n    for (int ok = 1; ok <= 3; ok++) {\n        printf(\"  Ok %d: 'Hedefi vurdum!'\\n\", ok);\n    }\n    \n    // Do-while döngüsü - Gimli'nin balta çalışması\n    printf(\"\\n3. Gimli'nin do-while döngüsü:\\n\");\n    int vuruş = 1;\n    do {\n        printf(\"  Vuruş %d: 'Baltamı biliyorum!'\\n\", vuruş);\n        vuruş++;\n    } while (vuruş <= 3);\n    \n    printf(\"\\nGandalf: 'Hepiniz çok çalışkansınız!'\\n\");\n    \n    return 0;\n}",
+      "description": "Kardeşlik üyeleri ile döngü türleri"
+    },
+    {
+      "name": "sauron_operatorler.c",
+      "content": "#include <stdio.h>\n\nint main() {\n    int nazgul_gucu = 50;\n    \n    printf(\"=== SAURON'UN GÜÇ YÖNETİMİ ===\\n\");\n    printf(\"Nazgûl başlangıç gücü: %d\\n\\n\", nazgul_gucu);\n    \n    printf(\"Güç manipülasyonları:\\n\");\n    printf(\"Karanlık artışı (++güç): %d\\n\", ++nazgul_gucu);\n    printf(\"Sonraki güç (güç++): %d\\n\", nazgul_gucu++);\n    printf(\"Şimdiki güç: %d\\n\\n\", nazgul_gucu);\n    \n    printf(\"Sauron'un büyü operatörleri:\\n\");\n    nazgul_gucu += 20; printf(\"Yüzük gücü eklendi (+20): %d\\n\", nazgul_gucu);\n    nazgul_gucu -= 10; printf(\"Gandalf direnci (-10): %d\\n\", nazgul_gucu);\n    nazgul_gucu *= 2;  printf(\"Öfke çoğaltması (x2): %d\\n\", nazgul_gucu);\n    nazgul_gucu /= 3;  printf(\"Aragorn saldırısı (/3): %d\\n\", nazgul_gucu);\n    nazgul_gucu %= 10; printf(\"Kalan güç (%%10): %d\\n\", nazgul_gucu);\n    \n    printf(\"\\nSauron: 'Yüzük ile gücüm sonsuz!'\\n\");\n    \n    return 0;\n}",
+      "description": "Sauron teması ile operatör kullanımı"
+    },
+    {
+      "name": "helm_deep_savunma.c",
+      "content": "#include <stdio.h>\n\nint main() {\n    printf(\"=== HELM'S DEEP SAVUNMA STRATEJİSİ ===\\n\\n\");\n    \n    // İç içe döngü - Kale katları ve müdafiler\n    printf(\"Kale savunma pozisyonları:\\n\");\n    for (int kat = 1; kat <= 3; kat++) {\n        printf(\"Kat %d - Müdafiler: \", kat);\n        for (int asker = 1; asker <= 4; asker++) {\n            printf(\"[A%d] \", kat * 10 + asker);\n        }\n        printf(\"\\n\");\n    }\n    \n    printf(\"\\nOk atış pozisyonları:\\n\");\n    for (int sira = 1; sira <= 3; sira++) {\n        for (int okcu = 1; okcu <= sira; okcu++) {\n            printf(\"🏹 \");\n        }\n        printf(\"\\n\");\n    }\n    \n    printf(\"\\nBreak ile acil durum:\\n\");\n    for (int dalga = 1; dalga <= 5; dalga++) {\n        printf(\"Dalga %d: \", dalga);\n        for (int ork = 1; ork <= 6; ork++) {\n            if (ork == 4) {\n                printf(\"Duvar yıkıldı! Geri çekilin! \");\n                break;\n            }\n            printf(\"Ork%d \", ork);\n        }\n        printf(\"\\n\");\n        if (dalga == 3) {\n            printf(\"Aragorn: 'Ana saldırı geldi, konumları terk edin!'\\n\");\n            break;\n        }\n    }\n    \n    return 0;\n}",
+      "description": "Helm's Deep savaşı ile iç içe döngüler"
+    }
+  ],
+  "links": [
+    {
+      "title": "C While Döngüsü",
+      "url": "https://www.programiz.com/c-programming/c-while-do-while-loop",
+      "description": "While ve do-while döngüleri detaylı anlatım"
+    },
+    {
+      "title": "C Operatörleri",
+      "url": "https://en.cppreference.com/w/c/language/operators",
+      "description": "Tüm C operatörleri referansı"
+    },
+    {
+      "title": "Break ve Continue",
+      "url": "https://www.geeksforgeeks.org/break-statement-cc/",
+      "description": "Break ve continue komutları"
+    },
+    {
+      "title": "İç İçe Döngüler",
+      "url": "https://www.tutorialspoint.com/cprogramming/c_nested_loops.htm",
+      "description": "Nested loops örnekleri ve kullanımı"
+    }
+  ],
+  "animations": [
+    {
+      "type": "while-loop",
+      "title": "While Döngüsü Akışı", 
+      "description": "While döngüsünün koşul kontrol mekanizmasını gösterir",
+      "config": {
+        "maxIterations": 5,
+        "showConditionCheck": true,
+        "showVariableChanges": true,
+        "themeLabels": {
+          "condition": "Koşul Kontrolü",
+          "iteration": "Döngü Adımı"
+        }
+      }
+    },
+    {
+      "type": "nested-loops",
+      "title": "İç İçe Döngüler",
+      "description": "Dış ve iç döngülerin nasıl çalıştığını görselleştirir",
+      "config": {
+        "outerLoopMax": 3,
+        "innerLoopMax": 4,
+        "showIterationCount": true,
+        "themeLabels": {
+          "outer": "Dış Döngü (Katlar)",
+          "inner": "İç Döngü (Odalar)"
+        }
+      }
+    },
+    {
+      "type": "break-continue",
+      "title": "Break ve Continue Kontrolü",
+      "description": "Break ve continue komutlarının döngü akışını nasıl değiştirdiğini gösterir",
+      "config": {
+        "showSkippedIterations": true,
+        "showBreakPoint": true,
+        "demonstrateFlow": true,
+        "themeLabels": {
+          "break": "Döngüden Çıkış",
+          "continue": "Adım Atlama"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "week": 2,
+  "title": "Hafta 2: Orta Dünya'da Programlama Temelleri",
+  "description": "Yüzük Kardeşliği ile C dilinin temellerini öğrenin. Gandalf'ın bilgeliğiyle veri tipleri, değişkenler ve kütüphaneleri keşfedin.",
+  "duration": "90 dakika",
+  "difficulty": "Başlangıç",
+  "objectives": [
+    "C dilinin temel kavramlarını Orta Dünya örneğiyle anlamak",
+    "Gandalf'ın kod yazım kurallarını öğrenmek",
+    "Rivendell kütüphanelerini (C libraries) tanımak",
+    "Yüzüklerin güç tiplerini (veri tipleri) kavramak",
+    "Kardeşlik üyelerinin özelliklerini değişkenlerle tanımlamak"
+  ],
+  "codeExamples": [
+    {
+      "title": "İlk Orta Dünya Programı",
+      "code": "#include <stdio.h>\n\n// Yüzük Kardeşliği'nin başlangıcı\nint main() {\n    printf(\"Bir Yüzük hepsine hükmedecek,\\n\");\n    printf(\"Bir Yüzük hepsini bulacak,\\n\");\n    printf(\"Bir Yüzük hepsini bir araya toplayacak\\n\");\n    printf(\"Ve karanlıkta onları bağlayacak.\\n\");\n    return 0; // Yolculuk başarıyla başladı\n}",
+      "explanation": "En basit C programı. stdio.h kütüphanesini dahil eder, main fonksiyonu tanımlar ve Yüzük şiirini yazdırır."
+    },
+    {
+      "title": "Frodo'nun Özellikleri - Değişken Tanımlama",
+      "code": "#include <stdio.h>\n\nint main() {\n    // Frodo'nun özellikleri\n    int frodo_age = 33;              // Hobbit yaşı (tam sayı)\n    float ring_weight = 0.05;        // Yüzüğün ağırlığı kg (ondalıklı)\n    char ring_bearer = 'F';          // F: Frodo (karakter)\n    double mordor_distance = 2863.5; // Shire'dan Mordor'a km\n    \n    printf(\"Yüzük Taşıyıcısı: %c\\n\", ring_bearer);\n    printf(\"Yaşı: %d\\n\", frodo_age);\n    printf(\"Yüzük ağırlığı: %.2f kg\\n\", ring_weight);\n    printf(\"Mordor mesafesi: %.1f km\\n\", mordor_distance);\n    \n    return 0;\n}",
+      "explanation": "Farklı veri tiplerinde değişken tanımlama ve Frodo'nun özelliklerini ekrana yazdırma örneği."
+    },
+    {
+      "title": "Kardeşlik Üyeleri - Veri Tipleri ve Boyutları",
+      "code": "#include <stdio.h>\n#include <limits.h>\n\nint main() {\n    // Kardeşlik üye sayıları\n    char hobbits = 4;        // Frodo, Sam, Merry, Pippin\n    short elves = 1;         // Legolas\n    int dwarves = 1;         // Gimli\n    long humans = 2;         // Aragorn, Boromir\n    \n    printf(\"=== Kardeşlik Veri Tipleri ===\\n\");\n    printf(\"Hobbit sayısı (char): %d - Boyut: %zu byte\\n\", hobbits, sizeof(char));\n    printf(\"Elf sayısı (short): %d - Boyut: %zu byte\\n\", elves, sizeof(short));\n    printf(\"Cüce sayısı (int): %d - Boyut: %zu byte\\n\", dwarves, sizeof(int));\n    printf(\"İnsan sayısı (long): %ld - Boyut: %zu byte\\n\", humans, sizeof(long));\n    \n    printf(\"\\nToplam Kardeşlik: %d üye\\n\", hobbits + elves + dwarves + humans);\n    \n    return 0;\n}",
+      "explanation": "Veri tiplerinin bellekte kapladığı alan ve Kardeşlik üyelerinin sayımı örneği."
+    },
+    {
+      "title": "Güç Yüzükleri - Sabitler ve Değişkenler",
+      "code": "#include <stdio.h>\n#define TOTAL_RINGS 20        // Toplam güç yüzüğü sayısı\n#define ONE_RING_POWER 100    // Tek Yüzük'ün gücü\n\nint main() {\n    // Yüzük dağılımı (sabitler)\n    const int ELF_RINGS = 3;     // Elf yüzükleri\n    const int DWARF_RINGS = 7;   // Cüce yüzükleri  \n    const int HUMAN_RINGS = 9;   // İnsan yüzükleri\n    const int SAURON_RING = 1;   // Tek Yüzük\n    \n    // Değişken güç seviyeleri\n    int gandalf_power = 80;\n    int saruman_power = 75;\n    \n    printf(\"=== Güç Yüzükleri Dağılımı ===\\n\");\n    printf(\"Elflere: %d yüzük\\n\", ELF_RINGS);\n    printf(\"Cücelere: %d yüzük\\n\", DWARF_RINGS);\n    printf(\"İnsanlara: %d yüzük\\n\", HUMAN_RINGS);\n    printf(\"Karanlık Lord'a: %d yüzük (Güç: %d)\\n\", SAURON_RING, ONE_RING_POWER);\n    \n    // Güç değişimi\n    gandalf_power += 20;  // Beyaz büyücü olduktan sonra\n    printf(\"\\nGandalf'ın yeni gücü: %d\\n\", gandalf_power);\n    \n    return 0;\n}",
+      "explanation": "Sabit tanımlama yöntemleri ve Güç Yüzükleri dağılımı ile değişken-sabit farkları."
+    }
+  ],
+  "exercises": [
+    {
+      "title": "Alıştırma 1: Aragorn'un Kimliği",
+      "prompt": "Aragorn'un özelliklerini tutan değişkenler tanımlayın: isim (string), yaş (int), boy (float), kral_mi (char 'E' veya 'H').",
+      "hint": "String için char dizisi kullanın. Örnek: char isim[50] = \"Aragorn\";",
+      "solution": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char isim[50];\n    char gercek_isim[50];\n    int yas = 87;\n    float boy = 1.98;\n    char kral_mi = 'E';  // E: Evet, H: Hayır\n    \n    strcpy(isim, \"Strider\");\n    strcpy(gercek_isim, \"Aragorn II Elessar\");\n    \n    printf(\"=== Gondor'un Geleceği Kralı ===\\n\");\n    printf(\"Takma ad: %s\\n\", isim);\n    printf(\"Gerçek isim: %s\\n\", gercek_isim);\n    printf(\"Yaş: %d (Dúnedain)\\n\", yas);\n    printf(\"Boy: %.2f metre\\n\", boy);\n    printf(\"Kral mı: %c\\n\", kral_mi);\n    \n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 2: Lembas Ekmeği Paylaşımı",
+      "prompt": "9 adet lembas ekmeğini 3 hobbite bölün. Tam bölme ve ondalıklı bölme sonuçlarını gösterin. Tip dönüşümü kullanın.",
+      "hint": "Bölme işleminden önce (float) ile tip dönüşümü yapın.",
+      "solution": "#include <stdio.h>\n\nint main() {\n    int lembas_total = 9;\n    int hobbit_count = 3;\n    float fair_share;\n    \n    printf(\"=== Elrond'un Lembas Paylaşımı ===\\n\");\n    printf(\"Toplam lembas: %d\\n\", lembas_total);\n    printf(\"Hobbit sayısı: %d\\n\\n\", hobbit_count);\n    \n    // Tip dönüşümü olmadan (tam sayı bölme)\n    int whole_share = lembas_total / hobbit_count;\n    printf(\"Tam sayı bölme: %d lembas/hobbit\\n\", whole_share);\n    \n    // Tip dönüşümü ile (ondalıklı bölme)\n    fair_share = (float)lembas_total / hobbit_count;\n    printf(\"Adil paylaşım: %.2f lembas/hobbit\\n\", fair_share);\n    \n    // Merry ve Pippin'in ekstra isteği\n    int extra_request = 2;\n    fair_share = (float)(lembas_total + extra_request) / hobbit_count;\n    printf(\"Ekstra istekle: %.2f lembas/hobbit\\n\", fair_share);\n    \n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 3: Gandalf'ın Büyü Gücü",
+      "prompt": "math.h kütüphanesini kullanarak Gandalf'ın güç seviyesinin karesini, karekökünü ve Saruman'a karşı üstünlüğünü (üs alma) hesaplayın.",
+      "hint": "pow(), sqrt() fonksiyonlarını kullanın. Derleme yaparken -lm bayrağını ekleyin.",
+      "solution": "#include <stdio.h>\n#include <math.h>\n\nint main() {\n    double gandalf_base_power = 16.0;\n    double saruman_multiplier = 2.0;\n    \n    printf(\"=== Istari Büyücü Güç Analizi ===\\n\\n\");\n    printf(\"Gandalf'ın temel gücü: %.2f\\n\", gandalf_base_power);\n    \n    // Güç hesaplamaları\n    double power_squared = pow(gandalf_base_power, 2);\n    double power_root = sqrt(gandalf_base_power);\n    double white_wizard_power = pow(gandalf_base_power, 3);\n    \n    printf(\"Gri Gandalf (kare güç): %.2f\\n\", power_squared);\n    printf(\"Güç kökü (bilgelik): %.2f\\n\", power_root);\n    printf(\"Beyaz Gandalf (küp güç): %.2f\\n\", white_wizard_power);\n    \n    // Saruman karşılaştırması\n    double saruman_power = gandalf_base_power * saruman_multiplier;\n    printf(\"\\nSaruman'ın gücü: %.2f\\n\", saruman_power);\n    \n    if (white_wizard_power > saruman_power) {\n        printf(\"Gandalf the White, Saruman'dan %.2f kat güçlü!\\n\", \n               white_wizard_power / saruman_power);\n    }\n    \n    return 0;\n}"
+    }
+  ],
+  "files": [
+    {
+      "name": "shire_baslangic.c",
+      "content": "#include <stdio.h>\n\n// Shire'dan başlayan yolculuk\n/* Bilbo'nun 111. doğum günü partisinden sonra\n   Frodo'nun macerası başlıyor */\n\nint main() {\n    // Yolculuk Shire'dan başlar\n    printf(\"=== YOLCULUK BAŞLIYOR ===\\n\");\n    printf(\"Yer: Shire, Bag End\\n\");\n    printf(\"Görev: Yüzüğü Rivendell'e götür\\n\");\n    printf(\"\\nGandalf: 'Acele et Frodo!'\\n\");\n    \n    // Frodo hazırlanıyor\n    printf(\"Frodo yanına Sting'i alıyor...\\n\");\n    printf(\"Sam bahçe aletlerini topluyor...\\n\");\n    \n    // Yolculuk başarıyla başladı\n    return 0;\n}",
+      "description": "Temel program yapısı ve yorum satırları - Shire'dan başlangıç"
+    },
+    {
+      "name": "kardeslik_veri_tipleri.c",
+      "content": "#include <stdio.h>\n#include <stdbool.h>\n\nint main() {\n    // Kardeşlik üyelerinin özellikleri\n    \n    // Hobbitler\n    char frodo_initial = 'F';      // 1 byte\n    short sam_loyalty = 100;       // 2 byte - sadakat puanı\n    \n    // İnsanlar  \n    int aragorn_age = 87;          // 4 byte - Dúnedain yaşı\n    long gondor_population = 3000000L; // 8 byte\n    \n    // Diğer ırklar\n    float legolas_accuracy = 99.9f;    // 4 byte - isabet yüzdesi\n    double gimli_axe_weight = 4.5678;  // 8 byte - kg\n    \n    // Gandalf\n    bool is_wizard = true;         // 1 byte (C99)\n    \n    printf(\"=== Kardeşlik Veri Analizi ===\\n\");\n    printf(\"Frodo kodu: %c\\n\", frodo_initial);\n    printf(\"Sam sadakati: %d/100\\n\", sam_loyalty);\n    printf(\"Aragorn yaşı: %d yıl\\n\", aragorn_age);\n    printf(\"Gondor nüfusu: %ld\\n\", gondor_population);\n    printf(\"Legolas isabeti: %%%.1f\\n\", legolas_accuracy);\n    printf(\"Gimli'nin baltası: %.2f kg\\n\", gimli_axe_weight);\n    printf(\"Büyücü mü: %s\\n\", is_wizard ? \"Evet\" : \"Hayır\");\n    \n    return 0;\n}",
+      "description": "C dilindeki tüm temel veri tipleri - Kardeşlik üyeleri örneği"
+    },
+    {
+      "name": "rivendell_kutuphaneleri.c",
+      "content": "#include <stdio.h>   // Elrond'un giriş/çıkış büyüleri\n#include <stdlib.h>  // Genel Rivendell fonksiyonları\n#include <string.h>  // Elf dili string işlemleri\n#include <math.h>    // Gandalf'ın matematik büyüleri\n#include <time.h>    // Orta Dünya zaman hesaplamaları\n#include <ctype.h>   // Tengwar alfabesi dönüşümleri\n\nint main() {\n    printf(\"=== Rivendell Kütüphane Sistemi ===\\n\\n\");\n    \n    // String işlemi - Elf selamlaması\n    char elf_greeting[100] = \"Mae govannen\";\n    strcat(elf_greeting, \", mellon!\");  // 'Hoş geldin, dostum!'\n    printf(\"Legolas: %s (Uzunluk: %zu)\\n\", elf_greeting, strlen(elf_greeting));\n    \n    // Matematik işlemi - Palantír mesafe hesabı\n    double orthanc_distance = 400.0;\n    double minas_tirith_distance = sqrt(orthanc_distance * orthanc_distance + 300*300);\n    printf(\"\\nPalantír mesafesi: %.2f km\\n\", minas_tirith_distance);\n    \n    // Karakter işlemi - Gandalf'ın gizli mesajı\n    char secret = 's';\n    char revealed = toupper(secret);  // Büyük harfe çevir\n    printf(\"\\nGizli harf: '%c' -> Açık harf: '%c' (Speak friend!)\\n\", secret, revealed);\n    \n    // Zaman işlemi\n    printf(\"\\nElrond: 'Üç çağ gördüm, dördüncüsü yaklaşıyor...'\\n\");\n    \n    return 0;\n}",
+      "description": "Farklı kütüphanelerin kullanım örnekleri - Rivendell teması"
+    }
+  ],
+  "links": [
+    {
+      "title": "C Veri Tipleri - cppreference",
+      "url": "https://en.cppreference.com/w/c/language/type",
+      "description": "C dilindeki tüm veri tipleri detaylı dokümantasyonu"
+    },
+    {
+      "title": "C Standart Kütüphanesi",
+      "url": "https://en.cppreference.com/w/c/header",
+      "description": "Tüm C standart kütüphane başlık dosyaları"
+    },
+    {
+      "title": "C Yazım Kuralları",
+      "url": "https://www.gnu.org/prep/standards/standards.html#Writing-C",
+      "description": "GNU C yazım standartları ve en iyi uygulamalar"
+    },
+    {
+      "title": "C Tutorial - Programiz",
+      "url": "https://www.programiz.com/c-programming",
+      "description": "Başlangıç seviyesi C programlama dersleri"
+    }
+  ],
+  "animations": [
+    {
+      "type": "memory-layout",
+      "title": "Yüzük Kardeşliği Bellek Haritası",
+      "description": "Kardeşlik üyelerinin özelliklerinin bellekte nasıl saklandığını görselleştirir",
+      "config": {
+        "showVariables": ["frodo_age", "ring_weight", "ring_bearer", "mordor_distance"],
+        "showAddresses": true,
+        "showBytes": true,
+        "endianness": "little",
+        "themeLabels": {
+          "int": "Hobbit Yaşı",
+          "float": "Yüzük Ağırlığı",
+          "char": "Taşıyıcı Kodu",
+          "double": "Yolculuk Mesafesi"
+        }
+      }
+    },
+    {
+      "type": "compilation-process",
+      "title": "Gandalf'ın Derleme Büyüsü",
+      "description": "Elf dilinden makine diline dönüşüm aşamalarını gösterir",
+      "config": {
+        "stages": ["preprocessing", "compilation", "assembly", "linking"],
+        "showCommands": true,
+        "showIntermediateFiles": true,
+        "stageLabels": {
+          "preprocessing": "Elrond'un Hazırlığı",
+          "compilation": "Gandalf'ın Çevirisi",
+          "assembly": "Gimli'nin Montajı",
+          "linking": "Aragorn'un Birleştirmesi"
+        }
+      }
+    },
+    {
+      "type": "type-conversion",
+      "title": "Güç Yüzüklerinin Dönüşümü",
+      "description": "Farklı güç tiplerinin birbirine dönüşümünü adım adım gösterir",
+      "config": {
+        "examples": [
+          {"from": "int", "to": "float", "context": "Hobbit gücü -> Elf gücü"},
+          {"from": "char", "to": "int", "context": "Yüzük kodu -> Güç seviyesi"},
+          {"from": "double", "to": "int", "context": "Büyü gücü -> Savaş gücü"}
+        ],
+        "showDataLoss": true,
+        "showWarnings": true,
+        "themeContext": "ring-power"
+      }
+    }
+  ]
+}

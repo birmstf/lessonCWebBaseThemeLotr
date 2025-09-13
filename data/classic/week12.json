@@ -1,0 +1,14 @@
+{
+  "week": 12,
+  "title": "Hafta 12: İleri Konular",
+  "description": "Dinamik bellek, önişlemci, depolama tipleri, komut satırı ve fonksiyon göstergeleri.",
+  "duration": "150 dakika",
+  "difficulty": "Zor",
+  "objectives": [
+    "Dinamik bellek ayırma",
+    "Önişlemci komutları",
+    "Değişken depolama tipleri",
+    "Komut satırı parametreleri",
+    "Fonksiyon gösteren göstergeler"
+  ]
+}

@@ -1,0 +1,442 @@
+{
+  "week": 7,
+  "title": "Hafta 7: Göstergeler (Pointers) ve Bellek Yönetimi",
+  "description": "Gösterge tanımı, gösterge operatörleri (&, *), gösterge okuma-yazma işlemleri ve fonksiyon parametresi olarak gösterge kullanımını öğrenin.",
+  "duration": "120 dakika",
+  "difficulty": "İleri",
+  "objectives": [
+    "Gösterge kavramını ve bellek adreslerini anlamak",
+    "Gösterge tanımlama ve başlatma işlemlerini öğrenmek",
+    "& (adres) ve * (değer) operatörlerini kullanmak",
+    "Göstergelerle veri okuma ve yazma işlemleri yapmak",
+    "Fonksiyonlarda gösterge parametrelerini kullanmak",
+    "Göstergelerle değer değiştirme (call by reference) işlemini kavramak"
+  ],
+  "codeExamples": [
+    {
+      "title": "Temel Gösterge Tanımı ve Kullanımı",
+      "code": "#include <stdio.h>\n\nint main() {\n    int sayi = 42;\n    int *ptr;  // Gösterge tanımı\n    \n    ptr = &sayi;  // sayi'nin adresini ptr'ye ata\n    \n    printf(\"=== TEMEL GÖSTERGE İŞLEMLERİ ===\\n\");\n    printf(\"sayi değişkeninin değeri: %d\\n\", sayi);\n    printf(\"sayi değişkeninin adresi: %p\\n\", &sayi);\n    printf(\"ptr göstergesinin değeri (adres): %p\\n\", ptr);\n    printf(\"ptr göstergesinin gösterdiği değer: %d\\n\", *ptr);\n    \n    // Gösterge ile değer değiştirme\n    *ptr = 100;\n    printf(\"\\nGösterge ile değer değiştirildikten sonra:\\n\");\n    printf(\"sayi değişkeninin yeni değeri: %d\\n\", sayi);\n    \n    return 0;\n}",
+      "explanation": "Gösterge tanımı, adres alma (&) ve değer alma (*) operatörleri",
+      "expectedOutput": [
+        "=== TEMEL GÖSTERGE İŞLEMLERİ ===",
+        "sayi değişkeninin değeri: 42",
+        "sayi değişkeninin adresi: 0x7fff5fbff6ac",
+        "ptr göstergesinin değeri (adres): 0x7fff5fbff6ac",
+        "ptr göstergesinin gösterdiği değer: 42",
+        "",
+        "Gösterge ile değer değiştirildikten sonra:",
+        "sayi değişkeninin yeni değeri: 100"
+      ]
+    },
+    {
+      "title": "Çoklu Gösterge Kullanımı",
+      "code": "#include <stdio.h>\n\nint main() {\n    int a = 10, b = 20, c = 30;\n    int *ptr1, *ptr2, *ptr3;\n    \n    // Göstergeleri farklı değişkenlere yönlendir\n    ptr1 = &a;\n    ptr2 = &b;\n    ptr3 = &c;\n    \n    printf(\"=== ÇOKLU GÖSTERGE YÖNETİMİ ===\\n\");\n    printf(\"Başlangıç değerleri: a=%d, b=%d, c=%d\\n\", a, b, c);\n    printf(\"Göstergeler: *ptr1=%d, *ptr2=%d, *ptr3=%d\\n\", *ptr1, *ptr2, *ptr3);\n    \n    // Göstergeler arası değer transferi\n    *ptr1 = *ptr2 + *ptr3;  // a = b + c\n    *ptr2 = *ptr1 - *ptr3;  // b = a - c\n    \n    printf(\"\\nİşlemler sonrası:\\n\");\n    printf(\"Yeni değerler: a=%d, b=%d, c=%d\\n\", a, b, c);\n    \n    // Gösterge yönlendirmesini değiştir\n    ptr1 = ptr2;  // ptr1 artık b'yi gösteriyor\n    *ptr1 = 99;\n    \n    printf(\"ptr1'i ptr2'ye yönlendirdikten sonra:\\n\");\n    printf(\"Son değerler: a=%d, b=%d, c=%d\\n\", a, b, c);\n    \n    return 0;\n}",
+      "explanation": "Birden fazla gösterge ile farklı değişkenleri yönetme",
+      "expectedOutput": [
+        "=== ÇOKLU GÖSTERGE YÖNETİMİ ===",
+        "Başlangıç değerleri: a=10, b=20, c=30",
+        "Göstergeler: *ptr1=10, *ptr2=20, *ptr3=30",
+        "",
+        "İşlemler sonrası:",
+        "Yeni değerler: a=50, b=20, c=30",
+        "ptr1'i ptr2'ye yönlendirdikten sonra:",
+        "Son değerler: a=50, b=99, c=30"
+      ]
+    },
+    {
+      "title": "Gösterge ile Değer Değiştiren Fonksiyon",
+      "code": "#include <stdio.h>\n\nvoid deger_degistir(int *ptr) {\n    printf(\"Fonksiyon içinde gelen değer: %d\\n\", *ptr);\n    *ptr = *ptr * 2;  // Değeri iki katına çıkar\n    printf(\"Fonksiyon içinde yeni değer: %d\\n\", *ptr);\n}\n\nvoid iki_deger_degistir(int *a_ptr, int *b_ptr) {\n    int temp = *a_ptr;\n    *a_ptr = *b_ptr;\n    *b_ptr = temp;\n    printf(\"Fonksiyon içinde değerler değiştirildi\\n\");\n}\n\nint main() {\n    int sayi1 = 15, sayi2 = 25;\n    \n    printf(\"=== GÖSTERGE PARAMETRELİ FONKSİYONLAR ===\\n\");\n    printf(\"Başlangıç: sayi1=%d, sayi2=%d\\n\", sayi1, sayi2);\n    \n    // Tek değer değiştirme\n    printf(\"\\nsayi1'i iki katına çıkarıyoruz:\\n\");\n    deger_degistir(&sayi1);\n    printf(\"Ana programda sayi1'in yeni değeri: %d\\n\", sayi1);\n    \n    // İki değeri yer değiştirme\n    printf(\"\\nsayi1 ve sayi2'yi yer değiştiriyoruz:\\n\");\n    iki_deger_degistir(&sayi1, &sayi2);\n    printf(\"Ana programda son değerler: sayi1=%d, sayi2=%d\\n\", sayi1, sayi2);\n    \n    return 0;\n}",
+      "explanation": "Fonksiyonlarda gösterge parametreleri ile call by reference",
+      "expectedOutput": [
+        "=== GÖSTERGE PARAMETRELİ FONKSİYONLAR ===",
+        "Başlangıç: sayi1=15, sayi2=25",
+        "",
+        "sayi1'i iki katına çıkarıyoruz:",
+        "Fonksiyon içinde gelen değer: 15",
+        "Fonksiyon içinde yeni değer: 30",
+        "Ana programda sayi1'in yeni değeri: 30",
+        "",
+        "sayi1 ve sayi2'yi yer değiştiriyoruz:",
+        "Fonksiyon içinde değerler değiştirildi",
+        "Ana programda son değerler: sayi1=25, sayi2=30"
+      ]
+    },
+    {
+      "title": "Gösterge Dizisi ve Çoklu Adres Yönetimi",
+      "code": "#include <stdio.h>\n\nvoid dizi_yazdir(int *arr_ptr, int boyut) {\n    printf(\"Dizi elemanları: \");\n    for(int i = 0; i < boyut; i++) {\n        printf(\"%d \", *(arr_ptr + i));\n    }\n    printf(\"\\n\");\n}\n\nvoid dizi_ikiye_katla(int *arr_ptr, int boyut) {\n    for(int i = 0; i < boyut; i++) {\n        *(arr_ptr + i) *= 2;\n    }\n}\n\nint main() {\n    int sayilar[5] = {1, 2, 3, 4, 5};\n    int *dizi_ptr = sayilar;  // Dizinin başlangıç adresi\n    \n    printf(\"=== GÖSTERGE İLE DİZİ İŞLEMLERİ ===\\n\");\n    printf(\"Orijinal dizi:\\n\");\n    dizi_yazdir(dizi_ptr, 5);\n    \n    printf(\"\\nDizi adres bilgileri:\\n\");\n    for(int i = 0; i < 5; i++) {\n        printf(\"sayilar[%d]: değer=%d, adres=%p\\n\", \n               i, sayilar[i], &sayilar[i]);\n    }\n    \n    printf(\"\\nGösterge ile aynı bilgiler:\\n\");\n    for(int i = 0; i < 5; i++) {\n        printf(\"*(dizi_ptr+%d): değer=%d, adres=%p\\n\", \n               i, *(dizi_ptr + i), (dizi_ptr + i));\n    }\n    \n    printf(\"\\nDiziyi ikiye katlıyoruz:\\n\");\n    dizi_ikiye_katla(dizi_ptr, 5);\n    dizi_yazdir(dizi_ptr, 5);\n    \n    return 0;\n}",
+      "explanation": "Dizilerle gösterge kullanımı ve adres aritmetiği",
+      "expectedOutput": [
+        "=== GÖSTERGE İLE DİZİ İŞLEMLERİ ===",
+        "Orijinal dizi:",
+        "Dizi elemanları: 1 2 3 4 5",
+        "",
+        "Dizi adres bilgileri:",
+        "sayilar[0]: değer=1, adres=0x7fff5fbff6a0",
+        "sayilar[1]: değer=2, adres=0x7fff5fbff6a4",
+        "sayilar[2]: değer=3, adres=0x7fff5fbff6a8",
+        "sayilar[3]: değer=4, adres=0x7fff5fbff6ac",
+        "sayilar[4]: değer=5, adres=0x7fff5fbff6b0",
+        "",
+        "Gösterge ile aynı bilgiler:",
+        "*(dizi_ptr+0): değer=1, adres=0x7fff5fbff6a0",
+        "*(dizi_ptr+1): değer=2, adres=0x7fff5fbff6a4",
+        "*(dizi_ptr+2): değer=3, adres=0x7fff5fbff6a8",
+        "*(dizi_ptr+3): değer=4, adres=0x7fff5fbff6ac",
+        "*(dizi_ptr+4): değer=5, adres=0x7fff5fbff6b0",
+        "",
+        "Diziyi ikiye katlıyoruz:",
+        "Dizi elemanları: 2 4 6 8 10"
+      ]
+    },
+    {
+      "title": "Hesap Makinesi - Göstergeli Versiyon",
+      "code": "#include <stdio.h>\n\nvoid toplama(float *a, float *b, float *sonuc) {\n    *sonuc = *a + *b;\n}\n\nvoid cikarma(float *a, float *b, float *sonuc) {\n    *sonuc = *a - *b;\n}\n\nvoid carpma(float *a, float *b, float *sonuc) {\n    *sonuc = *a * *b;\n}\n\nvoid bolme(float *a, float *b, float *sonuc) {\n    if(*b != 0) {\n        *sonuc = *a / *b;\n    } else {\n        printf(\"Hata: Sıfıra bölme!\\n\");\n        *sonuc = 0;\n    }\n}\n\nvoid sonuc_goster(char islem, float *a, float *b, float *sonuc) {\n    printf(\"%.2f %c %.2f = %.2f\\n\", *a, islem, *b, *sonuc);\n}\n\nint main() {\n    float sayi1, sayi2, hasil;\n    char operator;\n    \n    printf(\"=== GÖSTERGE HESAP MAKİNESİ ===\\n\");\n    printf(\"İki sayı ve işlem girin (örn: 10 + 5): \");\n    scanf(\"%f %c %f\", &sayi1, &operator, &sayi2);\n    \n    switch(operator) {\n        case '+':\n            toplama(&sayi1, &sayi2, &hasil);\n            break;\n        case '-':\n            cikarma(&sayi1, &sayi2, &hasil);\n            break;\n        case '*':\n            carpma(&sayi1, &sayi2, &hasil);\n            break;\n        case '/':\n            bolme(&sayi1, &sayi2, &hasil);\n            break;\n        default:\n            printf(\"Geçersiz işlem!\\n\");\n            return 1;\n    }\n    \n    sonuc_goster(operator, &sayi1, &sayi2, &hasil);\n    \n    printf(\"\\nBellek adresleri:\\n\");\n    printf(\"sayi1 adresi: %p\\n\", &sayi1);\n    printf(\"sayi2 adresi: %p\\n\", &sayi2);\n    printf(\"sonuç adresi: %p\\n\", &hasil);\n    \n    return 0;\n}",
+      "explanation": "Kapsamlı gösterge kullanımıyla hesap makinesi uygulaması",
+      "expectedOutput": [
+        "=== GÖSTERGE HESAP MAKİNESİ ===",
+        "İki sayı ve işlem girin (örn: 10 + 5): 15.5 * 2.5",
+        "15.50 * 2.50 = 38.75",
+        "",
+        "Bellek adresleri:",
+        "sayi1 adresi: 0x7fff5fbff6ac",
+        "sayi2 adresi: 0x7fff5fbff6a8",
+        "sonuç adresi: 0x7fff5fbff6a4"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "title": "Alıştırma 1: Temel Gösterge İşlemleri",
+      "description": "İki sayı için gösterge tanımlayın, değerlerini değiştirin ve sonuçları görüntüleyin.",
+      "difficulty": "Kolay",
+      "hints": [
+        "int *ptr1, *ptr2; şeklinde iki gösterge tanımlayın",
+        "Göstergeleri değişkenlerin adreslerine yönlendirin",
+        "*ptr notasyonu ile değerleri değiştirin"
+      ],
+      "starterCode": "#include <stdio.h>\n\nint main() {\n    int x = 100, y = 200;\n    // Göstergelerinizi buraya tanımlayın\n    \n    // Başlangıç değerlerini yazdırın\n    \n    // Göstergeler ile değerleri değiştirin\n    \n    // Son değerleri yazdırın\n    \n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 2: Değer Değiştiren Fonksiyon",
+      "description": "İki sayının yerini değiştiren (swap) fonksiyon yazın.",
+      "difficulty": "Orta",
+      "hints": [
+        "void swap(int *a, int *b) şeklinde fonksiyon tanımlayın",
+        "Geçici değişken kullanarak değer değişimi yapın",
+        "Fonksiyonu &değişken şeklinde çağırın"
+      ],
+      "starterCode": "#include <stdio.h>\n\nvoid swap(int *a, int *b) {\n    // Değer değiştirme kodunu yazın\n}\n\nint main() {\n    int sayi1 = 50, sayi2 = 75;\n    \n    printf(\"Önce: sayi1=%d, sayi2=%d\\n\", sayi1, sayi2);\n    // Swap fonksiyonunu çağırın\n    printf(\"Sonra: sayi1=%d, sayi2=%d\\n\", sayi1, sayi2);\n    \n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 3: Dizi İşlemleri",
+      "description": "Gösterge kullanarak dizi elemanlarının ortalamasını hesaplayan fonksiyon yazın.",
+      "difficulty": "Orta-İleri",
+      "hints": [
+        "float ortalama_hesapla(int *dizi, int boyut) fonksiyonu yazın",
+        "Gösterge aritmetiği kullanarak dizi elemanlarını gezin",
+        "*(dizi + i) notasyonu ile elemanlara erişin"
+      ],
+      "starterCode": "#include <stdio.h>\n\nfloat ortalama_hesapla(int *dizi, int boyut) {\n    // Ortalama hesaplama kodunu yazın\n}\n\nint main() {\n    int sayilar[6] = {10, 20, 30, 40, 50, 60};\n    \n    float ort = ortalama_hesapla(sayilar, 6);\n    printf(\"Dizi ortalaması: %.2f\\n\", ort);\n    \n    return 0;\n}"
+    }
+  ],
+  "practiceProblems": [
+    {
+      "title": "Problem 1: Öğrenci Not Sistemi",
+      "description": "Göstergeler kullanarak öğrenci notlarını yöneten sistem yazın.",
+      "difficulty": "Orta-İleri",
+      "requirements": [
+        "Öğrenci notlarını gösterge ile okuyan fonksiyon",
+        "Notları güncelleyen göstergeli fonksiyon",
+        "Ortalama hesaplayan fonksiyon",
+        "En yüksek/en düşük not bulan fonksiyonlar"
+      ],
+      "expectedBehavior": "Program öğrenci notlarını göstergeler ile yönetmeli ve çeşitli istatistikler vermelidir."
+    },
+    {
+      "title": "Problem 2: Matris İşlemleri",
+      "description": "2D dizi için gösterge tabanlı matris işlemleri yapan program yazın.",
+      "difficulty": "İleri",
+      "requirements": [
+        "Matris elemanlarını gösterge ile okuma",
+        "Matris toplama/çıkarma fonksiyonları",
+        "Matris transpoz işlemi",
+        "Bellek adreslerini gösteren debug fonksiyonu"
+      ],
+      "expectedBehavior": "Matris işlemlerini göstergeler ile gerçekleştirmeli ve bellek yönetimini göstermelidir."
+    }
+  ],
+  "homework": {
+    "title": "Ödev: Banka Hesap Yönetim Sistemi",
+    "description": "Göstergeler kullanarak banka hesaplarını yöneten kapsamlı sistem gelişirin.",
+    "requirements": [
+      "Hesap bakiyelerini gösterge ile yöneten fonksiyonlar yazın",
+      "Para yatırma/çekme işlemleri için göstergeli fonksiyonlar",
+      "Hesap bilgilerini güncelleyen fonksiyonlar",
+      "İşlem geçmişini takip eden sistem",
+      "Gösterge aritmetiği ile birden fazla hesabı yönetme"
+    ],
+    "deliverables": [
+      "banka_sistem.c dosyası",
+      "Program çıktısının ekran görüntüsü",
+      "Her fonksiyonun gösterge kullanımını açıklayan yorum satırları",
+      "Bellek adreslerini gösteren debug çıktıları"
+    ],
+    "dueDate": "2 hafta sonra",
+    "gradingCriteria": [
+      "Gösterge tanımı ve kullanımı (30%)",
+      "Fonksiyon parametrelerinde gösterge kullanımı (25%)",
+      "Bellek yönetimi ve adres işlemleri (20%)",
+      "Kod organizasyonu ve güvenlik (15%)",
+      "Program çalışması ve çıktı (10%)"
+    ]
+  },
+  "keyTerms": [
+    {
+      "term": "Gösterge (Pointer)",
+      "definition": "Başka bir değişkenin bellek adresini saklayan özel değişken türü"
+    },
+    {
+      "term": "Adres Operatörü (&)",
+      "definition": "Bir değişkenin bellek adresini almak için kullanılan operatör"
+    },
+    {
+      "term": "Değer Operatörü (*)",
+      "definition": "Göstergenin işaret ettiği adresdeki değeri almak için kullanılan operatör"
+    },
+    {
+      "term": "Call by Reference",
+      "definition": "Fonksiyona değişkenin kendisi yerine adresini gönderme yöntemi"
+    },
+    {
+      "term": "Gösterge Aritmetiği",
+      "definition": "Gösterge üzerinde toplama/çıkarma işlemleri yaparak farklı adreslere erişim"
+    },
+    {
+      "term": "NULL Gösterge",
+      "definition": "Hiçbir geçerli adresi göstermeyen özel gösterge değeri"
+    },
+    {
+      "term": "Bellek Adresi",
+      "definition": "Bilgisayar belleğinde bir konumu gösteren sayısal değer"
+    },
+    {
+      "term": "Dereference",
+      "definition": "Göstergenin işaret ettiği adresdeki değere erişme işlemi"
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Göstergeyi başlatmadan kullanmak",
+      "solution": "Göstergeyi kullanmadan önce mutlaka geçerli bir adrese yönlendirin"
+    },
+    {
+      "mistake": "& ve * operatörlerini karıştırmak",
+      "solution": "& adres alır, * değer alır - bu farkı net öğrenin"
+    },
+    {
+      "mistake": "Gösterge tanımında * ile değer alma * 'ı karıştırmak",
+      "solution": "int *ptr; tanımlama, *ptr = 5; değer atama işlemidir"
+    },
+    {
+      "mistake": "NULL göstergeyi dereference etmek",
+      "solution": "Göstergeyi kullanmadan önce NULL olup olmadığını kontrol edin"
+    },
+    {
+      "mistake": "Yerel değişkenin adresini fonksiyondan döndürmek",
+      "solution": "Yerel değişkenlerin adresleri fonksiyon bitince geçersiz olur"
+    }
+  ],
+  "tips": [
+    "Gösterge tanımlarken int *ptr veya int* ptr her ikisi de doğrudur",
+    "Gösterge adreslerini %p formatı ile yazdırın",
+    "Karmaşık gösterge işlemlerini adım adım parçalayın",
+    "Debug için gösterge adreslerini ve değerlerini yazdırın",
+    "Gösterge kullanımında güvenlik için NULL kontrolü yapmayı unutmayın",
+    "Dizi adı aslında o dizinin ilk elemanının adresidir",
+    "Gösterge aritmetiğinde +1 bir sonraki elemanı gösterir",
+    "Fonksiyonlarda gösterge kullanırken & ile adres gönderin"
+  ],
+  "resources": [
+    {
+      "type": "video",
+      "title": "C Göstergelerine Giriş",
+      "url": "https://example.com/c-pointers-intro",
+      "duration": "25 dakika"
+    },
+    {
+      "type": "article",
+      "title": "Bellek Yönetimi ve Göstergeler",
+      "url": "https://example.com/memory-pointers",
+      "readingTime": "15 dakika"
+    },
+    {
+      "type": "interactive",
+      "title": "Gösterge Simülatörü",
+      "url": "https://example.com/pointer-simulator",
+      "description": "Görsel gösterge ve bellek simülasyonu"
+    },
+    {
+      "type": "reference",
+      "title": "C Gösterge Referans Rehberi",
+      "url": "https://example.com/c-pointer-reference",
+      "description": "Tüm gösterge operasyonları ve örnekleri"
+    }
+  ],
+  "assessment": {
+    "quiz": {
+      "questions": [
+        {
+          "id": 1,
+          "question": "int x = 5; int *ptr = &x; ifadelerinden sonra *ptr'nin değeri nedir?",
+          "type": "multiple_choice",
+          "options": [
+            "x değişkeninin adresi",
+            "5",
+            "ptr değişkeninin adresi",
+            "Tanımsız"
+          ],
+          "correct": 1,
+          "explanation": "*ptr, ptr göstergesinin işaret ettiği adresdeki değeri verir, yani x'in değeri olan 5'i döndürür."
+        },
+        {
+          "id": 2,
+          "question": "void fonksiyon(int *a) { *a = 10; } çağrısı ana programdaki değişkeni değiştirir mi?",
+          "type": "multiple_choice",
+          "options": [
+            "Hayır, sadece kopyasını değiştirir",
+            "Evet, orijinal değişkeni değiştirir",
+            "Derleyiciye bağlıdır",
+            "Hata verir"
+          ],
+          "correct": 1,
+          "explanation": "Gösterge parametresi ile call by reference yapıldığı için orijinal değişken değişir."
+        },
+        {
+          "id": 3,
+          "question": "int arr[5]; ifadesinde arr ile &arr[0] arasındaki ilişki nedir?",
+          "type": "multiple_choice",
+          "options": [
+            "Tamamen farklıdırlar",
+            "arr, &arr[0] ile aynı adresi gösterir",
+            "arr daha büyük bir adrestir",
+            "Hiçbir ilişki yoktur"
+          ],
+          "correct": 1,
+          "explanation": "Dizi adı arr, dizinin ilk elemanının adresi olan &arr[0] ile aynıdır."
+        }
+      ]
+    },
+    "practicalTest": {
+      "title": "Uygulamalı Test: Öğrenci Not Yönetimi",
+      "description": "Göstergeler kullanarak öğrenci notlarını yöneten sistem yazın",
+      "timeLimit": "60 dakika",
+      "requirements": [
+        "Not dizisini gösterge ile alan fonksiyon",
+        "Notları güncelleyen göstergeli fonksiyon",
+        "Ortalama hesaplayan fonksiyon",
+        "En yüksek notu bulan fonksiyon",
+        "Ana programda tüm fonksiyonları test edin"
+      ],
+      "gradingRubric": [
+        "Gösterge tanımı ve kullanımı (35%)",
+        "Fonksiyon parametrelerinde gösterge (25%)",
+        "Bellek adresi işlemleri (20%)",
+        "Program çalışması (15%)",
+        "Kod kalitesi (5%)"
+      ]
+    }
+  },
+  "nextWeekPreview": {
+    "week": 8,
+    "title": "Dinamik Bellek Yönetimi ve İleri Gösterge Kullanımı",
+    "topics": [
+      "malloc() ve free() fonksiyonları",
+      "Dinamik dizi oluşturma",
+      "Gösterge dizileri",
+      "Çok boyutlu göstergeler"
+    ],
+    "connection": "Bu hafta öğrendiğiniz gösterge temelleri, gelecek hafta dinamik bellek yönetimi için gerekli alt yapıyı oluşturuyor."
+  },
+  "studyGuide": {
+    "beforeClass": [
+      "Bellek kavramları ve değişken tanımlarını tekrar edin",
+      "Adres kavramını zihinsel olarak netleştirin",
+      "Video materyallerini izleyin"
+    ],
+    "duringClass": [
+      "Gösterge tanımlarını not alın",
+      "& ve * operatörlerinin farkını anlayın",
+      "Örnekleri adım adım takip edin",
+      "Bellek adreslerini gözlemleyin"
+    ],
+    "afterClass": [
+      "Tüm kod örneklerini tekrar yazın",
+      "Adres değerlerinin değiştiğini gözlemleyin",
+      "Alıştırmaları sırayla çözün",
+      "Gösterge hataları ile karşılaştığınızda debug yapın"
+    ],
+    "examPrep": [
+      "& ve * operatörlerini karıştırmayın",
+      "Call by value vs call by reference farkını öğrenin",
+      "NULL gösterge kontrollerini unutmayın",
+      "Dizi-gösterge ilişkisini kavrayın"
+    ]
+  },
+  "additionalChallenges": [
+    {
+      "title": "Meydan Okuma 1: Gösterge Zinciri",
+      "description": "Göstergenin göstergesini (int **ptr) kullanarak çok seviyeli adres yönetimi yapın",
+      "difficulty": "İleri",
+      "hint": "İki seviye dereference (**ptr) kullanmanız gerekecek"
+    },
+    {
+      "title": "Meydan Okuma 2: Fonksiyon Göstergesi",
+      "description": "Hesap makinesi fonksiyonlarını gösterge dizisinde toplayarak dinamik çağırma sistemi yapın",
+      "difficulty": "İleri",
+      "hint": "Function pointer: int (*operation)(int, int)"
+    }
+  ],
+  "troubleshooting": [
+    {
+      "problem": "Segmentation fault hatası alıyorum",
+      "solutions": [
+        "Göstergeyi başlattınız mı kontrol edin",
+        "NULL göstergeyi dereference etmiyor musunuz bakın",
+        "Dizi sınırlarını aşmadığınızdan emin olun",
+        "Yerel değişken adresini döndürmeye çalışmıyor musunuz kontrol edin"
+      ]
+    },
+    {
+      "problem": "Adres değerleri garip görünüyor",
+      "solutions": [
+        "%p formatını kullanarak adresleri yazdırın",
+        "Adreslerin hexadecimal olduğunu unutmayın",
+        "Her çalıştırmada adresler değişebilir",
+        "Stack ve heap adreslerinin farklı olduğunu bilin"
+      ]
+    },
+    {
+      "problem": "Fonksiyonda değişken değişmiyor",
+      "solutions": [
+        "Fonksiyona & ile adres gönderdiğinizden emin olun",
+        "Fonksiyon parametresinin gösterge olduğunu kontrol edin",
+        "Fonksiyon içinde * ile değere eriştiğinizden emin olun"
+      ]
+    },
+    {
+      "problem": "Dizi gösterge işlemleri çalışmıyor",
+      "solutions": [
+        "Dizi adının zaten adres olduğunu unutmayın",
+        "ptr + i ile *(ptr + i) farkını bilin",
+        "Dizi boyutunu aşmadığınızdan emin olun"
+      ]
+    }
+  ],
+  "authorInfo": {
+    "instructor": "Dr. Programlama Uzmanı",
+    "courseCode": "PROG102",
+    "semester": "2024 Güz",
+    "lastUpdated": "2024-09-08",
+    "version": "1.0"
+  }
+  }

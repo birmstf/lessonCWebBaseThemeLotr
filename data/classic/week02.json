@@ -1,0 +1,132 @@
+{
+  "week": 2,
+  "title": "Hafta 2: C Programlama Temelleri",
+  "description": "C dilinin temel kavramları, yazım kuralları, kütüphaneler, veri tipleri ve değişkenler konularını öğrenin. Programlama dilinin yapı taşlarını kavrayın.",
+  "duration": "90 dakika",
+  "difficulty": "Başlangıç",
+  "objectives": [
+    "C dilinin temel kavramlarını anlamak",
+    "Doğru yazım kurallarını öğrenmek",
+    "Temel C kütüphanelerini tanımak",
+    "Veri tiplerini ve değişkenleri kullanmak",
+    "Bellek yönetimi temellerini kavramak"
+  ],
+  "codeExamples": [
+    {
+      "title": "İlk C Programı",
+      "code": "#include <stdio.h>\n\nint main() {\n    printf(\"Merhaba Dünya!\\n\");\n    return 0;\n}",
+      "explanation": "En basit C programı. stdio.h kütüphanesini dahil eder, main fonksiyonu tanımlar ve ekrana yazı yazdırır."
+    },
+    {
+      "title": "Değişken Tanımlama",
+      "code": "#include <stdio.h>\n\nint main() {\n    int sayi = 10;           // Tam sayı\n    float ondalik = 3.14;    // Ondalıklı sayı\n    char karakter = 'A';     // Karakter\n    \n    printf(\"Tam sayı: %d\\n\", sayi);\n    printf(\"Ondalıklı: %.2f\\n\", ondalik);\n    printf(\"Karakter: %c\\n\", karakter);\n    \n    return 0;\n}",
+      "explanation": "Farklı veri tiplerinde değişken tanımlama ve ekrana yazdırma örneği."
+    },
+    {
+      "title": "Veri Tipleri ve Boyutları",
+      "code": "#include <stdio.h>\n#include <limits.h>\n\nint main() {\n    printf(\"int boyutu: %zu byte\\n\", sizeof(int));\n    printf(\"float boyutu: %zu byte\\n\", sizeof(float));\n    printf(\"char boyutu: %zu byte\\n\", sizeof(char));\n    printf(\"double boyutu: %zu byte\\n\", sizeof(double));\n    \n    printf(\"\\nint min: %d\\n\", INT_MIN);\n    printf(\"int max: %d\\n\", INT_MAX);\n    \n    return 0;\n}",
+      "explanation": "Veri tiplerinin bellekte kapladığı alan ve limit değerlerini gösteren örnek."
+    },
+    {
+      "title": "Sabitler ve Değişkenler",
+      "code": "#include <stdio.h>\n#define PI 3.14159\n\nint main() {\n    const int MAKS = 100;  // Sabit değişken\n    int deger = 50;         // Normal değişken\n    \n    printf(\"PI değeri: %.5f\\n\", PI);\n    printf(\"Maksimum: %d\\n\", MAKS);\n    \n    deger = 75;  // Değiştirilebilir\n    // MAKS = 200;  // HATA! Sabit değiştirilemez\n    \n    printf(\"Yeni değer: %d\\n\", deger);\n    \n    return 0;\n}",
+      "explanation": "Sabit tanımlama yöntemleri ve değişken ile sabit arasındaki farklar."
+    }
+  ],
+  "exercises": [
+    {
+      "title": "Alıştırma 1: Değişken Tanımlama",
+      "prompt": "Öğrenci bilgilerini tutan değişkenler tanımlayın: ad (string), yaş (int), not ortalaması (float), sınıf (char).",
+      "hint": "String için char dizisi kullanın. Örnek: char ad[50];",
+      "solution": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char ad[50];\n    int yas;\n    float not_ortalamasi;\n    char sinif;\n    \n    strcpy(ad, \"Ahmet Yılmaz\");\n    yas = 20;\n    not_ortalamasi = 85.5;\n    sinif = 'B';\n    \n    printf(\"Ad: %s\\n\", ad);\n    printf(\"Yaş: %d\\n\", yas);\n    printf(\"Not Ortalaması: %.2f\\n\", not_ortalamasi);\n    printf(\"Sınıf: %c\\n\", sinif);\n    \n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 2: Tip Dönüşümü",
+      "prompt": "İki tam sayıyı bölün ve sonucu ondalıklı olarak gösterin. Tip dönüşümü (casting) kullanın.",
+      "hint": "Bölme işleminden önce (float) ile tip dönüşümü yapın.",
+      "solution": "#include <stdio.h>\n\nint main() {\n    int sayi1 = 10;\n    int sayi2 = 3;\n    float sonuc;\n    \n    // Tip dönüşümü olmadan\n    sonuc = sayi1 / sayi2;\n    printf(\"Tip dönüşümü olmadan: %.2f\\n\", sonuc);\n    \n    // Tip dönüşümü ile\n    sonuc = (float)sayi1 / sayi2;\n    printf(\"Tip dönüşümü ile: %.2f\\n\", sonuc);\n    \n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 3: Kütüphane Kullanımı",
+      "prompt": "math.h kütüphanesini kullanarak bir sayının karesini, karekökünü ve üssünü hesaplayın.",
+      "hint": "pow(), sqrt() fonksiyonlarını kullanın. Derleme yaparken -lm bayrağını ekleyin.",
+      "solution": "#include <stdio.h>\n#include <math.h>\n\nint main() {\n    double sayi = 16.0;\n    \n    double kare = pow(sayi, 2);\n    double karekok = sqrt(sayi);\n    double kup = pow(sayi, 3);\n    \n    printf(\"Sayı: %.2f\\n\", sayi);\n    printf(\"Karesi: %.2f\\n\", kare);\n    printf(\"Karekökü: %.2f\\n\", karekok);\n    printf(\"Küpü: %.2f\\n\", kup);\n    \n    return 0;\n}"
+    }
+  ],
+  "files": [
+    {
+      "name": "temel_program.c",
+      "content": "#include <stdio.h>\n\n// Bu bir yorum satırıdır\n/* Bu da çok satırlı\n   bir yorum bloğudur */\n\nint main() {\n    // Program buradan başlar\n    printf(\"C Programlama Öğreniyorum!\\n\");\n    \n    // Program başarıyla tamamlandı\n    return 0;\n}",
+      "description": "Temel program yapısı ve yorum satırları"
+    },
+    {
+      "name": "veri_tipleri.c",
+      "content": "#include <stdio.h>\n#include <stdbool.h>\n\nint main() {\n    // Tam sayı tipleri\n    char c = 'A';              // 1 byte\n    short s = 32000;           // 2 byte\n    int i = 2147483647;        // 4 byte\n    long l = 9223372036854775807L; // 8 byte\n    \n    // Ondalıklı sayı tipleri\n    float f = 3.14159f;        // 4 byte\n    double d = 3.141592653589; // 8 byte\n    \n    // Boolean (C99)\n    bool b = true;             // 1 byte\n    \n    printf(\"Tüm veri tipleri tanımlandı\\n\");\n    \n    return 0;\n}",
+      "description": "C dilindeki tüm temel veri tipleri"
+    },
+    {
+      "name": "kutuphane_ornekleri.c",
+      "content": "#include <stdio.h>   // Giriş/Çıkış işlemleri\n#include <stdlib.h>  // Genel yardımcı fonksiyonlar\n#include <string.h>  // String işlemleri\n#include <math.h>    // Matematiksel işlemler\n#include <time.h>    // Zaman işlemleri\n#include <ctype.h>   // Karakter işlemleri\n\nint main() {\n    // String işlemi\n    char metin[100] = \"Merhaba\";\n    strcat(metin, \" Dünya\");\n    printf(\"String: %s, Uzunluk: %zu\\n\", metin, strlen(metin));\n    \n    // Matematik işlemi\n    double sonuc = sqrt(25.0);\n    printf(\"25'in karekökü: %.2f\\n\", sonuc);\n    \n    // Karakter işlemi\n    char ch = 'a';\n    printf(\"'%c' büyük hali: '%c'\\n\", ch, toupper(ch));\n    \n    return 0;\n}",
+      "description": "Farklı kütüphanelerin kullanım örnekleri"
+    }
+  ],
+  "links": [
+    {
+      "title": "C Veri Tipleri - cppreference",
+      "url": "https://en.cppreference.com/w/c/language/type",
+      "description": "C dilindeki tüm veri tipleri detaylı dokümantasyonu"
+    },
+    {
+      "title": "C Standart Kütüphanesi",
+      "url": "https://en.cppreference.com/w/c/header",
+      "description": "Tüm C standart kütüphane başlık dosyaları"
+    },
+    {
+      "title": "C Yazım Kuralları",
+      "url": "https://www.gnu.org/prep/standards/standards.html#Writing-C",
+      "description": "GNU C yazım standartları ve en iyi uygulamalar"
+    },
+    {
+      "title": "C Tutorial - Programiz",
+      "url": "https://www.programiz.com/c-programming",
+      "description": "Başlangıç seviyesi C programlama dersleri"
+    }
+  ],
+  "animations": [
+    {
+      "type": "memory-layout",
+      "title": "Değişkenlerin Bellekte Yerleşimi",
+      "description": "Farklı veri tiplerinin bellekte nasıl saklandığını görselleştirir",
+      "config": {
+        "showVariables": ["int", "float", "char", "double"],
+        "showAddresses": true,
+        "showBytes": true,
+        "endianness": "little"
+      }
+    },
+    {
+      "type": "compilation-process",
+      "title": "Derleme Süreci",
+      "description": "Kaynak koddan çalıştırılabilir dosyaya dönüşüm aşamalarını gösterir",
+      "config": {
+        "stages": ["preprocessing", "compilation", "assembly", "linking"],
+        "showCommands": true,
+        "showIntermediateFiles": true
+      }
+    },
+    {
+      "type": "type-conversion",
+      "title": "Tip Dönüşümü Animasyonu",
+      "description": "Implicit ve explicit tip dönüşümlerini adım adım gösterir",
+      "config": {
+        "examples": [
+          {"from": "int", "to": "float"},
+          {"from": "char", "to": "int"},
+          {"from": "double", "to": "int"}
+        ],
+        "showDataLoss": true,
+        "showWarnings": true
+      }
+    }
+  ]
+}

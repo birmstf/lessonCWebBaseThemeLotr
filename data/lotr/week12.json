@@ -1,0 +1,14 @@
+{
+  "week": 12,
+  "title": "Hafta 12: Valar’ın Güçlü Büyüleri (İleri Konular)",
+  "description": "Orta Dünya’da ileri seviye C konuları.",
+  "duration": "150 dakika",
+  "difficulty": "Zor",
+  "objectives": [
+    "Dinamik bellek (Elf kristalleri deposu)",
+    "Önişlemci büyüleri (#define, #include)",
+    "Depolama tipleri (ordu rezervleri)",
+    "Komut satırı parametreleri (yolculuk emirleri)",
+    "Fonksiyon göstergeleri (büyü seçiciler)"
+  ]
+}

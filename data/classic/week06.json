@@ -1,0 +1,166 @@
+{
+  "week": 6,
+  "title": "Hafta 6: Fonksiyonlar ve Değişken Kapsamları",
+  "description": "Fonksiyon tanımlama, çağırma, parametreler, return değerleri, değişken kapsamları (scope) ve çok fonksiyonlu program yapıları konularını öğrenin.",
+  "duration": "90 dakika",
+  "difficulty": "Orta-İleri",
+  "objectives": [
+    "Değer döndüren fonksiyonları tanımlamak ve kullanmak",
+    "Void (değer döndürmeyen) fonksiyonları oluşturmak",
+    "Çok parametreli fonksiyonlar yazmak",
+    "Lokal ve global değişken kapsamlarını anlamak",
+    "Fonksiyon prototipi kavramını öğrenmek",
+    "Çok fonksiyonlu program yapıları kurgulamak"
+  ],
+  "codeExamples": [
+    {
+      "title": "Değer Döndüren Fonksiyon",
+      "code": "#include <stdio.h>\n\nint topla(int a, int b) {\n    int sonuc = a + b;\n    return sonuc;\n}\n\nint main() {\n    int sayi1 = 15, sayi2 = 25;\n    int toplam = topla(sayi1, sayi2);\n    \n    printf(\"Toplama fonksiyonu çağrıldı\\n\");\n    printf(\"%d + %d = %d\\n\", sayi1, sayi2, toplam);\n    \n    return 0;\n}",
+      "explanation": "Return değeri olan fonksiyon tanımlama ve çağırma",
+      "expectedOutput": [
+        "Toplama fonksiyonu çağrıldı",
+        "15 + 25 = 40"
+      ]
+    },
+    {
+      "title": "Void (Değer Döndürmeyen) Fonksiyon",
+      "code": "#include <stdio.h>\n\nvoid selamla(char isim[]) {\n    printf(\"Merhaba %s!\\n\", isim);\n    printf(\"Programımıza hoş geldiniz.\\n\");\n}\n\nvoid veda_et() {\n    printf(\"Program sonlandırılıyor...\\n\");\n    printf(\"Görüşmek üzere!\\n\");\n}\n\nint main() {\n    selamla(\"Ahmet\");\n    printf(\"Ana program çalışıyor\\n\");\n    veda_et();\n    \n    return 0;\n}",
+      "explanation": "Void fonksiyonlar - sadece işlem yapar, değer döndürmez",
+      "expectedOutput": [
+        "Merhaba Ahmet!",
+        "Programımıza hoş geldiniz.",
+        "Ana program çalışıyor",
+        "Program sonlandırılıyor...",
+        "Görüşmek üzere!"
+      ]
+    },
+    {
+      "title": "Çok Parametreli Fonksiyon",
+      "code": "#include <stdio.h>\n\nfloat not_ortalamasi(float vize, float final, float odev, int vize_yuzde, int final_yuzde, int odev_yuzde) {\n    float ortalama = (vize * vize_yuzde + final * final_yuzde + odev * odev_yuzde) / 100.0;\n    return ortalama;\n}\n\nvoid not_durumu(float ortalama) {\n    printf(\"Ortalama: %.2f\\n\", ortalama);\n    if (ortalama >= 60) {\n        printf(\"Durum: GEÇTİ\\n\");\n    } else {\n        printf(\"Durum: KALDI\\n\");\n    }\n}\n\nint main() {\n    float vize = 75.5, final = 82.0, odev = 90.0;\n    float ortalama = not_ortalamasi(vize, final, odev, 30, 50, 20);\n    \n    printf(\"=== ÖĞRENCİ NOT SİSTEMİ ===\\n\");\n    printf(\"Vize: %.1f, Final: %.1f, Ödev: %.1f\\n\", vize, final, odev);\n    not_durumu(ortalama);\n    \n    return 0;\n}",
+      "explanation": "6 parametreli fonksiyon ve çoklu fonksiyon kullanımı",
+      "expectedOutput": [
+        "=== ÖĞRENCİ NOT SİSTEMİ ===",
+        "Vize: 75.5, Final: 82.0, Ödev: 90.0",
+        "Ortalama: 79.10",
+        "Durum: GEÇTİ"
+      ]
+    },
+    {
+      "title": "Değişken Kapsamları (Scope)",
+      "code": "#include <stdio.h>\n\nint global_sayac = 0;  // Global değişken\n\nvoid artir_sayac() {\n    int lokal_artis = 5;   // Lokal değişken\n    global_sayac += lokal_artis;\n    printf(\"Fonksiyon içi - Global: %d, Lokal: %d\\n\", global_sayac, lokal_artis);\n}\n\nint hesapla(int x) {\n    int lokal_sonuc = x * 2;  // Bu fonksiyona özel\n    printf(\"hesapla() içi - x: %d, sonuç: %d\\n\", x, lokal_sonuc);\n    return lokal_sonuc;\n}\n\nint main() {\n    printf(\"Program başında global sayaç: %d\\n\", global_sayac);\n    \n    artir_sayac();\n    printf(\"main() içi - Global: %d\\n\", global_sayac);\n    \n    int sonuc = hesapla(10);\n    printf(\"main() içi - Dönen değer: %d\\n\", sonuc);\n    \n    return 0;\n}",
+      "explanation": "Global ve lokal değişkenlerin farklı kapsamlarda kullanımı",
+      "expectedOutput": [
+        "Program başında global sayaç: 0",
+        "Fonksiyon içi - Global: 5, Lokal: 5",
+        "main() içi - Global: 5",
+        "hesapla() içi - x: 10, sonuç: 20",
+        "main() içi - Dönen değer: 20"
+      ]
+    },
+    {
+      "title": "Çok Fonksiyonlu Program",
+      "code": "#include <stdio.h>\n\n// Fonksiyon prototipleri\nfloat alan_hesapla(float uzunluk, float genislik);\nfloat cevre_hesapla(float uzunluk, float genislik);\nvoid sonuc_yazdir(float alan, float cevre);\nint menu_goster();\n\nfloat alan_hesapla(float uzunluk, float genislik) {\n    return uzunluk * genislik;\n}\n\nfloat cevre_hesapla(float uzunluk, float genislik) {\n    return 2 * (uzunluk + genislik);\n}\n\nvoid sonuc_yazdir(float alan, float cevre) {\n    printf(\"\\n=== HESAPLAMA SONUÇLARI ===\\n\");\n    printf(\"Alan: %.2f m²\\n\", alan);\n    printf(\"Çevre: %.2f m\\n\", cevre);\n}\n\nint menu_goster() {\n    printf(\"=== GEOMETRİ HESAPLAYICI ===\\n\");\n    printf(\"Dikdörtgen hesaplamaları\\n\");\n    return 1;\n}\n\nint main() {\n    menu_goster();\n    \n    float uzunluk = 8.5, genislik = 6.0;\n    printf(\"Uzunluk: %.1f, Genişlik: %.1f\\n\", uzunluk, genislik);\n    \n    float alan = alan_hesapla(uzunluk, genislik);\n    float cevre = cevre_hesapla(uzunluk, genislik);\n    \n    sonuc_yazdir(alan, cevre);\n    \n    return 0;\n}",
+      "explanation": "Çoklu fonksiyon yapısı, prototipler ve modüler programlama",
+      "expectedOutput": [
+        "=== GEOMETRİ HESAPLAYICI ===",
+        "Dikdörtgen hesaplamaları",
+        "Uzunluk: 8.5, Genişlik: 6.0",
+        "",
+        "=== HESAPLAMA SONUÇLARI ===",
+        "Alan: 51.00 m²",
+        "Çevre: 29.00 m"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "title": "Alıştırma 1: Matematik Fonksiyonları",
+      "prompt": "Kare, küp ve faktöriyel hesaplayan üç ayrı fonksiyon yazın. Her biri tek parametre alsın ve değer döndürsün.",
+      "hint": "int kare(int x), int kup(int x), int faktoriyel(int n) fonksiyonları tanımlayın",
+      "solution": "#include <stdio.h>\n\nint kare(int x) {\n    return x * x;\n}\n\nint kup(int x) {\n    return x * x * x;\n}\n\nint faktoriyel(int n) {\n    int sonuc = 1;\n    for(int i = 1; i <= n; i++) {\n        sonuc *= i;\n    }\n    return sonuc;\n}\n\nint main() {\n    int sayi = 5;\n    printf(\"Sayı: %d\\n\", sayi);\n    printf(\"Karesi: %d\\n\", kare(sayi));\n    printf(\"Küpü: %d\\n\", kup(sayi));\n    printf(\"Faktöriyeli: %d\\n\", faktoriyel(sayi));\n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 2: Void Fonksiyonlar",
+      "prompt": "Çarpım tablosu yazdıran ve yıldız çizen iki void fonksiyon yazın. Parametreli olsunlar.",
+      "hint": "void carpim_tablosu(int sayi), void yildiz_ciz(int adet) şeklinde tanımlayın",
+      "solution": "#include <stdio.h>\n\nvoid carpim_tablosu(int sayi) {\n    printf(\"%d'in çarpım tablosu:\\n\", sayi);\n    for(int i = 1; i <= 10; i++) {\n        printf(\"%d x %d = %d\\n\", i, sayi, i * sayi);\n    }\n}\n\nvoid yildiz_ciz(int adet) {\n    printf(\"Yıldız deseni (%d satır):\\n\", adet);\n    for(int i = 1; i <= adet; i++) {\n        for(int j = 1; j <= i; j++) {\n            printf(\"*\");\n        }\n        printf(\"\\n\");\n    }\n}\n\nint main() {\n    carpim_tablosu(7);\n    printf(\"\\n\");\n    yildiz_ciz(5);\n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 3: Global vs Lokal",
+      "prompt": "Global bir sayaç değişkeni tanımlayın. Bu sayacı artıran fonksiyon yazın. Lokal değişkenlerle karıştırmayın.",
+      "hint": "int global_sayac = 0; fonksiyon dışında tanımlayın",
+      "solution": "#include <stdio.h>\n\nint global_sayac = 0;\n\nvoid sayac_artir(int miktar) {\n    int eski_deger = global_sayac;  // Lokal değişken\n    global_sayac += miktar;\n    printf(\"Sayaç %d'den %d'ye çıktı\\n\", eski_deger, global_sayac);\n}\n\nvoid sayac_goster() {\n    printf(\"Mevcut sayaç değeri: %d\\n\", global_sayac);\n}\n\nint main() {\n    sayac_goster();\n    sayac_artir(5);\n    sayac_artir(3);\n    sayac_goster();\n    return 0;\n}"
+    }
+  ],
+  "files": [
+    {
+      "name": "fonksiyon_ornekleri.c",
+      "content": "#include <stdio.h>\n\n// Fonksiyon prototipleri\nint topla(int a, int b);\nvoid bilgi_yazdir();\nfloat ortalama_hesapla(int dizi[], int boyut);\n\nint topla(int a, int b) {\n    return a + b;\n}\n\nvoid bilgi_yazdir() {\n    printf(\"Bu bir void fonksiyondur\\n\");\n    printf(\"Değer döndürmez, sadece işlem yapar\\n\");\n}\n\nfloat ortalama_hesapla(int dizi[], int boyut) {\n    int toplam = 0;\n    for(int i = 0; i < boyut; i++) {\n        toplam += dizi[i];\n    }\n    return (float)toplam / boyut;\n}\n\nint main() {\n    printf(\"=== FONKSİYON ÖRNEKLERİ ===\\n\");\n    \n    int sonuc = topla(10, 20);\n    printf(\"Toplama sonucu: %d\\n\", sonuc);\n    \n    bilgi_yazdir();\n    \n    int notlar[] = {85, 90, 78, 92, 88};\n    float ort = ortalama_hesapla(notlar, 5);\n    printf(\"Not ortalaması: %.2f\\n\", ort);\n    \n    return 0;\n}",
+      "description": "Farklı fonksiyon türleri örnekleri"
+    },
+    {
+      "name": "degisken_kapsami.c",
+      "content": "#include <stdio.h>\n\nint global_x = 100;  // Global değişken\n\nvoid fonksiyon1() {\n    int lokal_y = 20;    // Lokal değişken\n    global_x += 10;      // Global'e erişim mümkün\n    printf(\"Fonksiyon1 - Global: %d, Lokal: %d\\n\", global_x, lokal_y);\n}\n\nvoid fonksiyon2() {\n    int lokal_y = 50;    // Farklı fonksiyon, farklı lokal\n    printf(\"Fonksiyon2 - Global: %d, Lokal: %d\\n\", global_x, lokal_y);\n    // fonksiyon1'deki lokal_y'ye erişim YOK\n}\n\nint main() {\n    int lokal_z = 30;    // main'e özel lokal\n    \n    printf(\"Main başlangıcı - Global: %d, Lokal: %d\\n\", global_x, lokal_z);\n    \n    fonksiyon1();\n    fonksiyon2();\n    \n    printf(\"Main sonu - Global: %d değişti, Lokal: %d aynı\\n\", global_x, lokal_z);\n    \n    return 0;\n}",
+      "description": "Global ve lokal değişken kapsam örnekleri"
+    },
+    {
+      "name": "cok_fonksiyonlu_program.c",
+      "content": "#include <stdio.h>\n\n// Global değişkenler\nint menu_secim = 0;\nfloat hesap_sonucu = 0.0;\n\n// Fonksiyon prototipleri\nint menu_goster();\nfloat dort_islem(float a, float b, char operator);\nvoid sonuc_kaydet(float sonuc);\nvoid gecmis_goster();\n\nint menu_goster() {\n    printf(\"\\n=== HESAP MAKİNESİ ===\\n\");\n    printf(\"1. Toplama\\n\");\n    printf(\"2. Çıkarma\\n\");\n    printf(\"3. Çarpma\\n\");\n    printf(\"4. Bölme\\n\");\n    printf(\"Seçiminiz: \");\n    return 1;  // Basit demo için 1 döndür\n}\n\nfloat dort_islem(float a, float b, char operator) {\n    switch(operator) {\n        case '+': return a + b;\n        case '-': return a - b;\n        case '*': return a * b;\n        case '/': return (b != 0) ? a / b : 0;\n        default: return 0;\n    }\n}\n\nvoid sonuc_kaydet(float sonuc) {\n    hesap_sonucu = sonuc;\n    printf(\"Sonuç kaydedildi: %.2f\\n\", hesap_sonucu);\n}\n\nvoid gecmis_goster() {\n    printf(\"Son hesaplama: %.2f\\n\", hesap_sonucu);\n}\n\nint main() {\n    menu_goster();\n    \n    float a = 15.5, b = 4.2;\n    printf(\"Sayılar: %.1f ve %.1f\\n\", a, b);\n    \n    float toplam = dort_islem(a, b, '+');\n    printf(\"Toplama: %.1f + %.1f = %.2f\\n\", a, b, toplam);\n    \n    sonuc_kaydet(toplam);\n    gecmis_goster();\n    \n    return 0;\n}",
+      "description": "Kompleks çok fonksiyonlu program yapısı"
+    }
+  ],
+  "links": [
+    {
+      "title": "C Fonksiyonlar - cppreference",
+      "url": "https://en.cppreference.com/w/c/language/functions",
+      "description": "C dilinde fonksiyon tanımlama ve kullanım"
+    },
+    {
+      "title": "Variable Scope in C",
+      "url": "https://www.programiz.com/c-programming/c-storage-class",
+      "description": "Değişken kapsamları ve storage class'ları"
+    },
+    {
+      "title": "Function Parameters",
+      "url": "https://www.geeksforgeeks.org/parameter-passing-techniques-in-c-cpp/",
+      "description": "Parametre geçiş teknikleri"
+    },
+    {
+      "title": "Modular Programming",
+      "url": "https://stackoverflow.com/questions/tagged/c+functions",
+      "description": "C'de modüler programlama teknikleri"
+    }
+  ],
+  "animations": [
+    {
+      "type": "function-call",
+      "title": "Fonksiyon Çağırma Mekanizması",
+      "description": "Fonksiyon çağrıldığında stack'de ne olduğunu gösterir",
+      "config": {
+        "showCallStack": true,
+        "showParameters": true,
+        "showReturnValue": true
+      }
+    },
+    {
+      "type": "scope-visualization",
+      "title": "Değişken Kapsamları",
+      "description": "Global ve lokal değişkenlerin bellekteki yerlerini gösterir",
+      "config": {
+        "showGlobalMemory": true,
+        "showStackFrames": true,
+        "trackVariables": ["global_x", "lokal_y"]
+      }
+    },
+    {
+      "type": "multi-function-flow",
+      "title": "Çok Fonksiyonlu Program Akışı",
+      "description": "Fonksiyonlar arası çağrı akışını ve veri akışını gösterir",
+      "config": {
+        "showDataFlow": true,
+        "showCallSequence": true,
+        "trackGlobals": true
+      }
+    }
+  ]
+}

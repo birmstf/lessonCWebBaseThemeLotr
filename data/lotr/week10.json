@@ -1,0 +1,17 @@
+{
+  "week": 10,
+  "title": "Hafta 10: Gondor’un Kayıt Defterleri (Yapılar)",
+  "description": "Orta Dünya’da yapıların kullanımı ve birleşimler.",
+  "duration": "120 dakika",
+  "difficulty": "Orta",
+  "objectives": [
+    "Yapı tanımı (Gondor askerleri kaydı)",
+    "İlk değer atama",
+    "Yapı elemanlarına erişim",
+    "İçiçe yapılar (Elf ve İnsan ittifakı)",
+    "Fonksiyonlarla yapılar",
+    "Yapı dizileri (ordu listesi)",
+    "typedef ile yeni tip",
+    "Birleşimler (Büyücülerin çok yönlü gücü)"
+  ]
+}

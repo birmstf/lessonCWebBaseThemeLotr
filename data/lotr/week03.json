@@ -1,0 +1,206 @@
+{
+  "week": 3,
+  "title": "Hafta 3: Saruman'ın Büyü Formülleri - Operatörler ve Büyü Girişi",
+  "description": "Saruman'ın büyü atölyesinde operatörler ile büyü formüllerini öğrenin, Palantír üzerinden veri alışverişi yapın ve Gandalf'ın matematik büyülerini keşfedin.",
+  "duration": "90 dakika",
+  "difficulty": "Orta",
+  "objectives": [
+    "Saruman'ın atama büyülerini kullanmak",
+    "İsengard'ın hesaplama operatörlerini öğrenmek",
+    "Büyü sabitlerini (Ring Constants) tanımlamak",
+    "Güç dönüşümlerini (Type Casting) anlamak",
+    "Palantír çıkış büyüsü (printf) kullanmak",
+    "Nazgûl giriş büyüsü (scanf) ile veri almak",
+    "Gandalf'ın matematik kütüphanesini keşfetmek"
+  ],
+  "codeExamples": [
+    {
+      "title": "Saruman'ın Güç Atama Büyüleri",
+      "code": "#include <stdio.h>\n\nint main() {\n    int ork_sayisi = 100;  // İlk ork ordusu\n    ork_sayisi += 50;      // Yeni askerler katıldı\n    printf(\"Ork ordusu genişletildi: %d\\n\", ork_sayisi);\n    \n    ork_sayisi *= 3;       // Uruk-hai'ları da ekle\n    printf(\"Uruk-hai'larla güçlendirildi: %d\\n\", ork_sayisi);\n    \n    ork_sayisi /= 2;       // Yarısı Helm's Deep'e gönderildi\n    printf(\"Kalan güç: %d\\n\", ork_sayisi);\n    \n    return 0;\n}",
+      "explanation": "Saruman'ın ordu büyütme büyüleri - atama operatörleri",
+      "expectedOutput": [
+        "Ork ordusu genişletildi: 150",
+        "Uruk-hai'larla güçlendirildi: 450",
+        "Kalan güç: 225"
+      ]
+    },
+    {
+      "title": "İsengard Hesaplama Makinesi",
+      "code": "#include <stdio.h>\n\nint main() {\n    int mithril = 20, adamant = 3;\n    \n    printf(\"İsengard Kaynak Durumu: Mithril=%d, Adamant=%d\\n\", mithril, adamant);\n    printf(\"Toplam değerli metal: %d + %d = %d\\n\", mithril, adamant, mithril + adamant);\n    printf(\"Mithril fazlalığı: %d - %d = %d\\n\", mithril, adamant, mithril - adamant);\n    printf(\"Silah üretimi: %d * %d = %d parça\\n\", mithril, adamant, mithril * adamant);\n    printf(\"Her gruba düşen: %d / %d = %d\\n\", mithril, adamant, mithril / adamant);\n    printf(\"Kalan parça: %d %% %d = %d\\n\", mithril, adamant, mithril % adamant);\n    \n    return 0;\n}",
+      "explanation": "İsengard'da kaynak hesaplama - aritmetik operatörler",
+      "expectedOutput": [
+        "İsengard Kaynak Durumu: Mithril=20, Adamant=3",
+        "Toplam değerli metal: 20 + 3 = 23",
+        "Mithril fazlalığı: 20 - 3 = 17",
+        "Silah üretimi: 20 * 3 = 60 parça",
+        "Her gruba düşen: 20 / 3 = 6",
+        "Kalan parça: 20 % 3 = 2"
+      ]
+    },
+    {
+      "title": "Yüzük Gücü Dönüşümü",
+      "code": "#include <stdio.h>\n\nint main() {\n    int elf_gucu = 15;\n    float nazgul_gucu = 4.7;\n    \n    printf(\"Orijinal güçler:\\n\");\n    printf(\"Elf gücü = %d, Nazgûl gücü = %.1f\\n\", elf_gucu, nazgul_gucu);\n    \n    // Güç dönüşümleri\n    float sauron_hesabi = (float)elf_gucu / 4;\n    int corrupted_elf = (int)nazgul_gucu;\n    \n    printf(\"\\nSauron'un hesaplamaları:\\n\");\n    printf(\"Elf gücü böldüğünde: (float)%d / 4 = %.2f\\n\", elf_gucu, sauron_hesabi);\n    printf(\"Nazgûl'ü yozlaştırınca: (int)%.1f = %d\\n\", nazgul_gucu, corrupted_elf);\n    \n    return 0;\n}",
+      "explanation": "Sauron'un güç dönüşüm büyüleri - type casting",
+      "expectedOutput": [
+        "Orijinal güçler:",
+        "Elf gücü = 15, Nazgûl gücü = 4.7",
+        "",
+        "Sauron'un hesaplamaları:",
+        "Elf gücü böldüğünde: (float)15 / 4 = 3.75",
+        "Nazgûl'ü yozlaştırınca: (int)4.7 = 4"
+      ]
+    },
+    {
+      "title": "Nazgûl Bilgi Toplama Büyüsü",
+      "code": "#include <stdio.h>\n\nint main() {\n    char bolge_ismi[50];\n    int hobbit_sayisi;\n    float yuzuk_mesafesi;\n    \n    printf(\"=== NAZGÛL İSTİHBARAT RAPORU ===\\n\");\n    printf(\"Hangi bölgedesiniz? \");\n    scanf(\"%s\", bolge_ismi);\n    \n    printf(\"Bölgedeki hobbit sayısı: \");\n    scanf(\"%d\", &hobbit_sayisi);\n    \n    printf(\"Yüzük'e tahmini mesafe (km): \");\n    scanf(\"%f\", &yuzuk_mesafesi);\n    \n    printf(\"\\n=== SAURON'A RAPOR ===\\n\");\n    printf(\"Bölge: %s\\n\", bolge_ismi);\n    printf(\"Tespit edilen hobbit: %d\\n\", hobbit_sayisi);\n    printf(\"Yüzük mesafesi: %.2f km\\n\", yuzuk_mesafesi);\n    \n    return 0;\n}",
+      "explanation": "Nazgûl'ların scanf büyüsü ile istihbarat toplama",
+      "expectedOutput": [
+        "=== NAZGÛL İSTİHBARAT RAPORU ===",
+        "Hangi bölgedesiniz? Shire",
+        "Bölgedeki hobbit sayısı: 1000",
+        "Yüzük'e tahmini mesafe (km): 2863.5",
+        "",
+        "=== SAURON'A RAPOR ===",
+        "Bölge: Shire",
+        "Tespit edilen hobbit: 1000",
+        "Yüzük mesafesi: 2863.50 km"
+      ]
+    },
+    {
+      "title": "Gandalf'ın Matematik Büyüleri",
+      "code": "#include <stdio.h>\n#include <math.h>\n\nint main() {\n    double asfaloth_hizi = 16.0;  // Arwen'in atı\n    double mellon_acisi = 3.14159 / 4;  // Moria kapısı açısı\n    \n    printf(\"=== GANDALF'IN HESAPLAMALARı ===\\n\");\n    printf(\"Asfaloth'un hızı: %.1f km/h\\n\", asfaloth_hizi);\n    printf(\"Hız karekökü: %.2f\\n\", sqrt(asfaloth_hizi));\n    printf(\"Hızın karesi: %.1f\\n\", pow(asfaloth_hizi, 2));\n    printf(\"Hızın küpü: %.1f\\n\", pow(asfaloth_hizi, 3));\n    \n    printf(\"\\nMoria Kapısı Geometrisi:\\n\");\n    printf(\"Açı: %.4f radyan\\n\", mellon_acisi);\n    printf(\"sin(açı) = %.4f\\n\", sin(mellon_acisi));\n    printf(\"cos(açı) = %.4f\\n\", cos(mellon_acisi));\n    printf(\"tan(açı) = %.4f\\n\", tan(mellon_acisi));\n    \n    return 0;\n}",
+      "explanation": "Gandalf'ın ileri matematik büyüleri - math.h kütüphanesi",
+      "expectedOutput": [
+        "=== GANDALF'IN HESAPLAMALARı ===",
+        "Asfaloth'un hızı: 16.0 km/h",
+        "Hız karekökü: 4.00",
+        "Hızın karesi: 256.0",
+        "Hızın küpü: 4096.0",
+        "",
+        "Moria Kapısı Geometrisi:",
+        "Açı: 0.7854 radyan",
+        "sin(açı) = 0.7071",
+        "cos(açı) = 0.7071",
+        "tan(açı) = 1.0000"
+      ]
+    },
+    {
+      "title": "Yüzük Büyü Sabitleri",
+      "code": "#include <stdio.h>\n#define YUZUK_GUCU 100\n#define MAX_NAZGUL 9\n#define SAURON_MESAJI \"Tek Yüzük hepsini bulacak!\"\n#define PI_GONDOR 3.14159\n\nint main() {\n    printf(\"%s\\n\", SAURON_MESAJI);\n    \n    double minas_tirith_yaricap = 2.5;  // km\n    double alan = PI_GONDOR * minas_tirith_yaricap * minas_tirith_yaricap;\n    \n    printf(\"\\n=== MİNAS TİRİTH HESAPLAMALARı ===\\n\");\n    printf(\"Şehir yarıçapı: %.1f km\\n\", minas_tirith_yaricap);\n    printf(\"Pi (Gondor sabiti): %.5f\\n\", PI_GONDOR);\n    printf(\"Şehir alanı: %.2f km²\\n\", alan);\n    \n    printf(\"\\n=== YÜZÜK BİLGİLERİ ===\\n\");\n    printf(\"Tek Yüzük gücü: %d\\n\", YUZUK_GUCU);\n    printf(\"Maksimum Nazgûl sayısı: %d\\n\", MAX_NAZGUL);\n    printf(\"Kalan Nazgûl slotu: %d\\n\", MAX_NAZGUL - 9);\n    \n    return 0;\n}",
+      "explanation": "Sauron'un büyü sabitleri - #define ile Ring Constants",
+      "expectedOutput": [
+        "Tek Yüzük hepsini bulacak!",
+        "",
+        "=== MİNAS TİRİTH HESAPLAMALARı ===",
+        "Şehir yarıçapı: 2.5 km",
+        "Pi (Gondor sabiti): 3.14159",
+        "Şehir alanı: 19.63 km²",
+        "",
+        "=== YÜZÜK BİLGİLERİ ===",
+        "Tek Yüzük gücü: 100",
+        "Maksimum Nazgûl sayısı: 9",
+        "Kalan Nazgûl slotu: 0"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "title": "Alıştırma 1: Helm's Deep Savunma Hesapları",
+      "prompt": "Kullanıcıdan Rohan asker sayısı ve Elf yardımcı sayısını alın. Toplam güç, fark ve savaş gücü çarpanını hesaplayın.",
+      "hint": "scanf ile iki int alın, printf ile hesaplamaları gösterin",
+      "solution": "#include <stdio.h>\n\nint main() {\n    int rohan_askeri, elf_yardimi;\n    \n    printf(\"=== HELM'S DEEP SAVUNMA PLANI ===\\n\");\n    printf(\"Rohan asker sayısı: \");\n    scanf(\"%d\", &rohan_askeri);\n    \n    printf(\"Legolas'ın getirdiği Elf sayısı: \");\n    scanf(\"%d\", &elf_yardimi);\n    \n    printf(\"\\n=== SAVAŞ ANALİZİ ===\\n\");\n    printf(\"Toplam savunucu: %d + %d = %d\\n\", rohan_askeri, elf_yardimi, rohan_askeri + elf_yardimi);\n    printf(\"Asker farkı: %d - %d = %d\\n\", rohan_askeri, elf_yardimi, rohan_askeri - elf_yardimi);\n    printf(\"Kombine güç: %d * %d = %d\\n\", rohan_askeri, elf_yardimi, rohan_askeri * elf_yardimi);\n    \n    if(elf_yardimi > 0)\n        printf(\"Elf başına Rohan: %d / %d = %d\\n\", rohan_askeri, elf_yardimi, rohan_askeri / elf_yardimi);\n    \n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 2: Shire Bahçe Hesapları",
+      "prompt": "Kullanıcıdan bahçenin yarıçapını alın, Bilbo'nun bahçe alanını ve çevresini hesaplayın. HOBBIT_PI sabitini kullanın.",
+      "hint": "Alan = PI * r * r, Çevre = 2 * PI * r, #define HOBBIT_PI 3.14159",
+      "solution": "#include <stdio.h>\n#define HOBBIT_PI 3.14159\n\nint main() {\n    float bahce_yaricap, alan, cevre;\n    \n    printf(\"=== BİLBO'NUN BAHÇE HESAPLAYICISI ===\\n\");\n    printf(\"Bahçenin yarıçapını girin (metre): \");\n    scanf(\"%f\", &bahce_yaricap);\n    \n    alan = HOBBIT_PI * bahce_yaricap * bahce_yaricap;\n    cevre = 2 * HOBBIT_PI * bahce_yaricap;\n    \n    printf(\"\\n=== BAHÇE BİLGİLERİ ===\\n\");\n    printf(\"Yarıçap: %.2f m\\n\", bahce_yaricap);\n    printf(\"Alan: %.2f m²\\n\", alan);\n    printf(\"Çevre: %.2f m\\n\", cevre);\n    printf(\"\\nSam: 'Bu kadar alanı nasıl sulanır efendim?'\\n\");\n    \n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 3: Gandalf'ın Güç Analizi",
+      "prompt": "Kullanıcıdan bir büyü gücü sayısı alın, Gandalf'ın math.h büyüleri ile analiz edin (karekök, kare, küp).",
+      "hint": "sqrt(), pow() fonksiyonlarını kullanın, negatif kontrol yapın",
+      "solution": "#include <stdio.h>\n#include <math.h>\n\nint main() {\n    double buyu_gucu;\n    \n    printf(\"=== GANDALF'IN GÜÇ ANALİZİ ===\\n\");\n    printf(\"Büyü gücünüzü girin: \");\n    scanf(\"%lf\", &buyu_gucu);\n    \n    printf(\"\\n=== ANALİZ SONUÇLARI ===\\n\");\n    printf(\"Mevcut güç: %.2f\\n\", buyu_gucu);\n    \n    if(buyu_gucu >= 0) {\n        printf(\"Güç karekökü: %.2f\\n\", sqrt(buyu_gucu));\n        printf(\"(Temel büyü seviyeniz)\\n\");\n    } else {\n        printf(\"Karanlık güç tespit edildi! Karekök hesaplanamaz.\\n\");\n    }\n    \n    printf(\"Güç karesi: %.2f\\n\", pow(buyu_gucu, 2));\n    printf(\"Güç küpü: %.2f\\n\", pow(buyu_gucu, 3));\n    \n    if(buyu_gucu > 50)\n        printf(\"\\nGandalf: 'İyi bir büyücü olacaksın!'\\n\");\n    else\n        printf(\"\\nGandalf: 'Daha çok pratik lazım.'\\n\");\n    \n    return 0;\n}"
+    }
+  ],
+  "files": [
+    {
+      "name": "saruman_operatorler.c",
+      "content": "#include <stdio.h>\n\nint main() {\n    int ork_gucu = 10, uruk_gucu = 3;\n    \n    printf(\"=== SARUMAN'IN ORDU HESAPLARı ===\\n\");\n    printf(\"Ork gücü: %d, Uruk-hai gücü: %d\\n\", ork_gucu, uruk_gucu);\n    printf(\"Toplam güç: %d + %d = %d\\n\", ork_gucu, uruk_gucu, ork_gucu + uruk_gucu);\n    printf(\"Güç farkı: %d - %d = %d\\n\", ork_gucu, uruk_gucu, ork_gucu - uruk_gucu);\n    printf(\"Savaş gücü: %d * %d = %d\\n\", ork_gucu, uruk_gucu, ork_gucu * uruk_gucu);\n    printf(\"Grup bölümü: %d / %d = %d\\n\", ork_gucu, uruk_gucu, ork_gucu / uruk_gucu);\n    printf(\"Kalan asker: %d %% %d = %d\\n\", ork_gucu, uruk_gucu, ork_gucu % uruk_gucu);\n    \n    printf(\"\\n=== GÜÇ ARTIRMA BÜYÜLERİ ===\\n\");\n    ork_gucu += 15; printf(\"Yeni asker: %d\\n\", ork_gucu);\n    ork_gucu *= 2; printf(\"Büyü ile ikiye katlandı: %d\\n\", ork_gucu);\n    ork_gucu /= 3; printf(\"Üçe bölündü: %d\\n\", ork_gucu);\n    \n    return 0;\n}",
+      "description": "Saruman'ın operatör büyüleri"
+    },
+    {
+      "name": "palantir_iletisim.c",
+      "content": "#include <stdio.h>\n\nint main() {\n    char bolge[50], dusman[50];\n    int tehdit_seviyesi;\n    float mesafe_km;\n    \n    printf(\"=== PALANTÍR İLETİŞİM SİSTEMİ ===\\n\");\n    printf(\"Sauron: 'Hangi bölgeyi gözetliyorsun?'\\n\");\n    printf(\"Bölge: \");\n    scanf(\"%s\", bolge);\n    \n    printf(\"Ana düşman: \");\n    scanf(\"%s\", dusman);\n    \n    printf(\"Tehdit seviyesi (1-10): \");\n    scanf(\"%d\", &tehdit_seviyesi);\n    \n    printf(\"Barad-dûr'a mesafe (km): \");\n    scanf(\"%f\", &mesafe_km);\n    \n    printf(\"\\n=== SAURON'A RAPOR ===\\n\");\n    printf(\"Gözetlenen bölge: %s\\n\", bolge);\n    printf(\"Tespit edilen düşman: %s\\n\", dusman);\n    printf(\"Tehdit seviyesi: %d/10\\n\", tehdit_seviyesi);\n    printf(\"Mesafe: %.1f km\\n\", mesafe_km);\n    \n    if(tehdit_seviyesi >= 7)\n        printf(\"\\nSauron: 'Nazgûl'ları göndereceğim!'\\n\");\n    else\n        printf(\"\\nSauron: 'Gözetlemeye devam et.'\\n\");\n    \n    return 0;\n}",
+      "description": "Palantír ile veri alışverişi"
+    },
+    {
+      "name": "gandalf_matematik.c",
+      "content": "#include <stdio.h>\n#include <math.h>\n\nint main() {\n    double shadowfax_hizi = 100.0;  // km/h\n    double moria_acisi = 3.14159 / 3;  // 60 derece\n    \n    printf(\"=== GANDALF'IN BÜYÜCÜLEVİ ===\\n\");\n    printf(\"Shadowfax'ın hızı: %.1f km/h\\n\", shadowfax_hizi);\n    printf(\"Hız analizi:\\n\");\n    printf(\"  Karekök: %.2f\\n\", sqrt(shadowfax_hizi));\n    printf(\"  Karesi: %.0f\\n\", pow(shadowfax_hizi, 2));\n    printf(\"  Doğal log: %.4f\\n\", log(shadowfax_hizi));\n    printf(\"  10 tabanlı log: %.4f\\n\", log10(shadowfax_hizi));\n    \n    printf(\"\\nMoria kapısı geometrisi:\\n\");\n    printf(\"Açı: %.4f radyan (%.1f derece)\\n\", moria_acisi, moria_acisi * 180 / 3.14159);\n    printf(\"sin: %.4f\\n\", sin(moria_acisi));\n    printf(\"cos: %.4f\\n\", cos(moria_acisi));\n    printf(\"tan: %.4f\\n\", tan(moria_acisi));\n    \n    printf(\"\\nGandalf: 'Mellon!' (Kapı açıldı)\\n\");\n    \n    return 0;\n}",
+      "description": "Gandalf'ın ileri matematik büyüleri"
+    }
+  ],
+  "links": [
+    {
+      "title": "Saruman'ın Operatör Büyüleri",
+      "url": "https://en.cppreference.com/w/c/language/operators",
+      "description": "İsengard operatör dokümantasyonu"
+    },
+    {
+      "title": "Palantír Format Büyüleri",
+      "url": "https://en.cppreference.com/w/c/io/fprintf",
+      "description": "printf büyü belirteçleri"
+    },
+    {
+      "title": "Nazgûl Veri Toplama",
+      "url": "https://stackoverflow.com/questions/tagged/scanf",
+      "description": "scanf güvenli büyü kullanımı"
+    },
+    {
+      "title": "Gandalf'ın Matematik Grimoire'ı",
+      "url": "https://en.cppreference.com/w/c/numeric/math",
+      "description": "Büyücüler matematik kütüphanesi"
+    }
+  ],
+  "animations": [
+    {
+      "type": "variables",
+      "title": "Saruman'ın Güç Manipülasyonu",
+      "description": "Büyü operatörlerinin ordu gücü üzerindeki etkisini gösterir",
+      "config": {
+        "showOperations": true,
+        "trackChanges": true,
+        "themeLabels": {
+          "variables": "Ordu Gücü",
+          "operations": "Büyü İşlemleri"
+        }
+      }
+    },
+    {
+      "type": "function-call",
+      "title": "Palantír İletişim Protokolü",
+      "description": "printf ve scanf büyülerinin Palantír üzerinden nasıl çalıştığını gösterir",
+      "config": {
+        "showBuffers": true,
+        "showFormatting": true,
+        "themeLabels": {
+          "input": "Nazgûl Girişi",
+          "output": "Sauron Çıkışı"
+        }
+      }
+    },
+    {
+      "type": "type-conversion",
+      "title": "Yüzük Güç Dönüşümü",
+      "description": "Farklı büyü tiplerinin birbirine dönüştürülme sürecini gösterir",
+      "config": {
+        "showMemoryLayout": true,
+        "showDataLoss": true,
+        "themeLabels": {
+          "conversion": "Güç Dönüşümü",
+          "types": "Büyü Tipleri"
+        }
+      }
+    }
+  ]
+}

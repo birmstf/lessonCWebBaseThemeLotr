@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Programlama Eğitim Platformu</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    
+    <!-- Prism.js Dark Theme -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    
+    <!-- Custom styles SONRA yükle -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i>📘</i> C Programlama Eğitimi
+                </div>
+                <div class="theme-selector">
+                    <span>Tema:</span>
+                    <select id="theme-select">
+                        <option value="classic">Klasik</option>
+                        <option value="lotr">Yüzüklerin Efendisi</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-fill">
+                <span id="progress-text">7</span>%
+            </div>
+        </div>
+
+        <div class="week-navigation">
+            <button class="nav-btn prev" id="prev-week">◀ Önceki Hafta</button>
+            
+            <div class="week-selector">
+                <span>Hafta:</span>
+                <select id="week-select">
+                    <option value="1">1. Hafta</option>
+                    <option value="2">2. Hafta</option>
+                    <option value="3">3. Hafta</option>
+                    <option value="4">4. Hafta</option>
+                    <option value="5">5. Hafta</option>
+                    <option value="6">6. Hafta</option>
+                    <option value="7">7. Hafta</option>
+                    <option value="8">8. Hafta</option>
+                    <option value="9">9. Hafta</option>
+                    <option value="10">10. Hafta</option>
+                    <option value="11">11. Hafta</option>
+                    <option value="12">12. Hafta</option>
+                    <option value="13">13. Hafta</option>
+                    <option value="14">14. Hafta</option>
+                </select>
+            </div>
+            
+            <button class="nav-btn next" id="next-week">Sonraki Hafta ▶</button>
+        </div>
+
+        <div class="loading-indicator" id="loading-indicator" style="display: none;">
+            <div class="spinner"></div>
+            <span>Hafta içeriği yükleniyor...</span>
+        </div>
+
+        <div class="main-content" id="main-content">
+            <div class="lesson-info">
+                <div class="lesson-header">
+                    <h1 class="lesson-title" id="lesson-title">Hafta Yükleniyor...</h1>
+                    <div class="lesson-meta">
+                        <div class="meta-item">
+                            <i>⏱</i> <span id="lesson-duration">-- dakika</span>
+                        </div>
+                        <div class="meta-item">
+                            <i>📊</i> <span id="lesson-difficulty">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-description" id="lesson-description">
+                    <p>İçerik yükleniyor...</p>
+                </div>
+
+                <h3>Öğrenme Hedefleri</h3>
+                <ul class="objectives-list" id="lesson-objectives">
+                    <li>Yükleniyor...</li>
+                </ul>
+
+                <div class="code-examples-section">
+                    <h3>Kod Örnekleri</h3>
+                    <div class="code-tabs" id="code-tabs">
+                        <!-- Dinamik olarak oluşturulacak -->
+                    </div>
+                    <div class="code-content" id="code-content">
+                        <!-- Kod örnekleri buraya -->
+                    </div>
+                </div>
+
+                <div class="exercises-section">
+                    <h3>Alıştırmalar</h3>
+                    <div class="exercises-container" id="exercises-container">
+                        <!-- Alıştırmalar buraya -->
+                    </div>
+                </div>
+
+                <div class="files-section">
+                    <h3>İndirilebilir Dosyalar</h3>
+                    <div class="files-container" id="files-container">
+                        <!-- Dosyalar buraya -->
+                    </div>
+                </div>
+
+                <div class="links-section">
+                    <h3>Faydalı Bağlantılar</h3>
+                    <div class="links-container" id="links-container">
+                        <!-- Bağlantılar buraya -->
+                    </div>
+                </div>
+
+                <h3>Terminal Çıktısı</h3>
+                <div class="terminal" id="terminal-output">
+                    <div class="output-line prompt">Kodu çalıştırmak için butona basın...</div>
+                </div>
+
+                <button class="run-btn" id="run-code-btn">Kodu Çalıştır</button>
+            </div>
+
+            <div class="animation-section">
+                <div class="animation-tabs-container">
+                    <div class="animation-tabs" id="animation-tabs">
+                        <!-- Dinamik olarak oluşturulacak -->
+                    </div>
+                </div>
+
+                <div class="active-animation" id="active-animation">
+                    <div class="animation-header">
+                        <h2 class="animation-title" id="animation-title">Animasyon Yükleniyor...</h2>
+                        <div class="animation-controls">
+                            <button class="control-btn" id="play-btn">▶</button>
+                            <button class="control-btn" id="pause-btn">⏸</button>
+                            <button class="control-btn" id="reset-btn">⏹</button>
+                            <button class="control-btn" id="step-btn">⏭</button>
+                        </div>
+                    </div>
+
+                    <div class="animation-description" id="animation-description">
+                        Animasyon açıklaması buraya gelecek
+                    </div>
+
+                    <div id="p5-container">
+                        <!-- P5.js animasyonu buraya -->
+                    </div>
+
+                    <div class="animation-info">
+                        <div class="info-box">
+                            <div class="info-title">Mevcut Adım</div>
+                            <div class="info-value" id="current-step">0/0</div>
+                        </div>
+                        <div class="info-box">
+                            <div class="info-title">Değişken Değeri</div>
+                            <div class="info-value" id="current-value">-</div>
+                        </div>
+                        <div class="info-box">
+                            <div class="info-title">Durum</div>
+                            <div class="info-value" id="loop-info">Hazır</div>
+                        </div>
+                        <div class="info-box">
+                            <div class="info-title">İterasyon</div>
+                            <div class="info-value" id="var-iteration">0</div>
+                        </div>
+                    </div>
+
+                    <div class="code-render" id="code-render">
+                        <!-- Kod render'ı buraya -->
+                    </div>
+
+                    <h3>Animasyon Logları</h3>
+                    <div class="animation-log" id="animation-log">
+                        <div class="log-entry">Animasyon başlatılıyor...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>C Programlama Eğitim Platformu © 2023 | Interactive Coding Tutor</p>
+        </footer>
+    </div>
+
+    <!-- 1. Base animation class -->
+    <script src="js/animations/base-animation.js"></script>
+    
+    <!-- 2. Animation implementations -->
+    <script src="js/animations/flowchart-animation.js"></script>
+    <script src="js/animations/advanced-animations.js"></script>
+    
+    <!-- 3. Data loader -->
+    <script src="js/ui/week-loader.js"></script>
+    
+    <!-- 4. Animation controller (depends on animations) -->
+    <script src="js/ui/animation-controller.js"></script>
+    
+    <!-- 5. Main app (SyntaxHighlighter inline olarak tanımlı) -->
+    <script src="js/main.js"></script>
+    
+    <!-- Prism.js Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+</body>
+</html>

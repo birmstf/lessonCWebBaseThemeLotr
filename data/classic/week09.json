@@ -1,0 +1,64 @@
+{
+  "week": 9,
+  "title": "Hafta 9: Dizgiler ve Karakter İşlemleri",
+  "description": "C dilinde dizgi tanımı, girdi-çıktı işlemleri, dizgi fonksiyonları ve gösterge dizgileri.",
+  "duration": "120 dakika",
+  "difficulty": "Orta",
+  "objectives": [
+    "Dizgi (string) tanımını öğrenmek",
+    "scanf ve gets/fgets ile dizgi girişi yapmak",
+    "printf ve puts ile dizgi çıktısı almak",
+    "strlen, strcpy, strcat, strcmp gibi temel fonksiyonları öğrenmek",
+    "ctype.h kütüphanesindeki karakter fonksiyonlarını tanımak",
+    "Gösterge ile dizgileri yönetmek"
+  ],
+  "codeExamples": [
+    {
+      "title": "Temel Dizgi Tanımı ve Çıktısı",
+      "code": "#include <stdio.h>\nint main() {\n    char isim[20] = \"Mustafa\";\n    printf(\"Merhaba %s!\\n\", isim);\n    return 0;\n}",
+      "explanation": "char dizisi ile dizgi tanımı ve printf ile yazdırma.",
+      "expectedOutput": ["Merhaba Mustafa!"]
+    },
+    {
+      "title": "Dizgi Girdi İşlemleri",
+      "code": "#include <stdio.h>\nint main() {\n    char isim[20];\n    printf(\"İsminizi girin: \");\n    scanf(\"%19s\", isim);\n    printf(\"Merhaba %s!\\n\", isim);\n    return 0;\n}",
+      "explanation": "scanf ile dizgi okuma.",
+      "expectedOutput": ["İsminizi girin: Ali", "Merhaba Ali!"]
+    },
+    {
+      "title": "Dizgi Fonksiyonları",
+      "code": "#include <stdio.h>\n#include <string.h>\nint main() {\n    char a[20] = \"C\", b[20] = \" Programlama\";\n    strcat(a, b);\n    printf(\"%s\\n\", a);\n    printf(\"Uzunluk: %lu\\n\", strlen(a));\n    return 0;\n}",
+      "explanation": "strcat ile birleştirme, strlen ile uzunluk.",
+      "expectedOutput": ["C Programlama", "Uzunluk: 13"]
+    },
+    {
+      "title": "Karakter Fonksiyonları",
+      "code": "#include <stdio.h>\n#include <ctype.h>\nint main() {\n    char c = 'A';\n    if(isalpha(c)) printf(\"%c bir harftir.\\n\", c);\n    if(isdigit(c)) printf(\"%c bir rakamdır.\\n\", c);\n    return 0;\n}",
+      "explanation": "ctype.h fonksiyonları ile karakter kontrolü.",
+      "expectedOutput": ["A bir harftir."]
+    },
+    {
+      "title": "Gösterge Dizgileri",
+      "code": "#include <stdio.h>\nint main() {\n    char *mesaj = \"Merhaba Dünya\";\n    printf(\"%s\\n\", mesaj);\n    return 0;\n}",
+      "explanation": "Dizgiyi gösterge ile tanımlama.",
+      "expectedOutput": ["Merhaba Dünya"]
+    }
+  ],
+  "exercises": [
+    {
+      "title": "Alıştırma 1: İsim Girişi",
+      "description": "Kullanıcıdan isim alıp ekrana yazdırın.",
+      "difficulty": "Kolay"
+    },
+    {
+      "title": "Alıştırma 2: Kelime Uzunluğu",
+      "description": "Bir dizginin uzunluğunu strlen kullanmadan bulun.",
+      "difficulty": "Orta"
+    },
+    {
+      "title": "Alıştırma 3: Dizgi Karşılaştırma",
+      "description": "İki dizgiyi strcmp ile karşılaştırın ve sonucu yazdırın.",
+      "difficulty": "Orta"
+    }
+  ]
+}

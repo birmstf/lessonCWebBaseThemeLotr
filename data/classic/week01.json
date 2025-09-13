@@ -1,0 +1,154 @@
+{
+  "week": 1,
+  "title": "Hafta 1: Bilgisayar Temelleri ve C Programlama Giriş",
+  "description": "Bilgisayarın temel birimleri, bilgi saklama yöntemleri, bilgisayara iş yaptırma süreçleri ve C programlama diline giriş.",
+  "duration": "90 dakika",
+  "difficulty": "Başlangıç",
+  "objectives": [
+    "Bilgisayarın temel birimlerini öğrenmek (CPU, RAM, Depolama)",
+    "Bilgi saklama yöntemlerini anlamak (Binary, Bit, Byte)",
+    "Bilgisayara istediğimiz işleri nasıl yaptıracağımızı kavramak",
+    "C programlama dilinin ne olduğunu öğrenmek",
+    "C programının derlenmesi sürecini anlamak",
+    "İlk C programını yazmak ve çalıştırmak"
+  ],
+  "codeExamples": [
+    {
+      "title": "İlk C Programımız",
+      "code": "#include <stdio.h>\n\nint main() {\n    printf(\"Merhaba Dünya! C programlama öğreniyorum.\\n\");\n    return 0;\n}",
+      "explanation": "En basit C programı - bilgisayara ekrana yazı yazdırma işini yaptırıyoruz",
+      "expectedOutput": [
+        "Merhaba Dünya! C programlama öğreniyorum."
+      ]
+    },
+    {
+      "title": "Bilgisayarın Hafızasını Kullanma",
+      "code": "#include <stdio.h>\n\nint main() {\n    // RAM'de yer ayırıyoruz (4 byte)\n    int sayi = 42;\n    \n    printf(\"RAM'de sakladığımız sayı: %d\\n\", sayi);\n    printf(\"Bu sayı %zu byte yer kaplıyor\\n\", sizeof(sayi));\n    \n    return 0;\n}",
+      "explanation": "Bilgisayarın RAM'inde nasıl veri sakladığımızı gösterir",
+      "expectedOutput": [
+        "RAM'de sakladığımız sayı: 42",
+        "Bu sayı 4 byte yer kaplıyor"
+      ]
+    },
+    {
+      "title": "İşlemci ile Hesaplama",
+      "code": "#include <stdio.h>\n\nint main() {\n    int sayi1 = 10;\n    int sayi2 = 20;\n    \n    // CPU'ya toplama işi yaptırıyoruz\n    int sonuc = sayi1 + sayi2;\n    \n    printf(\"CPU hesapladı: %d + %d = %d\\n\", sayi1, sayi2, sonuc);\n    \n    return 0;\n}",
+      "explanation": "İşlemciye (CPU) matematiksel işlem yaptırma örneği",
+      "expectedOutput": [
+        "CPU hesapladı: 10 + 20 = 30"
+      ]
+    },
+    {
+      "title": "Derleme Süreci Örneği",
+      "code": "#include <stdio.h>  // 1. Ön işlemci: header dosyasını dahil et\n\nint main() {           // 2. Derleyici: makine koduna çevir\n    printf(\"Derleme başarılı!\\n\");  // 3. Bağlayıcı: kütüphaneleri ekle\n    return 0;          // 4. Çalıştırılabilir dosya hazır\n}",
+      "explanation": "C programının kaynak koddan çalıştırılabilir dosyaya dönüşümü",
+      "expectedOutput": [
+        "Derleme başarılı!"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "title": "Alıştırma 1: Bilgisayar Birimleri",
+      "prompt": "Bilgisayarınızın RAM boyutunu, işlemci çekirdek sayısını ekrana yazdıran bir program yazın (değerleri kendiniz belirleyin).",
+      "hint": "RAM için int (GB), çekirdek için int kullanın",
+      "solution": "#include <stdio.h>\n\nint main() {\n    int ram_gb = 16;\n    int cpu_cekirdek = 8;\n    \n    printf(\"Bilgisayar Özellikleri:\\n\");\n    printf(\"RAM: %d GB\\n\", ram_gb);\n    printf(\"CPU Çekirdek: %d\\n\", cpu_cekirdek);\n    \n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 2: Byte Hesaplaması",
+      "prompt": "Farklı veri tiplerinin kaç byte yer kapladığını sizeof() ile hesaplayıp yazdırın.",
+      "hint": "sizeof(int), sizeof(float), sizeof(char) kullanın",
+      "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Veri Tipi Boyutları:\\n\");\n    printf(\"int: %zu byte\\n\", sizeof(int));\n    printf(\"float: %zu byte\\n\", sizeof(float));\n    printf(\"char: %zu byte\\n\", sizeof(char));\n    printf(\"double: %zu byte\\n\", sizeof(double));\n    \n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 3: Basit Hesap Makinesi",
+      "prompt": "İki sayıyı toplayıp çıkarma işlemi yapan basit bir hesap makinesi yazın.",
+      "hint": "İki int değişken tanımlayın ve +, - operatörlerini kullanın",
+      "solution": "#include <stdio.h>\n\nint main() {\n    int sayi1 = 15;\n    int sayi2 = 7;\n    \n    printf(\"Sayı 1: %d\\n\", sayi1);\n    printf(\"Sayı 2: %d\\n\", sayi2);\n    printf(\"Toplam: %d\\n\", sayi1 + sayi2);\n    printf(\"Fark: %d\\n\", sayi1 - sayi2);\n    \n    return 0;\n}"
+    }
+  ],
+  "files": [
+    {
+      "name": "bilgisayar_temelleri.c",
+      "content": "#include <stdio.h>\n\nint main() {\n    printf(\"=== BİLGİSAYARIN TEMEL BİRİMLERİ ===\\n\\n\");\n    \n    printf(\"1. CPU (İşlemci): Hesaplama yapar\\n\");\n    printf(\"   Örnek: 2 + 3 = %d\\n\", 2 + 3);\n    \n    printf(\"\\n2. RAM (Bellek): Geçici veri saklar\\n\");\n    int gecici_veri = 100;\n    printf(\"   RAM'de saklanan: %d\\n\", gecici_veri);\n    \n    printf(\"\\n3. Depolama: Kalıcı veri saklar\\n\");\n    printf(\"   Bu program dosyası depolamada saklanır\\n\");\n    \n    printf(\"\\n4. Giriş/Çıkış: Kullanıcı ile iletişim\\n\");\n    printf(\"   Bu mesaj çıkış cihazında (ekran) görünür\\n\");\n    \n    return 0;\n}",
+      "description": "Bilgisayarın temel bileşenleri ve C ile nasıl kullanıldığı"
+    },
+    {
+      "name": "derleme_sureci.c",
+      "content": "/*\n * C PROGRAMININ DERLENMESİ\n * \n * 1. KAYNAK KOD (.c dosyası)\n * 2. ÖN İŞLEMCİ (Preprocessor): #include'ları genişletir\n * 3. DERLEYİCİ (Compiler): Assembly koduna çevirir\n * 4. ASSEMBLER: Makine koduna çevirir (.o dosyası)\n * 5. BAĞLAYICI (Linker): Kütüphaneleri ekler\n * 6. ÇALIŞTIRILABİLİR DOSYA (.exe)\n */\n\n#include <stdio.h>  // 1. Adım: Ön işlemci bunu genişletecek\n\nint main() {        // 2. Adım: Derleyici bunu makine koduna çevirecek\n    printf(\"Derleme süreci tamamlandı!\\n\");  // 3. Adım: printf kütüphaneden bağlanacak\n    return 0;       // 4. Adım: Program başarıyla sonlanacak\n}",
+      "description": "C programının derleme aşamalarını açıklayan örnek"
+    }
+  ],
+  "links": [
+    {
+      "title": "Bilgisayar Temel Kavramları",
+      "url": "https://tr.wikipedia.org/wiki/Bilgisayar",
+      "description": "Bilgisayarın temel çalışma prensibi"
+    },
+    {
+      "title": "C Dili Tarihçesi",
+      "url": "https://en.wikipedia.org/wiki/C_(programming_language)",
+      "description": "C dilinin gelişim süreci"
+    },
+    {
+      "title": "Derleme Süreci Detayları",
+      "url": "https://www.geeksforgeeks.org/compiling-a-c-program-behind-the-scenes/",
+      "description": "C programının derleme aşamaları"
+    },
+    {
+      "title": "Binary ve Bit Kavramları",
+      "url": "https://www.khanacademy.org/computing/computer-science/how-computers-work2",
+      "description": "Bilgisayarların binary sistemle nasıl çalıştığı"
+    }
+  ],
+  "animations": [
+    {
+      "type": "simple",
+      "title": "Bilgisayar Bileşenleri",
+      "description": "CPU, RAM, Depolama birimlerinin nasıl çalıştığını gösterir",
+      "config": {
+        "maxSteps": 4,
+        "showComponents": [
+          "CPU",
+          "RAM",
+          "Storage",
+          "IO"
+        ]
+      }
+    },
+	{
+  "type": "compilation-process",
+  "title": "C Derleme Süreci",
+  "description": "Kaynak koddan executable'a dönüşüm aşamaları",
+  "config": {
+    "showCommands": true,
+    "showFileContents": true,
+    "detailedView": false
+  }
+},
+    {
+      "type": "flowchart",
+      "title": "Derleme Süreci",
+      "description": "C kodunun çalıştırılabilir dosyaya dönüşüm aşamalarını gösterir",
+      "config": {
+        "steps": [
+          "Kaynak Kod",
+          "Ön İşlemci",
+          "Derleyici",
+          "Bağlayıcı",
+          "Çalıştırılabilir"
+        ],
+        "showFlow": true
+      }
+    },
+    {
+      "type": "memory-view",
+      "title": "Bilgi Saklama",
+      "description": "Verilerin RAM'de nasıl saklandığını bit ve byte düzeyinde gösterir",
+      "config": {
+        "showBinary": true,
+        "showAddresses": true
+      }
+    }
+  ]
+}

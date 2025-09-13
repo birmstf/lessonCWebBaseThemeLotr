@@ -1,0 +1,16 @@
+{
+  "week": 10,
+  "title": "Hafta 10: Yapılar ve Birleşimler",
+  "description": "C dilinde yapıların tanımı, kullanımı ve birleşimler.",
+  "duration": "120 dakika",
+  "difficulty": "Orta",
+  "objectives": [
+    "Yapı tanımı ve ilk değer atama",
+    "Yapı elemanlarına erişim",
+    "İçiçe yapılar",
+    "Yapılar ve fonksiyonlar",
+    "Yapı dizileri",
+    "typedef ile yeni tip tanımı",
+    "Birleşimler (union) kullanımı"
+  ]
+}

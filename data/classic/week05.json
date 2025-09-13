@@ -1,0 +1,208 @@
+{
+  "week": 5,
+  "title": "Hafta 5: Döngüler ve Kontrol Yapıları",
+  "description": "While döngüsü, diğer operatörler, bileşik komutlar, for döngüsü, do-while döngüsü, iç içe döngüler, break ve continue komutları konularını öğrenin.",
+  "duration": "90 dakika",
+  "difficulty": "Orta",
+  "objectives": [
+    "While döngüsünü öğrenmek ve kullanmak",
+    "Diğer operatörleri (++, --, +=, -=) kavramak",
+    "Bileşik komut yapılarını anlamak",
+    "For ve do-while döngülerini karşılaştırmak",
+    "İç içe döngü mantığını öğrenmek",
+    "Break ve continue komutlarını kullanmak"
+  ],
+  "codeExamples": [
+    {
+      "title": "While Döngüsü Temelleri",
+      "code": "#include <stdio.h>\n\nint main() {\n    int sayac = 1;\n    \n    printf(\"While döngüsü başlatılıyor...\\n\");\n    while (sayac <= 5) {\n        printf(\"Döngü adımı: %d\\n\", sayac);\n        sayac++; // sayac = sayac + 1\n    }\n    printf(\"While döngüsü tamamlandı\\n\");\n    \n    return 0;\n}",
+      "explanation": "While döngüsü ve increment operatörü kullanımı",
+      "expectedOutput": [
+        "While döngüsü başlatılıyor...",
+        "Döngü adımı: 1",
+        "Döngü adımı: 2", 
+        "Döngü adımı: 3",
+        "Döngü adımı: 4",
+        "Döngü adımı: 5",
+        "While döngüsü tamamlandı"
+      ]
+    },
+    {
+      "title": "Diğer Operatörler",
+      "code": "#include <stdio.h>\n\nint main() {\n    int x = 10, y = 3;\n    \n    printf(\"Başlangıç: x=%d, y=%d\\n\", x, y);\n    \n    // Increment ve Decrement\n    printf(\"\\nIncrement/Decrement operatörleri:\\n\");\n    printf(\"x++: %d (sonra x=%d)\\n\", x++, x);\n    printf(\"++y: %d (y=%d)\\n\", ++y, y);\n    printf(\"x--: %d (sonra x=%d)\\n\", x--, x);\n    printf(\"--y: %d (y=%d)\\n\", --y, y);\n    \n    // Bileşik atama operatörleri\n    printf(\"\\nBileşik atama operatörleri:\\n\");\n    x += 5; printf(\"x += 5: %d\\n\", x);\n    x -= 3; printf(\"x -= 3: %d\\n\", x);\n    x *= 2; printf(\"x *= 2: %d\\n\", x);\n    x /= 4; printf(\"x /= 4: %d\\n\", x);\n    \n    return 0;\n}",
+      "explanation": "Increment, decrement ve bileşik atama operatörleri",
+      "expectedOutput": [
+        "Başlangıç: x=10, y=3",
+        "",
+        "Increment/Decrement operatörleri:",
+        "x++: 10 (sonra x=11)",
+        "++y: 4 (y=4)",
+        "x--: 11 (sonra x=10)",
+        "--y: 3 (y=3)",
+        "",
+        "Bileşik atama operatörleri:",
+        "x += 5: 15",
+        "x -= 3: 12",
+        "x *= 2: 24",
+        "x /= 4: 6"
+      ]
+    },
+    {
+      "title": "Do-While Döngüsü",
+      "code": "#include <stdio.h>\n\nint main() {\n    int sayi = 0;\n    \n    printf(\"Do-while döngüsü (en az 1 kez çalışır):\\n\");\n    do {\n        printf(\"Sayı: %d\\n\", sayi);\n        sayi++;\n    } while (sayi < 3);\n    \n    printf(\"\\nKarşılaştırma - while döngüsü:\\n\");\n    int sayi2 = 5; // Koşul baştan false\n    while (sayi2 < 3) {\n        printf(\"Bu satır çalışmaz\\n\");\n        sayi2++;\n    }\n    printf(\"While döngüsü hiç çalışmadı (sayi2=%d)\\n\", sayi2);\n    \n    return 0;\n}",
+      "explanation": "Do-while ile while döngüsü arasındaki fark",
+      "expectedOutput": [
+        "Do-while döngüsü (en az 1 kez çalışır):",
+        "Sayı: 0",
+        "Sayı: 1",
+        "Sayı: 2",
+        "",
+        "Karşılaştırma - while döngüsü:",
+        "While döngüsü hiç çalışmadı (sayi2=5)"
+      ]
+    },
+    {
+      "title": "İç İçe Döngüler",
+      "code": "#include <stdio.h>\n\nint main() {\n    printf(\"İç içe döngü - Çarpım tablosu:\\n\");\n    \n    for (int i = 1; i <= 3; i++) {\n        printf(\"\\n%d'in katları: \", i);\n        for (int j = 1; j <= 4; j++) {\n            printf(\"%d \", i * j);\n        }\n    }\n    \n    printf(\"\\n\\nYıldız deseni:\\n\");\n    for (int satir = 1; satir <= 4; satir++) {\n        for (int yildiz = 1; yildiz <= satir; yildiz++) {\n            printf(\"* \");\n        }\n        printf(\"\\n\");\n    }\n    \n    return 0;\n}",
+      "explanation": "İç içe for döngüleri ile desen oluşturma",
+      "expectedOutput": [
+        "İç içe döngü - Çarpım tablosu:",
+        "",
+        "1'in katları: 1 2 3 4 ",
+        "2'in katları: 2 4 6 8 ",
+        "3'in katları: 3 6 9 12 ",
+        "",
+        "Yıldız deseni:",
+        "* ",
+        "* * ",
+        "* * * ",
+        "* * * * "
+      ]
+    },
+    {
+      "title": "Break ve Continue",
+      "code": "#include <stdio.h>\n\nint main() {\n    printf(\"Break örneği (5'te dur):\\n\");\n    for (int i = 1; i <= 10; i++) {\n        if (i == 5) {\n            printf(\"5'e geldi, döngüden çık!\\n\");\n            break;\n        }\n        printf(\"%d \", i);\n    }\n    \n    printf(\"\\n\\nContinue örneği (çift sayıları atla):\\n\");\n    for (int i = 1; i <= 8; i++) {\n        if (i % 2 == 0) {\n            continue; // Çift sayıları atla\n        }\n        printf(\"%d \", i);\n    }\n    \n    printf(\"\\n\\nWhile ile break örneği:\\n\");\n    int sayac = 0;\n    while (1) { // Sonsuz döngü\n        sayac++;\n        printf(\"Adım %d \", sayac);\n        if (sayac >= 3) {\n            printf(\"- Döngüden çıkılıyor\\n\");\n            break;\n        }\n        printf(\"\\n\");\n    }\n    \n    return 0;\n}",
+      "explanation": "Break ve continue komutları ile döngü kontrolü",
+      "expectedOutput": [
+        "Break örneği (5'te dur):",
+        "1 2 3 4 5'e geldi, döngüden çık!",
+        "",
+        "Continue örneği (çift sayıları atla):",
+        "1 3 5 7 ",
+        "",
+        "While ile break örneği:",
+        "Adım 1 ",
+        "Adım 2 ",
+        "Adım 3 - Döngüden çıkılıyor"
+      ]
+    },
+    {
+      "title": "Bileşik Komut Yapıları",
+      "code": "#include <stdio.h>\n\nint main() {\n    int toplam = 0, adet = 0;\n    \n    printf(\"Bileşik komut yapısı örneği:\\n\");\n    \n    for (int i = 1; i <= 5; i++) {\n        // Bileşik komut bloğu\n        {\n            int kare = i * i;\n            toplam += kare;\n            adet++;\n            printf(\"Sayı: %d, Karesi: %d, Toplam: %d\\n\", i, kare, toplam);\n        }\n    }\n    \n    // Tek komut (bileşik değil)\n    if (adet > 0)\n        printf(\"\\nOrtalama: %.2f\\n\", (float)toplam / adet);\n    \n    // Bileşik komut\n    if (toplam > 50) {\n        printf(\"Toplam büyük: %d\\n\", toplam);\n        printf(\"İşlem başarılı\\n\");\n    }\n    \n    return 0;\n}",
+      "explanation": "Bileşik komut blokları ve tek komut arasındaki fark",
+      "expectedOutput": [
+        "Bileşik komut yapısı örneği:",
+        "Sayı: 1, Karesi: 1, Toplam: 1",
+        "Sayı: 2, Karesi: 4, Toplam: 5",
+        "Sayı: 3, Karesi: 9, Toplam: 14",
+        "Sayı: 4, Karesi: 16, Toplam: 30",
+        "Sayı: 5, Karesi: 25, Toplam: 55",
+        "",
+        "Ortalama: 11.00",
+        "Toplam büyük: 55",
+        "İşlem başarılı"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "title": "Alıştırma 1: While vs For Karşılaştırması",
+      "prompt": "Aynı işi yapan while ve for döngüsü yazın: 1'den 10'a kadar sayıların toplamını hesaplayın.",
+      "hint": "İki farklı döngü türü ile aynı sonucu alın",
+      "solution": "#include <stdio.h>\n\nint main() {\n    // While ile\n    int toplam1 = 0, i = 1;\n    while (i <= 10) {\n        toplam1 += i;\n        i++;\n    }\n    printf(\"While ile toplam: %d\\n\", toplam1);\n    \n    // For ile\n    int toplam2 = 0;\n    for (int j = 1; j <= 10; j++) {\n        toplam2 += j;\n    }\n    printf(\"For ile toplam: %d\\n\", toplam2);\n    \n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 2: Break ve Continue Kullanımı",
+      "prompt": "1'den 20'ye kadar sayıları yazdırın, ancak 7'nin katlarını atlayın ve 15'e gelince durun.",
+      "hint": "% operatörü ile 7'nin katlarını bulun, break ile durun",
+      "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Sayılar (7'nin katları atlanır, 15'te dur):\\n\");\n    \n    for (int i = 1; i <= 20; i++) {\n        if (i == 15) {\n            printf(\"15'e gelindi, duruyoruz\\n\");\n            break;\n        }\n        \n        if (i % 7 == 0) {\n            printf(\"(%d atlandı) \", i);\n            continue;\n        }\n        \n        printf(\"%d \", i);\n    }\n    \n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 3: İç İçe Döngü Deseni",
+      "prompt": "Ters üçgen yıldız deseni çizin. 5 satır olsun, her satırda bir öncekinden 1 eksik yıldız bulunsun.",
+      "hint": "Dış döngü satırları, iç döngü yıldızları kontrol eder",
+      "solution": "#include <stdio.h>\n\nint main() {\n    printf(\"Ters üçgen yıldız deseni:\\n\");\n    \n    for (int satir = 5; satir >= 1; satir--) {\n        for (int yildiz = 1; yildiz <= satir; yildiz++) {\n            printf(\"* \");\n        }\n        printf(\"\\n\");\n    }\n    \n    return 0;\n}"
+    }
+  ],
+  "files": [
+    {
+      "name": "dongu_turleri.c",
+      "content": "#include <stdio.h>\n\nint main() {\n    printf(\"=== DÖNGÜ TÜRLERİ KARŞILAŞTIRMASI ===\\n\\n\");\n    \n    // While döngüsü\n    printf(\"1. While döngüsü:\\n\");\n    int i = 1;\n    while (i <= 3) {\n        printf(\"  While: %d\\n\", i);\n        i++;\n    }\n    \n    // For döngüsü\n    printf(\"\\n2. For döngüsü:\\n\");\n    for (int j = 1; j <= 3; j++) {\n        printf(\"  For: %d\\n\", j);\n    }\n    \n    // Do-while döngüsü\n    printf(\"\\n3. Do-while döngüsü:\\n\");\n    int k = 1;\n    do {\n        printf(\"  Do-while: %d\\n\", k);\n        k++;\n    } while (k <= 3);\n    \n    printf(\"\\nTüm döngüler tamamlandı!\\n\");\n    \n    return 0;\n}",
+      "description": "Farklı döngü türlerinin karşılaştırması"
+    },
+    {
+      "name": "operatorler_demo.c",
+      "content": "#include <stdio.h>\n\nint main() {\n    int x = 10;\n    \n    printf(\"=== OPERATÖR DEMONSTRASYONu ===\\n\");\n    printf(\"Başlangıç değeri: x = %d\\n\\n\", x);\n    \n    printf(\"Pre-increment (++x): %d\\n\", ++x);  // x önce artırılır\n    printf(\"Post-increment (x++): %d\\n\", x++); // x sonra artırılır\n    printf(\"Şimdiki x: %d\\n\\n\", x);\n    \n    printf(\"Bileşik atama operatörleri:\\n\");\n    x += 5; printf(\"x += 5: %d\\n\", x);\n    x -= 3; printf(\"x -= 3: %d\\n\", x);\n    x *= 2; printf(\"x *= 2: %d\\n\", x);\n    x /= 4; printf(\"x /= 4: %d\\n\", x);\n    x %= 3; printf(\"x %%= 3: %d\\n\", x);\n    \n    return 0;\n}",
+      "description": "Operatörlerin detaylı kullanımı"
+    },
+    {
+      "name": "ic_ice_donguler.c",
+      "content": "#include <stdio.h>\n\nint main() {\n    printf(\"=== İÇ İÇE DÖNGÜ ÖRNEKLERİ ===\\n\\n\");\n    \n    // Basit çarpım tablosu\n    printf(\"Çarpım tablosu (3x3):\\n\");\n    for (int i = 1; i <= 3; i++) {\n        for (int j = 1; j <= 3; j++) {\n            printf(\"%d \", i * j);\n        }\n        printf(\"\\n\");\n    }\n    \n    printf(\"\\nSayı matrisi:\\n\");\n    for (int satir = 1; satir <= 4; satir++) {\n        for (int sutun = 1; sutun <= 5; sutun++) {\n            printf(\"%2d \", satir + sutun);\n        }\n        printf(\"\\n\");\n    }\n    \n    printf(\"\\nBreak ile iç döngüden çıkış:\\n\");\n    for (int i = 1; i <= 3; i++) {\n        printf(\"Dış döngü %d: \", i);\n        for (int j = 1; j <= 5; j++) {\n            if (j == 3) {\n                printf(\"(break) \");\n                break;\n            }\n            printf(\"%d \", j);\n        }\n        printf(\"\\n\");\n    }\n    \n    return 0;\n}",
+      "description": "İç içe döngü örnekleri ve break kullanımı"
+    }
+  ],
+  "links": [
+    {
+      "title": "C While Döngüsü",
+      "url": "https://www.programiz.com/c-programming/c-while-do-while-loop",
+      "description": "While ve do-while döngüleri detaylı anlatım"
+    },
+    {
+      "title": "C Operatörleri",
+      "url": "https://en.cppreference.com/w/c/language/operators",
+      "description": "Tüm C operatörleri referansı"
+    },
+    {
+      "title": "Break ve Continue",
+      "url": "https://www.geeksforgeeks.org/break-statement-cc/",
+      "description": "Break ve continue komutları"
+    },
+    {
+      "title": "İç İçe Döngüler",
+      "url": "https://www.tutorialspoint.com/cprogramming/c_nested_loops.htm",
+      "description": "Nested loops örnekleri ve kullanımı"
+    }
+  ],
+  "animations": [
+    {
+      "type": "while-loop",
+      "title": "While Döngüsü Akışı",
+      "description": "While döngüsünün koşul kontrol mekanizmasını gösterir",
+      "config": {
+        "maxIterations": 5,
+        "showConditionCheck": true,
+        "showVariableChanges": true
+      }
+    },
+    {
+      "type": "nested-loops",
+      "title": "İç İçe Döngüler",
+      "description": "Dış ve iç döngülerin nasıl çalıştığını görselleştirir",
+      "config": {
+        "outerLoopMax": 3,
+        "innerLoopMax": 4,
+        "showIterationCount": true
+      }
+    },
+    {
+      "type": "break-continue",
+      "title": "Break ve Continue Kontrolü",
+      "description": "Break ve continue komutlarının döngü akışını nasıl değiştirdiğini gösterir",
+      "config": {
+        "showSkippedIterations": true,
+        "showBreakPoint": true,
+        "demonstrateFlow": true
+      }
+    }
+  ]
+}

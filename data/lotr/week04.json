@@ -1,0 +1,189 @@
+{
+  "week": 4,
+  "title": "Hafta 4: Yolculuk Günleri - For Döngüsü",
+  "description": "Yüzük Kardeşliği'nin yolculuğunu gün gün simüle edelim. For döngüsü ile tekrarlı yolculukları kodlayacağız.",
+  "duration": "90 dakika",
+  "difficulty": "Orta",
+  "objectives": [
+    "Yolculuk günlerini saymak (for döngüsü)",
+    "Kardeşliğin ilerleyişini takip etmek",
+    "Tekrarlı yolculukları anlamak",
+    "Her günün özel olaylarını kodlamak"
+  ],
+  "codeExamples": [
+    {
+      "title": "Kardeşliğin 5 Günlük Yolculuğu",
+      "code": "#include <stdio.h>\nint main() {\n    for (int day = 1; day <= 5; day++) {\n        printf(\"%d. gün: Yüzük Kardeşliği ilerliyor...\\n\", day);\n        printf(\"   Gandalf rehberlik ediyor.\\n\");\n    }\n    return 0;\n}",
+      "explanation": "Kardeşliğin 5 günlük yolculuğunu simüle eder",
+      "expectedOutput": [
+        "1. gün: Yüzük Kardeşliği ilerliyor...",
+        "   Gandalf rehberlik ediyor.",
+        "2. gün: Yüzük Kardeşliği ilerliyor...",
+        "   Gandalf rehberlik ediyor.",
+        "3. gün: Yüzük Kardeşliği ilerliyor...",
+        "   Gandalf rehberlik ediyor.",
+        "4. gün: Yüzük Kardeşliği ilerliyor...",
+        "   Gandalf rehberlik ediyor.",
+        "5. gün: Yüzük Kardeşliği ilerliyor...",
+        "   Gandalf rehberlik ediyor."
+      ]
+    },
+    {
+      "title": "Frodo'nun Adım Sayacı",
+      "code": "#include <stdio.h>\nint main() {\n    int total_steps = 0;\n    for (int hour = 1; hour <= 8; hour++) {\n        int steps_per_hour = 1000;\n        total_steps += steps_per_hour;\n        printf(\"Saat %d: Toplam %d adım\\n\", hour, total_steps);\n    }\n    printf(\"Günlük toplam: %d adım\\n\", total_steps);\n    return 0;\n}",
+      "explanation": "Frodo'nun günlük adım sayısını hesaplar",
+      "expectedOutput": [
+        "Saat 1: Toplam 1000 adım",
+        "Saat 2: Toplam 2000 adım",
+        "Saat 3: Toplam 3000 adım",
+        "Saat 4: Toplam 4000 adım",
+        "Saat 5: Toplam 5000 adım",
+        "Saat 6: Toplam 6000 adım",
+        "Saat 7: Toplam 7000 adım",
+        "Saat 8: Toplam 8000 adım",
+        "Günlük toplam: 8000 adım"
+      ]
+    },
+    {
+      "title": "Aragorn'un İz Takibi",
+      "code": "#include <stdio.h>\nint main() {\n    for (int track = 1; track <= 7; track++) {\n        if (track % 2 == 1) {\n            printf(\"İz %d: Ork ayak izi bulundu\\n\", track);\n        } else {\n            printf(\"İz %d: Hobbit ayak izi bulundu\\n\", track);\n        }\n    }\n    return 0;\n}",
+      "explanation": "Aragorn'un iz takip becerisini simüle eder",
+      "expectedOutput": [
+        "İz 1: Ork ayak izi bulundu",
+        "İz 2: Hobbit ayak izi bulundu",
+        "İz 3: Ork ayak izi bulundu",
+        "İz 4: Hobbit ayak izi bulundu",
+        "İz 5: Ork ayak izi bulundu",
+        "İz 6: Hobbit ayak izi bulundu",
+        "İz 7: Ork ayak izi bulundu"
+      ]
+    },
+    {
+      "title": "Legolas'ın Ok Sayımı",
+      "code": "#include <stdio.h>\nint main() {\n    int total_arrows = 30;\n    printf(\"Legolas'ın ok sayımı:\\n\");\n    for (int shot = 1; shot <= 10; shot++) {\n        total_arrows--;\n        printf(\"Ok %d atıldı. Kalan: %d\\n\", shot, total_arrows);\n    }\n    return 0;\n}",
+      "explanation": "Legolas'ın ok sayımını takip eder",
+      "expectedOutput": [
+        "Legolas'ın ok sayımı:",
+        "Ok 1 atıldı. Kalan: 29",
+        "Ok 2 atıldı. Kalan: 28",
+        "Ok 3 atıldı. Kalan: 27",
+        "Ok 4 atıldı. Kalan: 26",
+        "Ok 5 atıldı. Kalan: 25",
+        "Ok 6 atıldı. Kalan: 24",
+        "Ok 7 atıldı. Kalan: 23",
+        "Ok 8 atıldı. Kalan: 22",
+        "Ok 9 atıldı. Kalan: 21",
+        "Ok 10 atıldı. Kalan: 20"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "title": "Alıştırma 1: Gimli'nin Balta Vuruşları",
+      "prompt": "Gimli 15 balta vuruşu yapıyor. Her vuruşu numaralandırarak yazdırın.",
+      "hint": "1'den 15'e kadar bir for döngüsü kullanın.",
+      "solution": "#include <stdio.h>\nint main() {\n    for (int hit = 1; hit <= 15; hit++) {\n        printf(\"Gimli'nin %d. balta vuruşu!\\n\", hit);\n    }\n    printf(\"Gimli yoruldu!\\n\");\n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 2: Yüzüğün Güç Kaybı",
+      "prompt": "Yüzük her gün güç kaybediyor. 100 güçle başlayıp her gün 5 güç kaybediyor. 10 günlük kaybı yazdırın.",
+      "hint": "Başlangıç gücü 100, her döngüde 5 azalt.",
+      "solution": "#include <stdio.h>\nint main() {\n    int ring_power = 100;\n    for (int day = 1; day <= 10; day++) {\n        ring_power -= 5;\n        printf(\"%d. gün: Yüzük gücü %d\\n\", day, ring_power);\n    }\n    return 0;\n}"
+    },
+    {
+      "title": "Alıştırma 3: Merry ve Pippin'in Yemek Sayımı",
+      "prompt": "Merry ve Pippin günde 6 öğün yiyor. 7 günlük toplam öğün sayısını hesaplayın.",
+      "hint": "İç içe döngü: dış döngü günler, iç döngü öğünler.",
+      "solution": "#include <stdio.h>\nint main() {\n    int total_meals = 0;\n    for (int day = 1; day <= 7; day++) {\n        for (int meal = 1; meal <= 6; meal++) {\n            total_meals++;\n            printf(\"Gün %d, Öğün %d\\n\", day, meal);\n        }\n    }\n    printf(\"Toplam öğün: %d\\n\", total_meals);\n    return 0;\n}"
+    }
+  ],
+  "files": [
+    {
+      "name": "kardeslik_yolculugu.c",
+      "content": "#include <stdio.h>\nint main() {\n    printf(\"=== YÜZÜK KARDEŞLİĞİ YOLCULUK GÜNLÜĞÜ ===\\n\\n\");\n    \n    for (int day = 1; day <= 5; day++) {\n        printf(\"--- %d. GÜN ---\\n\", day);\n        printf(\"Yüzük Kardeşliği ilerliyor...\\n\");\n        printf(\"Gandalf rehberlik ediyor.\\n\");\n        \n        if (day == 3) {\n            printf(\"*** ÖZEL OLAY: Moria Madenleri yaklaşıyor! ***\\n\");\n        }\n        \n        printf(\"\\n\");\n    }\n    \n    printf(\"Yolculuk bu bölümde tamamlandı.\\n\");\n    return 0;\n}",
+      "description": "Kardeşliğin tam yolculuk simülasyonu"
+    },
+    {
+      "name": "frodo_adim_sayaci.c",
+      "content": "#include <stdio.h>\nint main() {\n    int total_steps = 0;\n    int daily_goal = 8000;\n    \n    printf(\"Frodo'nun günlük adım hedefi: %d\\n\\n\", daily_goal);\n    \n    for (int hour = 1; hour <= 8; hour++) {\n        int steps_this_hour = daily_goal / 8;\n        total_steps += steps_this_hour;\n        \n        printf(\"Saat %d: +%d adım (Toplam: %d)\\n\", \n               hour, steps_this_hour, total_steps);\n        \n        if (hour == 4) {\n            printf(\"   --> Mola zamanı! Sam çay hazırlıyor.\\n\");\n        }\n    }\n    \n    printf(\"\\nGünlük hedef %s!\\n\", \n           total_steps >= daily_goal ? \"BAŞARILDI\" : \"başarılamadı\");\n    \n    return 0;\n}",
+      "description": "Frodo'nun detaylı adım takip sistemi"
+    },
+    {
+      "name": "legolas_ok_sayimi.c",
+      "content": "#include <stdio.h>\nint main() {\n    int arrows = 30;\n    int targets_hit = 0;\n    \n    printf(\"Legolas'ın ok antrenmanı başlıyor...\\n\");\n    printf(\"Başlangıç ok sayısı: %d\\n\\n\", arrows);\n    \n    for (int shot = 1; shot <= 10 && arrows > 0; shot++) {\n        arrows--;\n        \n        // Legolas her zaman hedefi vuruyor!\n        targets_hit++;\n        \n        printf(\"Ok %d: HEDEFİ VURDU! \", shot);\n        printf(\"(Kalan ok: %d, Vurulan hedef: %d)\\n\", \n               arrows, targets_hit);\n    }\n    \n    printf(\"\\nAntrenman tamamlandı!\\n\");\n    printf(\"İsabet oranı: %d/%d = %%100\\n\", targets_hit, targets_hit);\n    \n    return 0;\n}",
+      "description": "Legolas'ın ok atma antrenmanı simülasyonu"
+    }
+  ],
+  "links": [
+    {
+      "title": "C For Döngüsü Temelleri",
+      "url": "https://en.cppreference.com/w/c/language/for",
+      "description": "Teknik detaylar için resmi C dokümantasyonu"
+    },
+    {
+      "title": "Tolkien'in Orta Dünya Kronolojisi",
+      "url": "https://tolkiengateway.net/wiki/Timeline",
+      "description": "Gerçek LOTR zaman çizelgesi referansı"
+    },
+    {
+      "title": "C Döngü Alıştırmaları",
+      "url": "https://www.programiz.com/c-programming/c-for-loop",
+      "description": "Pratik için ek döngü örnekleri"
+    }
+  ],
+  "animations": [
+    {
+      "type": "for-loop",
+      "title": "Kardeşlik Yolculuk Akışı",
+      "description": "Her günün nasıl planlandığını ve tekrarlandığını gösterir",
+      "config": {
+        "maxIterations": 5,
+        "showNodes": ["plan", "journey", "rest", "next_day"],
+        "themeLabels": {
+          "init": "Yolculuk\nPlanı",
+          "cond": "Gün Kontrolü\n(day <= 5?)",
+          "body": "Yolculuk\nYapma",
+          "inc": "Sonraki\nGün"
+        }
+      }
+    },
+    {
+      "type": "memory-view", 
+      "title": "Frodo'nun Adım Sayacı",
+      "description": "Frodo'nun attığı adımların bellekte nasıl sayıldığını gösterir",
+      "config": {
+        "trackVariable": "day",
+        "showAddresses": false,
+        "maxValue": 5,
+        "variableLabel": "gün"
+      }
+    },
+    {
+      "type": "flowchart",
+      "title": "Yolculuk Karar Ağacı",
+      "description": "Her gün hangi kararların alındığını gösterir",
+      "config": {
+        "condition": "Yol güvenli mi?",
+        "truePath": "İlerle",
+        "falsePath": "Saklan",
+        "showPaths": true
+      }
+    },
+    {
+      "type": "execution-trace",
+      "title": "Gandalf'ın Plan Takibi",
+      "description": "Gandalf'ın günlük planları nasıl takip ettiğini kod üzerinden gösterir",
+      "config": {
+        "codeLines": [
+          "for (int day = 1; day <= 5; day++) {",
+          "    printf(\"Gün %d: Yolculuk\", day);",
+          "    gandalf_rehberlik();",
+          "}"
+        ],
+        "highlightLines": true,
+        "showVariables": true,
+        "themeContext": "middle-earth"
+      }
+    }
+  ]
+}
