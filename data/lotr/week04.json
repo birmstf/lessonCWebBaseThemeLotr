@@ -1,14 +1,14 @@
 {
   "week": 4,
-  "title": "Hafta 4: Yolculuk Günleri - For Döngüsü",
-  "description": "Yüzük Kardeşliği'nin yolculuğunu gün gün simüle edelim. For döngüsü ile tekrarlı yolculukları kodlayacağız.",
+  "title": "Hafta 4: Döngüler - For (Yolculuk Günleri)",
+  "description": "For döngüsü ile tekrarlı işlemler yapmayı öğrenin. Döngü mantığını kavrayın ve farklı kullanım senaryolarını keşfedin.",
   "duration": "90 dakika",
   "difficulty": "Orta",
   "objectives": [
     "Yolculuk günlerini saymak (for döngüsü)",
-    "Kardeşliğin ilerleyişini takip etmek",
+    "Kardeşliğin ilerleyişi ile Döngü değişkenlerini anlamak",
     "Tekrarlı yolculukları anlamak",
-    "Her günün özel olaylarını kodlamak"
+    "Döngü koşullarını doğru kurmak"
   ],
   "codeExamples": [
     {

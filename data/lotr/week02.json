@@ -1,15 +1,15 @@
 {
   "week": 2,
   "title": "Hafta 2: Orta Dünya'da Programlama Temelleri",
-  "description": "Yüzük Kardeşliği ile C dilinin temellerini öğrenin. Gandalf'ın bilgeliğiyle veri tipleri, değişkenler ve kütüphaneleri keşfedin.",
+  "description": "C dilinin temellerini Yüzük Kardeşliği temasıyla öğrenin. veri tipleri, değişkenler ve kütüphaneleri keşfedin.",
   "duration": "90 dakika",
   "difficulty": "Başlangıç",
   "objectives": [
-    "C dilinin temel kavramlarını Orta Dünya örneğiyle anlamak",
-    "Gandalf'ın kod yazım kurallarını öğrenmek",
-    "Rivendell kütüphanelerini (C libraries) tanımak",
-    "Yüzüklerin güç tiplerini (veri tipleri) kavramak",
-    "Kardeşlik üyelerinin özelliklerini değişkenlerle tanımlamak"
+     "C dilinin temel kavramlarını anlamak",
+    "Doğru yazım kurallarını öğrenmek",
+    "Temel C kütüphanelerini tanımak",
+    "Veri tiplerini ve değişkenleri kullanmak",
+    "Bellek yönetimi temellerini kavramak"
   ],
   "codeExamples": [
     {

@@ -216,7 +216,7 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 4px;
 }
 
 /* Header Styles */
@@ -236,12 +236,22 @@ header {
     align-items: center;
 }
 
+@font-face {
+    font-family: 'NovaSquare-';
+    src: url('fonts/NovaSquare-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .logo {
+    font-family: 'NovaSquare-', sans-serif; 
     font-size: 24px;
     font-weight: bold;
     display: flex;
     align-items: center;
 }
+
+
 
 .logo i {
     margin-right: 10px;

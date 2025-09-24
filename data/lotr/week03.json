@@ -1,17 +1,17 @@
 {
   "week": 3,
   "title": "Hafta 3: Saruman'ın Büyü Formülleri - Operatörler ve Büyü Girişi",
-  "description": "Saruman'ın büyü atölyesinde operatörler ile büyü formüllerini öğrenin, Palantír üzerinden veri alışverişi yapın ve Gandalf'ın matematik büyülerini keşfedin.",
+  "description": "Atama komutları, operatörler, veri tipi dönüşümü, printf() ve scanf() fonksiyonları ile matematik kütüphanesi kullanımını öğrenin.",
   "duration": "90 dakika",
   "difficulty": "Orta",
   "objectives": [
-    "Saruman'ın atama büyülerini kullanmak",
-    "İsengard'ın hesaplama operatörlerini öğrenmek",
-    "Büyü sabitlerini (Ring Constants) tanımlamak",
-    "Güç dönüşümlerini (Type Casting) anlamak",
-    "Palantír çıkış büyüsü (printf) kullanmak",
-    "Nazgûl giriş büyüsü (scanf) ile veri almak",
-    "Gandalf'ın matematik kütüphanesini keşfetmek"
+    "Atama operatörlerini kullanmak",
+    "Aritmetik ve karşılaştırma operatörlerini öğrenmek",
+    "İsim sabitleri tanımlamak",
+    "Veri tipi dönüşümlerini anlamak",
+    "printf() ile çıktı alma",
+    "scanf() ile girdi alma",
+    "Matematik kütüphanesi fonksiyonlarını kullanmak"
   ],
   "codeExamples": [
     {
